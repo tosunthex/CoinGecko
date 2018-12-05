@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace CoinGecko.Entities.Response.Coins
 {
-    public class CoinByIdFullData : CoinFullData
+    public class CoinFullDataById : CoinFullData
     {
         [JsonProperty("categories")]
         public string[] Categories { get; set; }

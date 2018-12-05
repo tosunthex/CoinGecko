@@ -81,7 +81,7 @@ namespace CoinGecko.Clients
         /// <returns></returns>
         public async Task<CoinMarkets> GetCoinMarkets(string vsCurrency,string[] ids,string order,int? perPage,int? page,bool sparkline)
         {
-            return await GetAsync<CoinMarkets>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinList,new Dictionary<string, object>
+            return await GetAsync<CoinMarkets>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinMarkets,new Dictionary<string, object>
             {
                 {"vs_currency",vsCurrency},
                 {"ids",string.Join(",",ids)},
@@ -90,12 +90,23 @@ namespace CoinGecko.Clients
                 {"sparkline",sparkline}
             }));
         }
-
-        public async Task<CoinByIdFullData> GetAllCoinDataWithId(string id, string localization, bool tickers,
+        
+        /// <summary>
+        /// Get current data (name, price, market, … including exchange tickers) for a coin.
+        /// </summary>
+        /// <param name="id">coin id</param>
+        /// <param name="localization">Include all localized languages in response (true/false) [default: true]</param>
+        /// <param name="tickers">Include tickers data (true/false) [default: true]</param>
+        /// <param name="marketData">Include market_data (true/false) [default: true]</param>
+        /// <param name="communityData">Include community_data data (true/false) [default: true]</param>
+        /// <param name="developerData">Include developer_data data (true/false) [default: true]</param>
+        /// <param name="sparkline">Include sparkline 7 days data (eg. true, false) [default: false]</param>
+        /// <returns></returns>
+        public async Task<CoinFullDataById> GetAllCoinDataWithId(string id, string localization, bool tickers,
             bool marketData, bool communityData, bool developerData, bool sparkline)
         {
-            return await GetAsync<CoinByIdFullData>(QueryStringService.AppendQueryString(
-                CoinsApiEndPoints.AllDataWithCoinId(id), new Dictionary<string, object>
+            return await GetAsync<CoinFullDataById>(QueryStringService.AppendQueryString(
+                CoinsApiEndPoints.AllDataByCoinId(id), new Dictionary<string, object>
                 {
                     {"localization", localization},
                     {"tickers", tickers},
@@ -105,15 +116,40 @@ namespace CoinGecko.Clients
                     {"sparkline", sparkline}
                 }));
         }
-
-        public async Task<TickerByCoinId> GetTickerByCoinId(string id, int page)
+        
+        /// <summary>
+        /// Get coin tickers (paginated to 100 items)
+        /// </summary>
+        /// <param name="id">coin id</param>
+        /// <param name="page">Page through results</param>
+        /// <returns></returns>
+        public async Task<TickerById> GetTickerByCoinId(string id, int page)
         {
-            return await GetAsync<TickerByCoinId>(QueryStringService.AppendQueryString(
-                CoinsApiEndPoints.TickerWithCoinId(id), new Dictionary<string, object>
+            return await GetAsync<TickerById>(QueryStringService.AppendQueryString(
+                CoinsApiEndPoints.TickerByCoinId(id), new Dictionary<string, object>
                 {
                     {"page", page}
                 }));
         }
+
+        /// <summary>
+        /// Get historical data (name, price, market, stats) at a given date for a coin
+        /// </summary>
+        /// <param name="id">coin id</param>
+        /// <param name="date">The date of data snapshot in dd-mm-yyyy eg. 30-12-2017</param>
+        /// <param name="localization">Set to false to exclude localized languages in response</param>
+        /// <returns></returns>
+        public async Task<CoinFullData> GetHistoryByCoinId(string id, string date, string localization)
+        {
+            return await GetAsync<CoinFullData>(QueryStringService.AppendQueryString(
+                CoinsApiEndPoints.HistoryByCoinId(id), new Dictionary<string, object>
+                {
+                    {"date",date},
+                    {"localization",localization}
+                }));
+        }
+        
+        
     }
     
 }

@@ -5,8 +5,10 @@ namespace CoinGecko.ApiEndPoints
         public static readonly string Coins = "coins";
         public static readonly string CoinList = "coins/list";
         public static readonly string CoinMarkets = "coins/markets";
-        public static string AllDataWithCoinId(string id) => "coins/" + id;
-        public static string TickerWithCoinId(string id) => "coins/" + id + "/ticker";
+        public static string AllDataByCoinId(string id) => "coins/" + id;
+        public static string TickerByCoinId(string id) => "coins/" + id + "/ticker";
+        public static string HistoryByCoinId(string id) => "coins/" + id + "/history";
+        public static string MarketChartByCoinId(string id) => "coins/" + id + "/market_chart";
         
     }
 }

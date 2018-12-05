@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace CoinGecko.Entities.Response.Coins
 {
-    public class TickerByCoinId
+    public class TickerById
     {
         [JsonProperty("name")]
         public string Name { get; set; }

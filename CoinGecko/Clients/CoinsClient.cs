@@ -148,6 +148,23 @@ namespace CoinGecko.Clients
                     {"localization",localization}
                 }));
         }
+
+        /// <summary>
+        /// Get historical market data include price, market cap, and 24h volume (granularity auto)
+        /// </summary>
+        /// <param name="id">coin id</param>
+        /// <param name="vsCurrency">The target currency of market data (usd, eur, jpy, etc.)</param>
+        /// <param name="days">Data up to number of days ago (eg. 1,14,30,max)</param>
+        /// <returns></returns>
+        public async Task<MarketChartById> GetMarketChartsByCoinId(string id, string[] vsCurrency, string days)
+        {
+            return await GetAsync<MarketChartById>(QueryStringService.AppendQueryString(
+                CoinsApiEndPoints.MarketChartByCoinId(id), new Dictionary<string, object>
+                {
+                    {"vs_currency", string.Join(",",vsCurrency)},
+                    {"days", days}
+                }));
+        }
         
         
     }

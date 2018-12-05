@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CoinGecko.Entities.Response.Shared;
 using Newtonsoft.Json;
 
 namespace CoinGecko.Entities.Response.Coins

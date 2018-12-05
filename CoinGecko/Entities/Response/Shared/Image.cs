@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace CoinGecko.Entities.Response.Coins
+namespace CoinGecko.Entities.Response.Shared
 {
     public class Image
     {

@@ -1,10 +1,9 @@
-using System;
 using CoinGecko.Entities.Response.Shared;
 using Newtonsoft.Json;
 
-namespace CoinGecko.Entities.Response.Coins
+namespace CoinGecko.Entities.Response.Exchanges
 {
-    public class TickerById
+    public class TickerByExchangeId
     {
         [JsonProperty("name")]
         public string Name { get; set; }

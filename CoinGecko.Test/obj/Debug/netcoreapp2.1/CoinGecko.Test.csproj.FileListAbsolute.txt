@@ -1,0 +1,17 @@
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/bin/Debug/netcoreapp2.1/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/bin/Debug/netcoreapp2.1/xunit.runner.reporters.netcoreapp10.dll
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/bin/Debug/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/bin/Debug/netcoreapp2.1/CoinGecko.Test.deps.json
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/bin/Debug/netcoreapp2.1/CoinGecko.Test.runtimeconfig.json
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/bin/Debug/netcoreapp2.1/CoinGecko.Test.runtimeconfig.dev.json
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/bin/Debug/netcoreapp2.1/CoinGecko.Test.dll
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/bin/Debug/netcoreapp2.1/CoinGecko.Test.pdb
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/bin/Debug/netcoreapp2.1/CoinGecko.dll
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/bin/Debug/netcoreapp2.1/CoinGecko.pdb
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/obj/Debug/netcoreapp2.1/CoinGecko.Test.csprojAssemblyReference.cache
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/obj/Debug/netcoreapp2.1/CoinGecko.Test.csproj.CoreCompileInputs.cache
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/obj/Debug/netcoreapp2.1/CoinGecko.Test.AssemblyInfoInputs.cache
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/obj/Debug/netcoreapp2.1/CoinGecko.Test.AssemblyInfo.cs
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/obj/Debug/netcoreapp2.1/CoinGecko.Test.csproj.CopyComplete
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/obj/Debug/netcoreapp2.1/CoinGecko.Test.dll
+/home/levent/RiderProjects/CoinGecko/CoinGecko.Test/obj/Debug/netcoreapp2.1/CoinGecko.Test.pdb

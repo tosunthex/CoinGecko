@@ -17,7 +17,7 @@ namespace CoinGecko.Services
         {
             return CreateUrl(path, new Dictionary<string, object>());
         }
-        public static Uri CreateUrl(string path, Dictionary<string, object> parameter)
+        private static Uri CreateUrl(string path, Dictionary<string, object> parameter)
         {
             var urlParameters = new List<string>();
             foreach (var par in parameter)

@@ -66,7 +66,5 @@ namespace CoinGecko.Clients
                     {"page",page}
                 }));
         }
-        
-        
     }
 }

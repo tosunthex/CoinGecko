@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using CoinGecko.Clients;
 using Xunit;
 
@@ -13,7 +14,7 @@ namespace CoinGecko.Test
         }
 
         [Fact]
-        public async void Global_Data_Must_Not_Null()
+        public async Task Global_Data_Must_Not_Null()
         {
             var result = await _client.GlobalClient.GetGlobal();
             Assert.NotNull(result.Data);

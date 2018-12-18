@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 using CoinGecko.Clients;
 using Xunit;
 
@@ -13,14 +14,14 @@ namespace CoinGecko.Test
         }
         
         [Fact]
-        public async void Market_Chart()
+        public async Task Market_Chart()
         {
             var result = await _client.CoinsClient.GetMarketChartsByCoinId("bitcoin", new []{"usd"}, "1");
             Assert.Equal(result.Prices.Length,result.MarketCaps.Length);
         }
 
         [Fact]
-        public async void CoinsLists_Must_Not_Null_And_First_Element_Must_BTC()
+        public async Task CoinsLists_Must_Not_Null_And_First_Element_Must_BTC()
         {
             var result = await _client.CoinsClient.GetCoinList();
             Assert.Equal("bitcoin",result.First().Id);
@@ -28,7 +29,7 @@ namespace CoinGecko.Test
         }
 
         [Fact]
-        public async void Coin_By_Id_Must_Return_BTC()
+        public async Task Coin_By_Id_Must_Return_BTC()
         {
             var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
             Assert.Equal("btc",result.Symbol);
@@ -37,21 +38,21 @@ namespace CoinGecko.Test
         }
 
         [Fact]
-        public async void Coin_Stellar_Tickers()
+        public async Task Coin_Stellar_Tickers()
         {
             var result = await _client.CoinsClient.GetTickerByCoinId("stellar");
             Assert.Equal("Stellar",result.Name);
         }
 
         [Fact]
-        public async void Coin_Tether_History()
+        public async Task Coin_Tether_History()
         {
             var result = await _client.CoinsClient.GetHistoryByCoinId("tether","01-12-2018","false");
             Assert.Equal("Tether",result.Name);
         }
 
         [Fact]
-        public async void Coin_Stellar_Market_Chart_Price_Lenght_Must_Equal_to_Marketcaps_Lenght()
+        public async Task Coin_Stellar_Market_Chart_Price_Lenght_Must_Equal_to_Marketcaps_Lenght()
         {
             var result = await _client.CoinsClient.GetMarketChartsByCoinId("stellar", new[] {"usd"}, "2");
             Assert.Equal(result.Prices.Length,result.MarketCaps.Length);

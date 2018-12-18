@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using CoinGecko.Clients;
 using Xunit;
 
@@ -11,7 +12,7 @@ namespace CoinGecko.Test
             _client = CoinGeckoClient.Instance;
         }
         [Fact]
-        public async void BTC_To_ETH_Convert_Must_Not_Null()
+        public async Task BTC_To_ETH_Convert_Must_Not_Null()
         {
             var ids = "bitcoin";
             var vs_currencies = "eth";
@@ -19,7 +20,7 @@ namespace CoinGecko.Test
             Assert.False(string.IsNullOrEmpty(result[ids][vs_currencies].Value.ToString()));
         }
         [Fact]
-        public async void Supported_Vs_Currencies_Must_Cointains_BTC_ETH()
+        public async Task Supported_Vs_Currencies_Must_Cointains_BTC_ETH()
         {
             var result = await _client.SimpleClient.GetSupportedVsCurrencies();
             

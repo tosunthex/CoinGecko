@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using CoinGecko.Clients;
 using Xunit;
 
@@ -11,7 +12,7 @@ namespace CoinGecko.Test
             _client = CoinGeckoClient.Instance;
         }
         [Fact]
-        public async void Ping_Method_Must_Return_ToTheMoon()
+        public async Task Ping_Method_Must_Return_ToTheMoon()
         {
             var result = await _client.PingClient.GetPingAsync();
             Assert.Equal("(V3) To the Moon!",result.GeckoSays);

@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 using CoinGecko.Clients;
 using Xunit;
 
@@ -14,7 +15,7 @@ namespace CoinGecko.Test
         }
 
         [Fact]
-        public async void Exchange_Rates_Cointains_Eos()
+        public async Task Exchange_Rates_Cointains_Eos()
         {
             var result = await _client.ExchangeRatesClient.GetExchangeRates();
             Assert.True(result.Rates.ContainsKey("eos"));

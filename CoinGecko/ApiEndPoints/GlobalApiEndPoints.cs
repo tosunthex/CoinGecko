@@ -1,7 +1,7 @@
 namespace CoinGecko.ApiEndPoints
 {
-    public class GlobalApiEndPoints
+    public static class GlobalApiEndPoints
     {
-        public readonly static string Global = "global";
+        public const string Global = "global";
     }
 }

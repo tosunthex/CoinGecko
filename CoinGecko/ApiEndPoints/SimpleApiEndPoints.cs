@@ -1,8 +1,8 @@
 namespace CoinGecko.ApiEndPoints
 {
-    public class SimpleApiEndPoints
+    public static class SimpleApiEndPoints
     {
-        public static string SimplePrice => "simple/price";
-        public static string SimpleSupportedVsCurrencies => "simple/supported_vs_currencies";
+        public const string SimplePrice = "simple/price";
+        public const string SimpleSupportedVsCurrencies = "simple/supported_vs_currencies";
     }
 }

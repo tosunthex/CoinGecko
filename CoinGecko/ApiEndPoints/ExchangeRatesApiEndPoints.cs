@@ -1,7 +1,7 @@
 namespace CoinGecko.ApiEndPoints
 {
-    public class ExchangeRatesApiEndPoints
+    public static class ExchangeRatesApiEndPoints
     {
-        public static readonly string ExchangeRate = "exchange_rates";
+        public const string ExchangeRate = "exchange_rates";
     }
 }

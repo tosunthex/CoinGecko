@@ -1,9 +1,9 @@
 namespace CoinGecko.ApiEndPoints
 {
-    public class EventsApiEndPoints
+    public static class EventsApiEndPoints
     {
-        public static readonly string Events = "events";
-        public static readonly string EventsCountries = "events/countries";
-        public static readonly string EventsTypes = "events/types";
+        public const string Events = "events";
+        public const string EventsCountries = "events/countries";
+        public const string EventsTypes = "events/types";
     }
 }

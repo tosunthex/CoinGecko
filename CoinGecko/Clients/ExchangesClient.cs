@@ -19,7 +19,7 @@ namespace CoinGecko.Clients
         /// <returns></returns>
         public async Task<Exchanges> GetExchages()
         {
-            return await GetAsync<Exchanges>(QueryStringService.AppendQueryString(ExchangesApiEndPointUrl.Exchanges));
+            return await GetAsync<Exchanges>(QueryStringService.AppendQueryString(ExchangesApiEndPoints.Exchanges));
         }
         
         /// <summary>
@@ -33,7 +33,7 @@ namespace CoinGecko.Clients
         public async Task<ExchangeById> GetExchangesByExchangeId(string id)
         {
             return await GetAsync<ExchangeById>(
-                QueryStringService.AppendQueryString(ExchangesApiEndPointUrl.ExchangeById(id) ));
+                QueryStringService.AppendQueryString(ExchangesApiEndPoints.ExchangeById(id) ));
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace CoinGecko.Clients
         public async Task<TickerByExchangeId> GetTickerByExchangeId(string id,string page)
         {
             return await GetAsync<TickerByExchangeId>(QueryStringService.AppendQueryString(
-                ExchangesApiEndPointUrl.TickerById(id), new Dictionary<string, object>
+                ExchangesApiEndPoints.TickerById(id), new Dictionary<string, object>
                 {
                     {"page",page}
                 }));

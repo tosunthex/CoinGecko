@@ -2,7 +2,7 @@ using CoinGecko.Entities.Response.Exchanges;
 
 namespace CoinGecko.ApiEndPoints
 {
-    public class ExchangesApiEndPointUrl
+    public class ExchangesApiEndPoints
     {
         public static readonly string Exchanges = "exchages";
         public static string ExchangeById(string id) => "exchages/"+id;

@@ -14,18 +14,18 @@ namespace CoinGecko.Test
         [Fact]
         public async Task BTC_To_ETH_Convert_Must_Not_Null()
         {
-            var ids = "bitcoin";
-            var vs_currencies = "eth";
-            var result = await _client.SimpleClient.GetSimplePrice(new []{ids},new []{vs_currencies});
-            Assert.False(string.IsNullOrEmpty(result[ids][vs_currencies].Value.ToString()));
+            const string ids = "bitcoin";
+            const string vsCurrencies = "eth";
+            var result = await _client.SimpleClient.GetSimplePrice(new []{ids},new []{vsCurrencies});
+            Assert.False(string.IsNullOrEmpty(result[ids][vsCurrencies]?.ToString()));
         }
         [Fact]
         public async Task Supported_Vs_Currencies_Must_Cointains_BTC_ETH()
         {
             var result = await _client.SimpleClient.GetSupportedVsCurrencies();
             
-            Assert.True(result.Contains("btc"));
-            Assert.True(result.Contains("eth"));
+            Assert.Contains("btc", result);
+            Assert.Contains("eth", result);
         }
     }
 }

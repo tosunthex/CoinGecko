@@ -1,4 +1,3 @@
-using System;
 using CoinGecko.Entities.Response.Shared;
 using Newtonsoft.Json;
 

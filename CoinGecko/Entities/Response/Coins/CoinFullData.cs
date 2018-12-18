@@ -10,50 +10,50 @@ namespace CoinGecko.Entities.Response.Coins
         [JsonProperty("image")]
         public Image Image { get; set; }
 
-        [JsonProperty("market_data")]
+        [JsonProperty("market_data",NullValueHandling = NullValueHandling.Ignore)]
         public MarketData MarketData { get; set; }
 
-        [JsonProperty("community_data")]
+        [JsonProperty("community_data",NullValueHandling = NullValueHandling.Ignore)]
         public CommunityData CommunityData { get; set; }
 
-        [JsonProperty("developer_data")]
+        [JsonProperty("developer_data",NullValueHandling = NullValueHandling.Ignore)]
         public DeveloperData DeveloperData { get; set; }
 
-        [JsonProperty("public_interest_stats")]
+        [JsonProperty("public_interest_stats",NullValueHandling = NullValueHandling.Ignore)]
         public PublicInterestStats PublicInterestStats { get; set; }
 
-        [JsonProperty("last_updated")]
+        [JsonProperty("last_updated",NullValueHandling = NullValueHandling.Ignore)]
         public DateTimeOffset LastUpdated { get; set; }
 
-        [JsonProperty("localization")]
+        [JsonProperty("localization",NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string,string> Localization { get; set; }
     }
     
     public class DeveloperData
     {
         [JsonProperty("forks")]
-        public long Forks { get; set; }
+        public long? Forks { get; set; }
 
         [JsonProperty("stars")]
-        public long Stars { get; set; }
+        public long? Stars { get; set; }
 
         [JsonProperty("subscribers")]
-        public long Subscribers { get; set; }
+        public long? Subscribers { get; set; }
 
         [JsonProperty("total_issues")]
-        public long TotalIssues { get; set; }
+        public long? TotalIssues { get; set; }
 
         [JsonProperty("closed_issues")]
-        public long ClosedIssues { get; set; }
+        public long? ClosedIssues { get; set; }
 
         [JsonProperty("pull_requests_merged")]
-        public long PullRequestsMerged { get; set; }
+        public long? PullRequestsMerged { get; set; }
 
         [JsonProperty("pull_request_contributors")]
-        public long PullRequestContributors { get; set; }
+        public long? PullRequestContributors { get; set; }
 
         [JsonProperty("commit_count_4_weeks")]
-        public long CommitCount4Weeks { get; set; }
+        public long? CommitCount4Weeks { get; set; }
     }
 
     public class MarketData : MarketDataOhlcv
@@ -128,9 +128,9 @@ namespace CoinGecko.Entities.Response.Coins
     public class PublicInterestStats
     {
         [JsonProperty("alexa_rank")]
-        public long AlexaRank { get; set; }
+        public long? AlexaRank { get; set; }
 
         [JsonProperty("bing_matches")]
-        public long BingMatches { get; set; }
+        public long? BingMatches { get; set; }
     }
 }

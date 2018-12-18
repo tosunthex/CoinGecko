@@ -26,6 +26,8 @@ namespace CoinGecko.Clients
         public CoinsClient CoinsClient => new CoinsClient(_httpClient);
         public ExchangesClient ExchangesClient => new ExchangesClient(_httpClient);
         public EventsClient EventsClient => new EventsClient(_httpClient);
+        public ExchangeRatesClient ExchangeRatesClient => new ExchangeRatesClient(_httpClient);
+        public GlobalClient GlobalClient => new GlobalClient(_httpClient);
         
         public void Dispose()
         {

@@ -15,7 +15,7 @@ namespace CoinGecko.Clients
         public async Task<ExchangeRates> GetExchangeRates()
         {
             return await GetAsync<ExchangeRates>(
-                QueryStringService.AppendQueryString(ExchangesApiEndPoints.Exchanges));
+                QueryStringService.AppendQueryString(ExchangeRatesApiEndPoints.ExchangeRate));
         }
     }
 }

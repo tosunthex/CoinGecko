@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace CoinGecko.Entities.Response.Coins
@@ -5,22 +6,22 @@ namespace CoinGecko.Entities.Response.Coins
     public class MarketDataOhlcv
     {
         [JsonProperty("current_price")]
-        public double CurrentPrice { get; set; }
+        public Dictionary<string,double> CurrentPrice { get; set; }
 
         [JsonProperty("market_cap")]
-        public double MarketCap { get; set; }
+        public Dictionary<string,double> MarketCap { get; set; }
 
         [JsonProperty("market_cap_rank")]
         public long MarketCapRank { get; set; }
 
         [JsonProperty("total_volume")]
-        public double TotalVolume { get; set; }
+        public Dictionary<string,double> TotalVolume { get; set; }
 
         [JsonProperty("high_24h")]
-        public double High24H { get; set; }
+        public Dictionary<string,double> High24H { get; set; }
 
         [JsonProperty("low_24h")]
-        public double Low24H { get; set; }
+        public Dictionary<string,double> Low24H { get; set; }
 
         [JsonProperty("price_change_24h")]
         public double PriceChange24H { get; set; }

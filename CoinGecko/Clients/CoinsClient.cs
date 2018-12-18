@@ -54,9 +54,9 @@ namespace CoinGecko.Clients
         /// List all supported coins id, name and symbol
         /// </summary>
         /// <returns></returns>
-        public async Task<CoinList> GetCoinList()
+        public async Task<IReadOnlyList<CoinList>> GetCoinList()
         {
-            return await GetAsync<CoinList>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinList));
+            return await GetAsync<IReadOnlyList<CoinList>>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinList));
         }
 
         /// <summary>
@@ -90,7 +90,17 @@ namespace CoinGecko.Clients
                 {"sparkline",sparkline}
             }));
         }
-        
+
+        /// <summary>
+        /// Get current data (name, price, market, … including exchange tickers) for a coin.
+        /// </summary>
+        /// <param name="id">coin id</param>
+        /// <returns></returns>
+        public Task<CoinFullDataById> GetAllCoinDataWithId(string id)
+        {
+            return GetAllCoinDataWithId(id, "true", true, true, true, true, false);
+        }
+
         /// <summary>
         /// Get current data (name, price, market, … including exchange tickers) for a coin.
         /// </summary>
@@ -116,14 +126,25 @@ namespace CoinGecko.Clients
                     {"sparkline", sparkline}
                 }));
         }
-        
+
         /// <summary>
         /// Get coin tickers (paginated to 100 items)
         /// </summary>
         /// <param name="id">coin id</param>
         /// <param name="page">Page through results</param>
         /// <returns></returns>
-        public async Task<TickerById> GetTickerByCoinId(string id, int page)
+        public Task<TickerById> GetTickerByCoinId(string id)
+        {
+            return GetTickerByCoinId(id, null);
+        }
+
+        /// <summary>
+        /// Get coin tickers (paginated to 100 items)
+        /// </summary>
+        /// <param name="id">coin id</param>
+        /// <param name="page">Page through results</param>
+        /// <returns></returns>
+        public async Task<TickerById> GetTickerByCoinId(string id, int? page)
         {
             return await GetAsync<TickerById>(QueryStringService.AppendQueryString(
                 CoinsApiEndPoints.TickerByCoinId(id), new Dictionary<string, object>

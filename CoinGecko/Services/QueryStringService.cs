@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using CoinGecko.ApiEndPoints;
-using CoinGecko.Parameters;
 
 namespace CoinGecko.Services
 {

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace CoinGecko.Entities.Response.Exchanges
 {
-    public partial class Exchanges:ExchangesMain
+    public class Exchanges:ExchangesMain
     {
         [JsonProperty("id")]
         public string Id { get; set; }

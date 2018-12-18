@@ -17,9 +17,9 @@ namespace CoinGecko.Clients
         /// List all exchanges
         /// </summary>
         /// <returns></returns>
-        public async Task<Exchanges> GetExchages()
+        public async Task<IReadOnlyList<Exchanges>> GetExchages()
         {
-            return await GetAsync<Exchanges>(QueryStringService.AppendQueryString(ExchangesApiEndPoints.Exchanges));
+            return await GetAsync<IReadOnlyList<Exchanges>>(QueryStringService.AppendQueryString(ExchangesApiEndPoints.Exchanges));
         }
         
         /// <summary>

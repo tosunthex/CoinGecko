@@ -12,6 +12,10 @@ namespace CoinGecko.Clients
         {
         }
 
+        /// <summary>
+        /// Get BTC-to-Currency exchange rates
+        /// </summary>
+        /// <returns></returns>
         public async Task<ExchangeRates> GetExchangeRates()
         {
             return await GetAsync<ExchangeRates>(

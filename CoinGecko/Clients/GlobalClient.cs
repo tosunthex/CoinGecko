@@ -11,7 +11,11 @@ namespace CoinGecko.Clients
         public GlobalClient(HttpClient httpClient) : base(httpClient)
         {
         }
-
+        
+        /// <summary>
+        /// Get cryptocurrency global data
+        /// </summary>
+        /// <returns></returns>
         public async Task<Global> GetGlobal()
         {
             return await GetAsync<Global>(QueryStringService.AppendQueryString(GlobalApiEndPoints.Global));

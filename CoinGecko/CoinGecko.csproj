@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <IncludeSymbols>True</IncludeSymbols>
+        <PackageVersion>1.0.0</PackageVersion>
+        <title>Coin Gecko Async Api</title>
+        <Authors>Levent Saatci</Authors>
+        <Description>.Net and .Net Standart coin gecko async client for newest Min-API</Description>
+        <Copyright>Copyright 2018 (c). All rights reserved.</Copyright>
+        <PackageTags>coin gecko coingecko COINGECKO-API bitcoin eth etherium btc xrp ripple ltc litecoin dotnet-core dotnet-standard dotnet async cryptocurrencies</PackageTags>
+        <PackageLicense>http://choosealicense.com/licenses/bsd-2-clause/</PackageLicense>
+        <PackageProjectUrl>https://github.com/tosunthex/CoinGecko</PackageProjectUrl>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <PackageIconUrl>https://blockchair.com/images/partners/coingecko.png</PackageIconUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageId>CoinGeckoAsyncApi</PackageId>
+        <Product>Coin Gecko Async Api</Product>
+        <RepositoryUrl>https://github.com/tosunthex/CoinGecko</RepositoryUrl>
+        <PackageReleaseNotes>
+            Coin Gecko Api wrapper written in .net standard 2.0 for more information please check the official documentation from https://www.coingecko.com/api/docs/v3
+        </PackageReleaseNotes>
+        <Version>1.0.0</Version>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.1"/>
+    </ItemGroup>
+
+</Project>

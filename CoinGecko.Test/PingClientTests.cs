@@ -1,12 +1,13 @@
 using System.Threading.Tasks;
 using CoinGecko.Clients;
+using CoinGecko.Interfaces;
 using Xunit;
 
 namespace CoinGecko.Test
 {
     public class PingClientTests
     {
-        private readonly CoinGeckoClient _client;
+        private readonly ICoinGeckoClient _client;
         public PingClientTests()
         {
             _client = CoinGeckoClient.Instance;

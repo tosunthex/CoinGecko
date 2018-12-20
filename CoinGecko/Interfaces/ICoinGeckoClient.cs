@@ -7,6 +7,8 @@ namespace CoinGecko.Interfaces
         IExchangeRatesClient ExchangeRatesClient { get; }
         IExchangesClient ExchangesClient { get; }
         IGlobalClient GlobalClient { get; }
+        ISimpleClient SimpleClient { get; }
+        IPingClient PingClient { get; }
         
     }
 }

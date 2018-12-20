@@ -1,0 +1,22 @@
+
+version: '1.0.{build}'
+image: Visual Studio 2017
+branches:
+  only:
+  - master
+clone_depth: 1
+init:
+  # Good practise, because Windows line endings are different from Unix/Linux ones
+  - cmd: git config --global core.autocrlf true
+before_build:
+  # Display .NET Core version
+  - cmd: dotnet --version
+  # Display minimal restore text
+  - cmd: dotnet restore --verbosity m
+build_script:
+  - cmd: dotnet build -c Release
+  #- cmd: dotnet publish --framework netstandard2.0 -c Release
+test_script:
+  - cmd: cd CoinGecko.Test
+  - cmd: dotnet test
+deploy: off

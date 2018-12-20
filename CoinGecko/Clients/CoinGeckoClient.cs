@@ -26,7 +26,7 @@ namespace CoinGecko.Clients
         public PingClient PingClient => new PingClient(_httpClient);
         public ICoinsClient CoinsClient => new CoinsClient(_httpClient);
         public ExchangesClient ExchangesClient => new ExchangesClient(_httpClient);
-        public EventsClient EventsClient => new EventsClient(_httpClient);
+        public IEventsClient EventsClient => new EventsClient(_httpClient);
         public ExchangeRatesClient ExchangeRatesClient => new ExchangeRatesClient(_httpClient);
         public GlobalClient GlobalClient => new GlobalClient(_httpClient);
         

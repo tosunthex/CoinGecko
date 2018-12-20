@@ -3,11 +3,12 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.Events;
+using CoinGecko.Interfaces;
 using CoinGecko.Services;
 
 namespace CoinGecko.Clients
 {
-    public class EventsClient:BaseApiClient
+    public class EventsClient:BaseApiClient,IEventsClient
     {
         public EventsClient(HttpClient httpClient) : base(httpClient)
         {

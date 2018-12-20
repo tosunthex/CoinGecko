@@ -1,11 +1,12 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using CoinGecko.Interfaces;
 using Newtonsoft.Json;
 
 namespace CoinGecko.Clients
 {
-    public class BaseApiClient
+    public class BaseApiClient:IAsyncApiRepository
     {
         private readonly HttpClient _httpClient;
 
@@ -14,7 +15,7 @@ namespace CoinGecko.Clients
             _httpClient = httpClient;
         }
 
-        protected async Task<T> GetAsync<T>(Uri resourceUri)
+        public async Task<T> GetAsync<T>(Uri resourceUri)
         {
             var response = await _httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Get, resourceUri))
                 .ConfigureAwait(false);

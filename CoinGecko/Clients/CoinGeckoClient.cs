@@ -1,9 +1,10 @@
 using System;
 using System.Net.Http;
+using CoinGecko.Interfaces;
 
 namespace CoinGecko.Clients
 {
-    public partial class CoinGeckoClient: IDisposable
+    public partial class CoinGeckoClient: IDisposable,ICoinGeckoClient
     {
         private static readonly Lazy<CoinGeckoClient> Lazy = new Lazy<CoinGeckoClient>(() => new CoinGeckoClient());
 
@@ -23,7 +24,7 @@ namespace CoinGecko.Clients
         
         public SimpleClient SimpleClient => new SimpleClient(_httpClient);
         public PingClient PingClient => new PingClient(_httpClient);
-        public CoinsClient CoinsClient => new CoinsClient(_httpClient);
+        public ICoinsClient CoinsClient => new CoinsClient(_httpClient);
         public ExchangesClient ExchangesClient => new ExchangesClient(_httpClient);
         public EventsClient EventsClient => new EventsClient(_httpClient);
         public ExchangeRatesClient ExchangeRatesClient => new ExchangeRatesClient(_httpClient);

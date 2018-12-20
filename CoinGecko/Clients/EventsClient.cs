@@ -17,9 +17,9 @@ namespace CoinGecko.Clients
         /// Get events, paginated by 100
         /// </summary>
         /// <returns></returns>
-        public Task<Events> GetEvents()
+        public async Task<Events> GetEvents()
         {
-            return GetEvents(new string[] { }, new string[] { }, null, null, null, null);
+            return await GetEvents(new string[] { }, new string[] { }, null, null, null, null);
         }
         
         /// <summary>

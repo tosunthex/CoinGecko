@@ -22,8 +22,8 @@ namespace CoinGecko.Clients
 
         public static CoinGeckoClient Instance => Lazy.Value;
         
-        public SimpleClient SimpleClient => new SimpleClient(_httpClient);
-        public PingClient PingClient => new PingClient(_httpClient);
+        public ISimpleClient SimpleClient => new SimpleClient(_httpClient);
+        public IPingClient PingClient => new PingClient(_httpClient);
         public ICoinsClient CoinsClient => new CoinsClient(_httpClient);
         public IExchangesClient ExchangesClient => new ExchangesClient(_httpClient);
         public IEventsClient EventsClient => new EventsClient(_httpClient);

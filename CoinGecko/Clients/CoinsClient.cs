@@ -15,9 +15,9 @@ namespace CoinGecko.Clients
         {
         }
 
-        public Task<IReadOnlyList<CoinFullData>> GetAllCoinsData()
+        public async Task<IReadOnlyList<CoinFullData>> GetAllCoinsData()
         {
-            return GetAllCoinsData(OrderField.GeckoDesc, null, null, "", null);
+            return await GetAllCoinsData(OrderField.GeckoDesc, null, null, "", null);
         }
 
         public async Task<IReadOnlyList<CoinFullData>> GetAllCoinsData(string order,int? perPage,int? page,string localization,bool? sparkline)
@@ -38,9 +38,9 @@ namespace CoinGecko.Clients
             return await GetAsync<IReadOnlyList<CoinList>>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinList));
         }
 
-        public Task<CoinMarkets> GetCoinMarkets(string vsCurrency)
+        public async Task<CoinMarkets> GetCoinMarkets(string vsCurrency)
         {
-            return GetCoinMarkets(vsCurrency, new string[] { }, null, null, null, false);
+            return await GetCoinMarkets(vsCurrency, new string[] { }, null, null, null, false);
         }
 
         public async Task<CoinMarkets> GetCoinMarkets(string vsCurrency,string[] ids,string order,int? perPage,int? page,bool sparkline)
@@ -55,9 +55,9 @@ namespace CoinGecko.Clients
             }));
         }
 
-        public Task<CoinFullDataById> GetAllCoinDataWithId(string id)
+        public async Task<CoinFullDataById> GetAllCoinDataWithId(string id)
         {
-            return GetAllCoinDataWithId(id, "true", true, true, true, true, false);
+            return await GetAllCoinDataWithId(id, "true", true, true, true, true, false);
         }
 
         public async Task<CoinFullDataById> GetAllCoinDataWithId(string id, string localization, bool tickers,
@@ -75,9 +75,9 @@ namespace CoinGecko.Clients
                 }));
         }
 
-        public Task<TickerById> GetTickerByCoinId(string id)
+        public async Task<TickerById> GetTickerByCoinId(string id)
         {
-            return GetTickerByCoinId(id, null);
+            return await GetTickerByCoinId(id, null);
         }
 
         public async Task<TickerById> GetTickerByCoinId(string id, int? page)

@@ -3,61 +3,33 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.Exchanges;
+using CoinGecko.Interfaces;
 using CoinGecko.Services;
 
 namespace CoinGecko.Clients
 {
-    public class ExchangesClient:BaseApiClient
+    public class ExchangesClient:BaseApiClient,IExchangesClient
     {
         public ExchangesClient(HttpClient httpClient) : base(httpClient)
         {
         }
         
-        /// <summary>
-        /// List all exchanges
-        /// </summary>
-        /// <returns></returns>
-        public async Task<IReadOnlyList<Exchanges>> GetExchages()
+        public async Task<IReadOnlyList<Exchanges>> GetExchanges()
         {
             return await GetAsync<IReadOnlyList<Exchanges>>(QueryStringService.AppendQueryString(ExchangesApiEndPoints.Exchanges));
         }
         
-        /// <summary>
-        /// Get exchange volume in BTC and tickers
-        /// IMPORTANT:
-        /// Ticker is_stale is true when ticker that has not been updated/unchanged from the exchange for a while.
-        /// Ticker is_anomaly is true if ticker’s price is outliered by our system.
-        /// </summary>
-        /// <param name="id">exchange id</param>
-        /// <returns></returns>
         public async Task<ExchangeById> GetExchangesByExchangeId(string id)
         {
             return await GetAsync<ExchangeById>(
                 QueryStringService.AppendQueryString(ExchangesApiEndPoints.ExchangeById(id) ));
         }
 
-        /// <summary>
-        /// Get exchange tickers (paginated)
-        /// IMPORTANT:
-        /// Ticker is_stale is true when ticker that has not been updated/unchanged from the exchange for a while.
-        /// Ticker is_anomaly is true if ticker’s price is outliered by our system.
-        /// </summary>
-        /// <param name="id">exchange id</param>
-        /// <returns></returns>
-        public Task<TickerByExchangeId> GetTickerByExchangeId(string id)
+        public async Task<TickerByExchangeId> GetTickerByExchangeId(string id)
         {
-            return GetTickerByExchangeId(id, null);
+            return await GetTickerByExchangeId(id, null);
         }
 
-        /// <summary>
-        /// Get exchange tickers (paginated)
-        /// IMPORTANT:
-        /// Ticker is_stale is true when ticker that has not been updated/unchanged from the exchange for a while.
-        /// Ticker is_anomaly is true if ticker’s price is outliered by our system.
-        /// </summary>
-        /// <param name="id">exchange id</param>
-        /// <param name="page">Page through results</param>
-        /// <returns></returns>
         public async Task<TickerByExchangeId> GetTickerByExchangeId(string id,string page)
         {
             return await GetAsync<TickerByExchangeId>(QueryStringService.AppendQueryString(

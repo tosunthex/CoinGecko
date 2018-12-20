@@ -4,5 +4,7 @@ namespace CoinGecko.Interfaces
     {
         ICoinsClient CoinsClient { get; }
         IEventsClient EventsClient { get; }
+        IExchangeRatesClient ExchangeRatesClient { get; }
+        IExchangesClient ExchangesClient { get; }
     }
 }

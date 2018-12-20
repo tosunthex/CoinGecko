@@ -2,11 +2,12 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.ExchangeRates;
+using CoinGecko.Interfaces;
 using CoinGecko.Services;
 
 namespace CoinGecko.Clients
 {
-    public class ExchangeRatesClient:BaseApiClient
+    public class ExchangeRatesClient:BaseApiClient,IExchangeRatesClient
     {
         public ExchangeRatesClient(HttpClient httpClient) : base(httpClient)
         {

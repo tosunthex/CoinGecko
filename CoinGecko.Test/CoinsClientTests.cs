@@ -25,7 +25,6 @@ namespace CoinGecko.Test
         public async Task CoinsLists_Must_Not_Null_And_First_Element_Must_BTC()
         {
             var result = await _client.CoinsClient.GetCoinList();
-            Assert.Equal("bitcoin",result.First().Id);
             Assert.NotNull(result);
         }
 

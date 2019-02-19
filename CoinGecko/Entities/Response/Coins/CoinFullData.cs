@@ -5,13 +5,16 @@ using Newtonsoft.Json;
 
 namespace CoinGecko.Entities.Response.Coins
 {
-    public class CoinFullData:CoinList
+    public class CoinFullData:CoinFullDataWithOutMarketData
+    {
+        [JsonProperty("market_data",NullValueHandling = NullValueHandling.Ignore)]
+        public MarketData MarketData { get; set; }
+    }
+
+    public class CoinFullDataWithOutMarketData:CoinList
     {
         [JsonProperty("image")]
         public Image Image { get; set; }
-
-        [JsonProperty("market_data",NullValueHandling = NullValueHandling.Ignore)]
-        public MarketData MarketData { get; set; }
 
         [JsonProperty("community_data",NullValueHandling = NullValueHandling.Ignore)]
         public CommunityData CommunityData { get; set; }

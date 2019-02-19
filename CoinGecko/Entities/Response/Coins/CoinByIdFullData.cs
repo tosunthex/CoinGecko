@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace CoinGecko.Entities.Response.Coins
 {
-    public class CoinFullDataById : CoinFullData
+    public class CoinFullDataById : CoinFullDataWithOutMarketData
     {
         [JsonProperty("categories")]
         public string[] Categories { get; set; }
@@ -42,6 +42,9 @@ namespace CoinGecko.Entities.Response.Coins
 
         [JsonProperty("public_interest_score")]
         public double? PublicInterestScore { get; set; }
+        
+        [JsonProperty("market_data",NullValueHandling = NullValueHandling.Ignore)]
+        public CoinByIdMarketData MarketData { get; set; }
         
         [JsonProperty("status_updates")]
         public object[] StatusUpdates { get; set; }

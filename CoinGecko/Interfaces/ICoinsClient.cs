@@ -9,11 +9,6 @@ namespace CoinGecko.Interfaces
         /// <summary>
         /// List all coins with data (name, price, market, developer, community, etc) - paginated by 50
         /// </summary>
-        /// <param name="order">order by</param>
-        /// <param name="perPage">Total results per page</param>
-        /// <param name="page">Page through results</param>
-        /// <param name="localization">Set to false to exclude localized languages in response</param>
-        /// <param name="sparkline">Include sparkline 7 days data (true/false) [default: false]</param>
         /// <returns></returns>
         Task<IReadOnlyList<CoinFullData>> GetAllCoinsData();
 

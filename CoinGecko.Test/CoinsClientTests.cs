@@ -15,6 +15,14 @@ namespace CoinGecko.Test
         }
         
         [Fact]
+        public async Task All_Coins_Data()
+        {
+            var coinList = await _client.CoinsClient.GetCoinList();
+            var result = await _client.CoinsClient.GetAllCoinsData("",coinList.Count,null,"",null);
+            Assert.NotNull(result);
+        }
+        
+        [Fact]
         public async Task Market_Chart()
         {
             var result = await _client.CoinsClient.GetMarketChartsByCoinId("bitcoin", new []{"usd"}, "1");
@@ -35,6 +43,15 @@ namespace CoinGecko.Test
             Assert.Equal("btc",result.Symbol);
             result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin","false",true,false,false,false,true);
             Assert.Equal("btc",result.Symbol);
+        }
+
+        [Fact]
+        public async Task Coin_by_Id_Must_Contains_ATH_Details()
+        {
+            var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
+            Assert.NotNull(result.MarketData.Ath);
+            Assert.NotNull(result.MarketData.AthDate);
+            Assert.NotNull(result.MarketData.AthChangePercentage);
         }
 
         [Fact]

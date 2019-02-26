@@ -53,6 +53,13 @@ namespace CoinGecko.Test
             Assert.NotNull(result.MarketData.AthDate);
             Assert.NotNull(result.MarketData.AthChangePercentage);
         }
+        
+        [Fact]
+        public async Task Hydro_Genesis_Date_Equal_To_Null()
+        {
+            var result = await _client.CoinsClient.GetAllCoinDataWithId("hydro");
+            Assert.NotNull(result.MarketData.Ath);
+        }
 
         [Fact]
         public async Task Coin_Stellar_Tickers()

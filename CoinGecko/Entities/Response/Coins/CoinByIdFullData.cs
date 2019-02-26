@@ -19,7 +19,7 @@ namespace CoinGecko.Entities.Response.Coins
         [JsonProperty("country_origin")]
         public string CountryOrigin { get; set; }
 
-        [JsonProperty("genesis_date")]
+        [JsonProperty("genesis_date",NullValueHandling = NullValueHandling.Ignore)]
         public DateTimeOffset GenesisDate { get; set; }
 
         [JsonProperty("market_cap_rank")]

@@ -51,7 +51,8 @@ namespace CoinGecko.Clients
                 {"ids",string.Join(",",ids)},
                 {"per_page",perPage},
                 {"page",page},
-                {"sparkline",sparkline}
+                {"sparkline",sparkline},
+                {"price_change_percentage",priceChangePercentage}
             }));
         }
 

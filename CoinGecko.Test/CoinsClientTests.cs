@@ -100,5 +100,31 @@ namespace CoinGecko.Test
             Assert.NotNull(roiEth);
             Assert.Null(roiBtc);
         }
+
+        [Fact]
+        public async Task Price_Change_Percentage_By_Days_Must_Not_Null()
+        {
+            var result = await _client.CoinsClient.GetCoinMarkets("usd", new []{"bitcoin"}, null, null, null, false, "1h,24h,7d,14d,30d,200d,1y");
+            Assert.NotNull(result.First().PriceChangePercentage1HInCurrency);
+            Assert.NotNull(result.First().PriceChangePercentage24HInCurrency);
+            Assert.NotNull(result.First().PriceChangePercentage7DInCurrency);
+            Assert.NotNull(result.First().PriceChangePercentage14DInCurrency);
+            Assert.NotNull(result.First().PriceChangePercentage30DInCurrency);
+            Assert.NotNull(result.First().PriceChangePercentage200DInCurrency);
+            Assert.NotNull(result.First().PriceChangePercentage1YInCurrency);
+        }
+        
+        [Fact]
+        public async Task Price_Change_Percentage_By_Days_Must_Null()
+        {
+            var result = await _client.CoinsClient.GetCoinMarkets("usd", new []{"bitcoin"}, null, null, null, false,null);
+            Assert.Null(result.First().PriceChangePercentage1HInCurrency);
+            Assert.Null(result.First().PriceChangePercentage24HInCurrency);
+            Assert.Null(result.First().PriceChangePercentage7DInCurrency);
+            Assert.Null(result.First().PriceChangePercentage14DInCurrency);
+            Assert.Null(result.First().PriceChangePercentage30DInCurrency);
+            Assert.Null(result.First().PriceChangePercentage200DInCurrency);
+            Assert.Null(result.First().PriceChangePercentage1YInCurrency);
+        }
     }
 }

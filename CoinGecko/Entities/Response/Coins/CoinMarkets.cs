@@ -47,7 +47,25 @@ namespace CoinGecko.Entities.Response.Coins
         [JsonProperty("last_updated")]
         public DateTimeOffset LastUpdated { get; set; }
         
-        [JsonProperty("sparkline_in_7d")]
-        public SparklineIn7D SparklineIn7D { get; set; }
+        [JsonProperty("price_change_percentage_14d_in_currency",NullValueHandling = NullValueHandling.Ignore)]
+        public double? PriceChangePercentage14DInCurrency { get; set; }
+
+        [JsonProperty("price_change_percentage_1h_in_currency",NullValueHandling = NullValueHandling.Ignore)]
+        public double? PriceChangePercentage1HInCurrency { get; set; }
+
+        [JsonProperty("price_change_percentage_1y_in_currency",NullValueHandling = NullValueHandling.Ignore)]
+        public double? PriceChangePercentage1YInCurrency { get; set; }
+
+        [JsonProperty("price_change_percentage_200d_in_currency",NullValueHandling = NullValueHandling.Ignore)]
+        public double? PriceChangePercentage200DInCurrency { get; set; }
+
+        [JsonProperty("price_change_percentage_24h_in_currency",NullValueHandling = NullValueHandling.Ignore)]
+        public double? PriceChangePercentage24HInCurrency { get; set; }
+
+        [JsonProperty("price_change_percentage_30d_in_currency",NullValueHandling = NullValueHandling.Ignore)]
+        public double? PriceChangePercentage30DInCurrency { get; set; }
+
+        [JsonProperty("price_change_percentage_7d_in_currency",NullValueHandling = NullValueHandling.Ignore)]
+        public double? PriceChangePercentage7DInCurrency { get; set; }
     }
 }

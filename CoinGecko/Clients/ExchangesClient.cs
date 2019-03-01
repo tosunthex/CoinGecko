@@ -17,19 +17,19 @@ namespace CoinGecko.Clients
         public async Task<IReadOnlyList<Exchanges>> GetExchanges()
         {
             return await GetAsync<IReadOnlyList<Exchanges>>(
-                QueryStringService.AppendQueryString(ExchangesApiEndPoints.Exchanges));
+                QueryStringService.AppendQueryString(ExchangesApiEndPoints.Exchanges)).ConfigureAwait(false);
         }
 
         public async Task<IReadOnlyList<ExchangesList>> GetExchangesList()
         {
             return await GetAsync<IReadOnlyList<ExchangesList>>(
-                QueryStringService.AppendQueryString(ExchangesApiEndPoints.ExchangesList));
+                QueryStringService.AppendQueryString(ExchangesApiEndPoints.ExchangesList)).ConfigureAwait(false);
         }
 
         public async Task<ExchangeById> GetExchangesByExchangeId(string id)
         {
             return await GetAsync<ExchangeById>(
-                QueryStringService.AppendQueryString(ExchangesApiEndPoints.ExchangeById(id) ));
+                QueryStringService.AppendQueryString(ExchangesApiEndPoints.ExchangeById(id) )).ConfigureAwait(false);
         }
 
         public async Task<TickerByExchangeId> GetTickerByExchangeId(string id)
@@ -43,7 +43,7 @@ namespace CoinGecko.Clients
                 ExchangesApiEndPoints.TickerById(id), new Dictionary<string, object>
                 {
                     {"page",page}
-                }));
+                })).ConfigureAwait(false);
         }
     }
 }

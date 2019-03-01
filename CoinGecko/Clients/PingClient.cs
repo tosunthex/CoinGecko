@@ -14,7 +14,7 @@ namespace CoinGecko.Clients
         
         public async Task<Ping> GetPingAsync()
         {
-            return await GetAsync<Ping>(QueryStringService.AppendQueryString("ping"));
+            return await GetAsync<Ping>(QueryStringService.AppendQueryString("ping")).ConfigureAwait(false);
         }
 
         

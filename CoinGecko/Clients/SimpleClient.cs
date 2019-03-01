@@ -30,13 +30,13 @@ namespace CoinGecko.Clients
                     {"vs_currencies",string.Join(",",vsCurrencies)},
                     {"include_24hr_vol",include24HVol},
                     {"include_last_updated_at",includeLastUpdatedAt}
-                }));
+                })).ConfigureAwait(false);
         }
         
         public async Task<SupportedCurrencies> GetSupportedVsCurrencies()
         {
             return await GetAsync<SupportedCurrencies>(
-                QueryStringService.AppendQueryString(SimpleApiEndPoints.SimpleSupportedVsCurrencies));
+                QueryStringService.AppendQueryString(SimpleApiEndPoints.SimpleSupportedVsCurrencies)).ConfigureAwait(false);
         }
     }
 }

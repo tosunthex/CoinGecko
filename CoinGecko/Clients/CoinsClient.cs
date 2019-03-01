@@ -30,12 +30,12 @@ namespace CoinGecko.Clients
                     {"page",page},
                     {"localization",localization},
                     {"sparkline",sparkline}
-                }));
+                })).ConfigureAwait(false);
         }
 
         public async Task<IReadOnlyList<CoinList>> GetCoinList()
         {
-            return await GetAsync<IReadOnlyList<CoinList>>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinList));
+            return await GetAsync<IReadOnlyList<CoinList>>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinList)).ConfigureAwait(false);
         }
 
         public async Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency)
@@ -45,15 +45,16 @@ namespace CoinGecko.Clients
 
         public async Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency,string[] ids,string order,int? perPage,int? page,bool sparkline,string priceChangePercentage)
         {
-            return await GetAsync<List<CoinMarkets>>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinMarkets,new Dictionary<string, object>
-            {
-                {"vs_currency",vsCurrency},
-                {"ids",string.Join(",",ids)},
-                {"per_page",perPage},
-                {"page",page},
-                {"sparkline",sparkline},
-                {"price_change_percentage",priceChangePercentage}
-            }));
+            return await GetAsync<List<CoinMarkets>>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinMarkets,
+                new Dictionary<string, object>
+                {
+                    {"vs_currency", vsCurrency},
+                    {"ids", string.Join(",", ids)},
+                    {"per_page", perPage},
+                    {"page", page},
+                    {"sparkline", sparkline},
+                    {"price_change_percentage", priceChangePercentage}
+                })).ConfigureAwait(false);
         }
 
         public async Task<CoinFullDataById> GetAllCoinDataWithId(string id)
@@ -73,7 +74,7 @@ namespace CoinGecko.Clients
                     {"community_data", communityData},
                     {"developer_data", developerData},
                     {"sparkline", sparkline}
-                }));
+                })).ConfigureAwait(false);
         }
 
         public async Task<TickerById> GetTickerByCoinId(string id)
@@ -87,7 +88,7 @@ namespace CoinGecko.Clients
                 CoinsApiEndPoints.TickerByCoinId(id), new Dictionary<string, object>
                 {
                     {"page", page}
-                }));
+                })).ConfigureAwait(false);
         }
 
         public async Task<CoinFullData> GetHistoryByCoinId(string id, string date, string localization)
@@ -97,7 +98,7 @@ namespace CoinGecko.Clients
                 {
                     {"date",date},
                     {"localization",localization}
-                }));
+                })).ConfigureAwait(false);
         }
 
         public async Task<MarketChartById> GetMarketChartsByCoinId(string id, string[] vsCurrency, string days)
@@ -107,10 +108,8 @@ namespace CoinGecko.Clients
                 {
                     {"vs_currency", string.Join(",",vsCurrency)},
                     {"days", days}
-                }));
+                })).ConfigureAwait(false);
         }
-        
-        
     }
     
 }

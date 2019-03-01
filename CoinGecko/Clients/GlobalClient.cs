@@ -15,7 +15,7 @@ namespace CoinGecko.Clients
         
         public async Task<Global> GetGlobal()
         {
-            return await GetAsync<Global>(QueryStringService.AppendQueryString(GlobalApiEndPoints.Global));
+            return await GetAsync<Global>(QueryStringService.AppendQueryString(GlobalApiEndPoints.Global)).ConfigureAwait(false);
         }
     }
 }

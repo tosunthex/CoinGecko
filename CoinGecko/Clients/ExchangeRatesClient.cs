@@ -13,14 +13,10 @@ namespace CoinGecko.Clients
         {
         }
 
-        /// <summary>
-        /// Get BTC-to-Currency exchange rates
-        /// </summary>
-        /// <returns></returns>
         public async Task<ExchangeRates> GetExchangeRates()
         {
             return await GetAsync<ExchangeRates>(
-                QueryStringService.AppendQueryString(ExchangeRatesApiEndPoints.ExchangeRate));
+                QueryStringService.AppendQueryString(ExchangeRatesApiEndPoints.ExchangeRate)).ConfigureAwait(false);
         }
     }
 }

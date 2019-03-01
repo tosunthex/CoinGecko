@@ -21,7 +21,17 @@ namespace CoinGecko.Test
             var result = await _client.ExchangesClient.GetExchanges();
             Assert.True(result.Count > 100);
         }
-        
+
+        [Fact]
+        public async Task Exchanges_Images_Url_Count_Must_Equal_Total_Count()
+        {
+            var result = await _client.ExchangesClient.GetExchanges();
+            var notNullImages = result.Where(x => x.Image.IsAbsoluteUri).ToList();
+            var notNullUrl = result.Where(x => x.Url.IsAbsoluteUri).ToList();
+            Assert.Equal(result.Count, notNullImages.Count);
+            Assert.Equal(result.Count, notNullUrl.Count);
+        }
+
         [Fact]
         public async Task Exchanges_For_Bitfinex()
         {

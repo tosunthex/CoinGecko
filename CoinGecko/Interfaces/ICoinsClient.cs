@@ -35,7 +35,7 @@ namespace CoinGecko.Interfaces
         /// </summary>
         /// <param name="vsCurrency">The target currency of market data</param>
         /// <returns></returns>
-        Task<CoinMarkets> GetCoinMarkets(string vsCurrency);
+        Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency);
 
         /// <summary>
         /// List all supported coins price, market cap, volume, and market related data (no pagination required)
@@ -46,9 +46,10 @@ namespace CoinGecko.Interfaces
         /// <param name="perPage">Total results per page</param>
         /// <param name="page">Page through results</param>
         /// <param name="sparkline">Include sparkline 7 days data default false</param>
+        /// <param name="priceChangePercentage">Include price change percentage in 1h, 24h, 7d, 14d, 30d, 200d, 1y (eg. '1h,24h,7d' comma-separated, invalid values will be discarded)</param>
         /// <returns></returns>
-        Task<CoinMarkets> GetCoinMarkets(string vsCurrency, string[] ids, string order, int? perPage, int? page,
-            bool sparkline);
+        Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency, string[] ids, string order, int? perPage, int? page,
+            bool sparkline, string priceChangePercentage);
 
         /// <summary>
         /// Get current data (name, price, market, … including exchange tickers) for a coin.

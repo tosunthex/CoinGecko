@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using CoinGecko.Clients;
+using CoinGecko.Entities.Response.Coins;
 using CoinGecko.Interfaces;
 using Xunit;
 
@@ -80,6 +81,24 @@ namespace CoinGecko.Test
         {
             var result = await _client.CoinsClient.GetMarketChartsByCoinId("stellar", new[] {"usd"}, "2");
             Assert.Equal(result.Prices.Length,result.MarketCaps.Length);
+        }
+
+        [Fact]
+        public async Task Coin_Markets_VsCurrency_For_USD()
+        {
+            var result = await _client.CoinsClient.GetCoinMarkets("usd");
+            Assert.Equal(100,result.Count);
+        }
+
+        [Fact]
+        public async Task Coin_Markets_VsCurrency_For_USD_Bitcoin_Roi_Null()
+        {
+            var result = await _client.CoinsClient.GetCoinMarkets("usd");
+            Assert.Equal(100, result.Count);
+            var roiEth = result.Find(x => x.Id == "ethereum").Roi;
+            var roiBtc = result.Find(x => x.Id == "bitcoin").Roi;
+            Assert.NotNull(roiEth);
+            Assert.Null(roiBtc);
         }
     }
 }

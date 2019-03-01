@@ -63,7 +63,22 @@ namespace CoinGecko.Entities.Response.Coins
     {
         [JsonProperty("roi")]
         public Roi Roi { get; set; }
-        
+
+        [JsonProperty("current_price")]
+        public Dictionary<string, double?> CurrentPrice { get; set; }
+
+        [JsonProperty("market_cap")]
+        public Dictionary<string, double?> MarketCap { get; set; }
+
+        [JsonProperty("total_volume")]
+        public Dictionary<string, double?> TotalVolume { get; set; }
+
+        [JsonProperty("high_24h")]
+        public Dictionary<string, double?> High24H { get; set; }
+
+        [JsonProperty("low_24h")]
+        public Dictionary<string, double?> Low24H { get; set; }
+
         [JsonProperty("price_change_percentage_7d")]
         public string PriceChangePercentage7D { get; set; }
 

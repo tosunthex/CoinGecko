@@ -17,6 +17,21 @@ namespace CoinGecko.Entities.Response.Coins
         [JsonProperty("image")]
         public Uri Image { get; set; }
 
+        [JsonProperty("current_price")]
+        public double? CurrentPrice { get; set; }
+
+        [JsonProperty("market_cap")]
+        public double? MarketCap { get; set; }
+
+        [JsonProperty("total_volume")]
+        public double? TotalVolume { get; set; }
+
+        [JsonProperty("high_24h")]
+        public double? High24H { get; set; }
+
+        [JsonProperty("low_24h")]
+        public double? Low24H { get; set; }
+
         [JsonProperty("ath")]
         public double Ath { get; set; }
 

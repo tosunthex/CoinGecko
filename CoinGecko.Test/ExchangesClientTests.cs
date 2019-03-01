@@ -35,5 +35,12 @@ namespace CoinGecko.Test
             var result = await _client.ExchangesClient.GetTickerByExchangeId("bitfinex");
             Assert.Equal("Bitfinex",result.Name);
         }
+
+        [Fact]
+        public async Task Exchanges_List_Not_Null()
+        {
+            var result = await _client.ExchangesClient.GetExchangesList();
+            Assert.NotNull(result);
+        }
     }
 }

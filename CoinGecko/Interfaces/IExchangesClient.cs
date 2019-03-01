@@ -13,6 +13,12 @@ namespace CoinGecko.Interfaces
         Task<IReadOnlyList<Exchanges>> GetExchanges();
 
         /// <summary>
+        /// List all supported markets id and name(no pagination required)
+        /// </summary>
+        /// <returns></returns>
+        Task<IReadOnlyList<ExchangesList>> GetExchangesList();
+
+        /// <summary>
         /// Get exchange volume in BTC and tickers
         /// IMPORTANT:
         /// Ticker is_stale is true when ticker that has not been updated/unchanged from the exchange for a while.

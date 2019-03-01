@@ -34,7 +34,7 @@ namespace CoinGecko.Clients
 
         public async Task<TickerByExchangeId> GetTickerByExchangeId(string id)
         {
-            return await GetTickerByExchangeId(id, null);
+            return await GetTickerByExchangeId(id, null).ConfigureAwait(false);
         }
 
         public async Task<TickerByExchangeId> GetTickerByExchangeId(string id,string page)

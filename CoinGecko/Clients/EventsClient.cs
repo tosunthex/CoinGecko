@@ -15,7 +15,7 @@ namespace CoinGecko.Clients
         }
         public async Task<Events> GetEvents()
         {
-            return await GetEvents(new string[] { }, new string[] { }, null, null, null, null);
+            return await GetEvents(new string[] { }, new string[] { }, null, null, null, null).ConfigureAwait(false);
         }
         
         public async Task<Events> GetEvents(string[] countryCode, string[] type, string page, string upcommingEventsOnly,

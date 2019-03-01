@@ -17,7 +17,7 @@ namespace CoinGecko.Clients
 
         public async Task<IReadOnlyList<CoinFullData>> GetAllCoinsData()
         {
-            return await GetAllCoinsData(OrderField.GeckoDesc, null, null, "", null);
+            return await GetAllCoinsData(OrderField.GeckoDesc, null, null, "", null).ConfigureAwait(false);
         }
 
         public async Task<IReadOnlyList<CoinFullData>> GetAllCoinsData(string order,int? perPage,int? page,string localization,bool? sparkline)
@@ -40,7 +40,7 @@ namespace CoinGecko.Clients
 
         public async Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency)
         {
-            return await GetCoinMarkets(vsCurrency, new string[] { }, null, null, null, false, null);
+            return await GetCoinMarkets(vsCurrency, new string[] { }, null, null, null, false, null).ConfigureAwait(false);
         }
 
         public async Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency,string[] ids,string order,int? perPage,int? page,bool sparkline,string priceChangePercentage)
@@ -59,7 +59,7 @@ namespace CoinGecko.Clients
 
         public async Task<CoinFullDataById> GetAllCoinDataWithId(string id)
         {
-            return await GetAllCoinDataWithId(id, "true", true, true, true, true, false);
+            return await GetAllCoinDataWithId(id, "true", true, true, true, true, false).ConfigureAwait(false);
         }
 
         public async Task<CoinFullDataById> GetAllCoinDataWithId(string id, string localization, bool tickers,
@@ -79,7 +79,7 @@ namespace CoinGecko.Clients
 
         public async Task<TickerById> GetTickerByCoinId(string id)
         {
-            return await GetTickerByCoinId(id, null);
+            return await GetTickerByCoinId(id, null).ConfigureAwait(false);
         }
 
         public async Task<TickerById> GetTickerByCoinId(string id, int? page)

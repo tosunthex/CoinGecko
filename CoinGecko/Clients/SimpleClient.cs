@@ -17,7 +17,7 @@ namespace CoinGecko.Clients
         
         public async Task<Price> GetSimplePrice(string[] ids, string[] vsCurrencies)
         {
-            return await GetSimplePrice(ids, vsCurrencies, false, false);
+            return await GetSimplePrice(ids, vsCurrencies, false, false).ConfigureAwait(false);
         }
         public async Task<Price> GetSimplePrice(string[] ids, string[] vsCurrencies, bool include24HVol,
             bool includeLastUpdatedAt)

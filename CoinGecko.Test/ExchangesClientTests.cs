@@ -26,8 +26,8 @@ namespace CoinGecko.Test
         public async Task Exchanges_Images_Url_Count_Must_Equal_Total_Count()
         {
             var result = await _client.ExchangesClient.GetExchanges();
-            var notNullImages = result.Where(x => x.Image.IsAbsoluteUri).ToList();
-            var notNullUrl = result.Where(x => x.Url.IsAbsoluteUri).ToList();
+            var notNullImages = result.Where(x => x.Image != "").ToList();
+            var notNullUrl = result.Where(x => x.Url != "").ToList();
             Assert.Equal(result.Count, notNullImages.Count);
             Assert.Equal(result.Count, notNullUrl.Count);
         }

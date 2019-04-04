@@ -18,9 +18,9 @@ namespace CoinGecko.Entities.Response.Exchanges
         public string Description { get; set; }
 
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("image")]
-        public Uri Image { get; set; }
+        public string Image { get; set; }
     }
 }

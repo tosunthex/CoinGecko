@@ -17,18 +17,19 @@ namespace CoinGecko.Clients
         
         public async Task<Price> GetSimplePrice(string[] ids, string[] vsCurrencies)
         {
-            return await GetSimplePrice(ids, vsCurrencies, false, false).ConfigureAwait(false);
+            return await GetSimplePrice(ids, vsCurrencies,false, false, false, false).ConfigureAwait(false);
         }
-        public async Task<Price> GetSimplePrice(string[] ids, string[] vsCurrencies, bool include24HVol,
-            bool includeLastUpdatedAt)
+        public async Task<Price> GetSimplePrice(string[] ids, string[] vsCurrencies,bool includeMarketCap,
+            bool include24HVol,bool include24HChange,bool includeLastUpdatedAt)
         {
-            
             return await GetAsync<Price>(QueryStringService.AppendQueryString(SimpleApiEndPoints.SimplePrice,
                 new Dictionary<string, object>
                 {
                     {"ids", string.Join(",",ids)},
                     {"vs_currencies",string.Join(",",vsCurrencies)},
+                    {"include_market_cap",includeMarketCap},
                     {"include_24hr_vol",include24HVol},
+                    {"include_24hr_change",include24HChange},
                     {"include_last_updated_at",includeLastUpdatedAt}
                 })).ConfigureAwait(false);
         }

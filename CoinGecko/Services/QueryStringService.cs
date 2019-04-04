@@ -20,8 +20,10 @@ namespace CoinGecko.Services
         {
             var urlParameters = new List<string>();
             foreach (var par in parameter)
-            { 
-                urlParameters.Add(par.Value == null || string.IsNullOrWhiteSpace(par.Value.ToString()) ? null : $"{par.Key}={par.Value}");
+            {
+                urlParameters.Add(par.Value == null || string.IsNullOrWhiteSpace(par.Value.ToString())
+                    ? null
+                    : $"{par.Key}={par.Value.ToString().ToLower()}");
             }
 
             var encodedParams = urlParameters

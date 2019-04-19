@@ -79,12 +79,12 @@ namespace CoinGecko.Clients
 
         public async Task<TickerById> GetTickerByCoinId(string id)
         {
-            return await GetTickerByCoinId(id, null, null).ConfigureAwait(false);
+            return await GetTickerByCoinId(id, new []{""}, null).ConfigureAwait(false);
         }
         
         public async Task<TickerById> GetTickerByCoinId(string id, int? page)
         {
-            return await GetTickerByCoinId(id,null,page).ConfigureAwait(false);
+            return await GetTickerByCoinId(id, new []{""}, page).ConfigureAwait(false);
         }
         
         public async Task<TickerById> GetTickerByCoinId(string id,string[] exchangeIds, int? page)

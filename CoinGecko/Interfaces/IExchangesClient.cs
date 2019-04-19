@@ -48,5 +48,17 @@ namespace CoinGecko.Interfaces
         /// <param name="page">Page through results</param>
         /// <returns></returns>
         Task<TickerByExchangeId> GetTickerByExchangeId(string id, string page);
+
+        /// <summary>
+        /// Get exchange tickers (paginated)
+        /// IMPORTANT:
+        /// Ticker is_stale is true when ticker that has not been updated/unchanged from the exchange for a while.
+        /// Ticker is_anomaly is true if ticker’s price is outliered by our system.
+        /// </summary>
+        /// <param name="id">exchange id</param>
+        /// <param name="coinIds">filter tickers by coin_ids</param>
+        /// <param name="page">Page through results</param>
+        /// <returns></returns>
+        Task<TickerByExchangeId> GetTickerByExchangeId(string id, string[] coinIds, string page);
     }
 }

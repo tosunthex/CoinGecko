@@ -34,15 +34,21 @@ namespace CoinGecko.Clients
 
         public async Task<TickerByExchangeId> GetTickerByExchangeId(string id)
         {
-            return await GetTickerByExchangeId(id, null).ConfigureAwait(false);
+            return await GetTickerByExchangeId(id, null, null).ConfigureAwait(false);
         }
 
         public async Task<TickerByExchangeId> GetTickerByExchangeId(string id,string page)
         {
+            return await GetTickerByExchangeId(id, null, page).ConfigureAwait(false);
+        }
+
+        public async Task<TickerByExchangeId> GetTickerByExchangeId(string id,string[] coinIds,string page)
+        {
             return await GetAsync<TickerByExchangeId>(QueryStringService.AppendQueryString(
                 ExchangesApiEndPoints.TickerById(id), new Dictionary<string, object>
                 {
-                    {"page",page}
+                    {"page",page},
+                    {"coin_ids",string.Join(",",coinIds)}
                 })).ConfigureAwait(false);
         }
     }

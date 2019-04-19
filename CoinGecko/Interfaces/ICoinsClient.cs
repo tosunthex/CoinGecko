@@ -89,6 +89,15 @@ namespace CoinGecko.Interfaces
         Task<TickerById> GetTickerByCoinId(string id, int? page);
 
         /// <summary>
+        /// Get coin tickers (paginated to 100 items)
+        /// </summary>
+        /// <param name="id">coin id</param>
+        /// <param name="page">Page through results</param>
+        /// <param name="exchangeIds">filter results by exchange_ids</param>
+        /// <returns></returns>
+        Task<TickerById> GetTickerByCoinId(string id, string[] exchangeIds, int? page);
+
+        /// <summary>
         /// Get historical data (name, price, market, stats) at a given date for a coin
         /// </summary>
         /// <param name="id">coin id</param>

@@ -68,7 +68,15 @@ namespace CoinGecko.Test
             var result = await _client.CoinsClient.GetTickerByCoinId("stellar");
             Assert.Equal("Stellar",result.Name);
         }
-
+        
+        [Fact]
+        public async Task Coin_Stellar_Tickers_For_Binance_And_Bitfinex()
+        {
+            var result = await _client.CoinsClient.GetTickerByCoinId("stellar",new []{"binance","bitfinex"},null);
+            Assert.Equal("Stellar",result.Name);
+            Assert.Equal("Binance",result.Tickers[0].Market.Name);
+            Assert.Equal("Bitfinex",result.Tickers.LastOrDefault().Market.Name);
+        }
         [Fact]
         public async Task Coin_Tether_History()
         {

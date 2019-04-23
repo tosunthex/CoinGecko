@@ -43,7 +43,8 @@ namespace CoinGecko.Clients
             return await GetCoinMarkets(vsCurrency, new string[] { }, null, null, null, false, null).ConfigureAwait(false);
         }
 
-        public async Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency,string[] ids,string order,int? perPage,int? page,bool sparkline,string priceChangePercentage)
+        public async Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency, string[] ids, string order, int? perPage,
+            int? page, bool sparkline, string priceChangePercentage)
         {
             return await GetAsync<List<CoinMarkets>>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinMarkets,
                 new Dictionary<string, object>

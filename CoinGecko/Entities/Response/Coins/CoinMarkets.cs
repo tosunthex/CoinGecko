@@ -47,6 +47,9 @@ namespace CoinGecko.Entities.Response.Coins
         [JsonProperty("last_updated")]
         public DateTimeOffset LastUpdated { get; set; }
         
+        [JsonProperty("sparkline_in_7d",NullValueHandling = NullValueHandling.Ignore)]
+        public SparklineIn7D SparklineIn7D { get; set; }
+        
         [JsonProperty("price_change_percentage_14d_in_currency",NullValueHandling = NullValueHandling.Ignore)]
         public double? PriceChangePercentage14DInCurrency { get; set; }
 

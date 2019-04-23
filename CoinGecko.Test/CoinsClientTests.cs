@@ -1,8 +1,10 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using CoinGecko.Clients;
 using CoinGecko.Entities.Response.Coins;
 using CoinGecko.Interfaces;
+using CoinGecko.Parameters;
 using Xunit;
 
 namespace CoinGecko.Test
@@ -61,6 +63,12 @@ namespace CoinGecko.Test
             var result = await _client.CoinsClient.GetAllCoinDataWithId("hydro");
             Assert.NotNull(result.MarketData.Ath);
         }
+        [Fact]
+        public async Task Bitcoin_Sparkline7d_Equal_To_Null()
+        {
+            var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin","false",false,true,false,false,true);
+            Assert.NotNull(result.MarketData.Sparkline7D);
+        }
 
         [Fact]
         public async Task Coin_Stellar_Tickers()
@@ -72,10 +80,12 @@ namespace CoinGecko.Test
         [Fact]
         public async Task Coin_Stellar_Tickers_For_Binance_And_Bitfinex()
         {
+            
             var result = await _client.CoinsClient.GetTickerByCoinId("stellar",new []{"binance","bitfinex"},null);
             Assert.Equal("Stellar",result.Name);
-            Assert.Equal("Binance",result.Tickers[0].Market.Name);
-            Assert.Equal("Bitfinex",result.Tickers.LastOrDefault().Market.Name);
+            var exchangeList = result.Tickers.LastOrDefault().Market.Name +" "+ result.Tickers[0].Market.Name;
+            Assert.Contains("Binance", exchangeList);
+            Assert.Contains("Bitfinex", exchangeList);
         }
         [Fact]
         public async Task Coin_Tether_History()
@@ -107,6 +117,24 @@ namespace CoinGecko.Test
             var roiBtc = result.Find(x => x.Id == "bitcoin").Roi;
             Assert.NotNull(roiEth);
             Assert.Null(roiBtc);
+        }
+        
+        [Fact]
+        public async Task Coin_Markets_VsCurrency_For_USD_Ripple_Sparkline_Not_Null()
+        {
+            var result = await _client.CoinsClient.GetCoinMarkets("usd",new []{"ripple"},OrderField.MarketCapDesc,1,1,true,"1h");
+            Assert.Single(result);
+            Assert.Equal("ripple",result[0].Id);
+            Assert.NotNull(result[0].SparklineIn7D.Price);
+        }
+        
+        [Fact]
+        public async Task Coin_Markets_VsCurrency_For_USD_Ripple_Sparkline_Null()
+        {
+            var result = await _client.CoinsClient.GetCoinMarkets("usd",new []{"ripple"},OrderField.MarketCapDesc,1,1,false,"1h");
+            Assert.Single(result);
+            Assert.Equal("ripple",result[0].Id);
+            Assert.Null(result[0].SparklineIn7D);
         }
 
         [Fact]

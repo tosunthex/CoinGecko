@@ -132,6 +132,9 @@ namespace CoinGecko.Entities.Response.Coins
 
         [JsonProperty("ath_date")]
         public Dictionary<string, DateTimeOffset> AthDate { get; set; }
+        
+        [JsonProperty("sparkline_7d",NullValueHandling = NullValueHandling.Ignore)]
+        public SparklineIn7D Sparkline7D { get; set; }
 
         [JsonProperty("last_updated")]
         public DateTimeOffset LastUpdated { get; set; }

@@ -103,13 +103,19 @@ namespace CoinGecko.Test
         }
         
         [Fact]
-        public async Task All_Coin_History()
+        public async Task Coin_History_Name_Must_Equal_To_List_Name()
         {
             var coinList = await _client.CoinsClient.GetCoinList();
+            var testcount = 0;
             foreach (var coinDetail in coinList)
             {
+                testcount++;
                 var result = await _client.CoinsClient.GetHistoryByCoinId(coinDetail.Id,"01-12-2018","false");
-                Assert.Equal(coinDetail.Name,result.Name);    
+                Assert.Equal(coinDetail.Name,result.Name);
+                if (testcount == 100)
+                {
+                    break;
+                }
             }
         }
 

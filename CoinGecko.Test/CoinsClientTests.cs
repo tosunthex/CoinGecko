@@ -58,6 +58,13 @@ namespace CoinGecko.Test
         }
         
         [Fact]
+        public async Task BTC_Coin_by_Id_Ticker_Must_Contains_trade_URL()
+        {
+            var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
+            Assert.NotNull(result.Tickers.First().TradeUrl);
+        }
+        
+        [Fact]
         public async Task Hydro_Genesis_Date_Equal_To_Null()
         {
             var result = await _client.CoinsClient.GetAllCoinDataWithId("hydro");
@@ -87,11 +94,23 @@ namespace CoinGecko.Test
             Assert.Contains("Binance", exchangeList);
             Assert.Contains("Bitfinex", exchangeList);
         }
+        
         [Fact]
         public async Task Coin_Tether_History()
         {
             var result = await _client.CoinsClient.GetHistoryByCoinId("tether","01-12-2018","false");
             Assert.Equal("Tether",result.Name);
+        }
+        
+        [Fact]
+        public async Task All_Coin_History()
+        {
+            var coinList = await _client.CoinsClient.GetCoinList();
+            foreach (var coinDetail in coinList)
+            {
+                var result = await _client.CoinsClient.GetHistoryByCoinId(coinDetail.Id,"01-12-2018","false");
+                Assert.Equal(coinDetail.Name,result.Name);    
+            }
         }
 
         [Fact]

@@ -35,6 +35,9 @@ namespace CoinGecko.Entities.Response.Shared
 
         [JsonProperty("is_stale")]
         public bool IsStale { get; set; }
+        
+        [JsonProperty("trade_url")]
+        public string TradeUrl { get; set; }
 
         [JsonProperty("coin_id")]
         public string CoinId { get; set; }

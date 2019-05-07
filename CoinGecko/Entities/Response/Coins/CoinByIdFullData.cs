@@ -56,25 +56,25 @@ namespace CoinGecko.Entities.Response.Coins
     public class CommunityData
     {
         [JsonProperty("facebook_likes")]
-        public long? FacebookLikes { get; set; }
+        public double? FacebookLikes { get; set; }
 
         [JsonProperty("twitter_followers")]
-        public long? TwitterFollowers { get; set; }
+        public double? TwitterFollowers { get; set; }
 
         [JsonProperty("reddit_average_posts_48h")]
-        public long? RedditAveragePosts48H { get; set; }
+        public double? RedditAveragePosts48H { get; set; }
 
         [JsonProperty("reddit_average_comments_48h")]
-        public long? RedditAverageComments48H { get; set; }
+        public double? RedditAverageComments48H { get; set; }
 
         [JsonProperty("reddit_subscribers")]
-        public long? RedditSubscribers { get; set; }
+        public double? RedditSubscribers { get; set; }
 
         [JsonProperty("reddit_accounts_active_48h")]
-        public long? RedditAccountsActive48H { get; set; }
+        public double? RedditAccountsActive48H { get; set; }
 
         [JsonProperty("telegram_channel_user_count")]
-        public long? TelegramChannelUserCount { get; set; }
+        public double? TelegramChannelUserCount { get; set; }
     }
 
     public class Links

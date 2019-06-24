@@ -5,79 +5,65 @@ using Newtonsoft.Json;
 
 namespace CoinGecko.Entities.Response.Coins
 {
-    public class CoinFullData:CoinFullDataWithOutMarketData
+    public class CoinFullData : CoinFullDataWithOutMarketData
     {
-        [JsonProperty("market_data",NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("market_data", NullValueHandling = NullValueHandling.Ignore)]
         public MarketData MarketData { get; set; }
     }
 
-    public class CoinFullDataWithOutMarketData:CoinList
+    public class CoinFullDataWithOutMarketData : CoinList
     {
-        [JsonProperty("image")]
-        public Image Image { get; set; }
+        [JsonProperty("image")] public Image Image { get; set; }
 
-        [JsonProperty("community_data",NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("community_data", NullValueHandling = NullValueHandling.Ignore)]
         public CommunityData CommunityData { get; set; }
 
-        [JsonProperty("developer_data",NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("developer_data", NullValueHandling = NullValueHandling.Ignore)]
         public DeveloperData DeveloperData { get; set; }
 
-        [JsonProperty("public_interest_stats",NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("public_interest_stats", NullValueHandling = NullValueHandling.Ignore)]
         public PublicInterestStats PublicInterestStats { get; set; }
 
-        [JsonProperty("last_updated",NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("last_updated", NullValueHandling = NullValueHandling.Ignore)]
         public DateTimeOffset LastUpdated { get; set; }
 
-        [JsonProperty("localization",NullValueHandling = NullValueHandling.Ignore)]
-        public Dictionary<string,string> Localization { get; set; }
+        [JsonProperty("localization", NullValueHandling = NullValueHandling.Ignore)]
+        public Dictionary<string, string> Localization { get; set; }
     }
-    
+
     public class DeveloperData
     {
-        [JsonProperty("forks")]
-        public long? Forks { get; set; }
+        [JsonProperty("forks")] public long? Forks { get; set; }
 
-        [JsonProperty("stars")]
-        public long? Stars { get; set; }
+        [JsonProperty("stars")] public long? Stars { get; set; }
 
-        [JsonProperty("subscribers")]
-        public long? Subscribers { get; set; }
+        [JsonProperty("subscribers")] public long? Subscribers { get; set; }
 
-        [JsonProperty("total_issues")]
-        public long? TotalIssues { get; set; }
+        [JsonProperty("total_issues")] public long? TotalIssues { get; set; }
 
-        [JsonProperty("closed_issues")]
-        public long? ClosedIssues { get; set; }
+        [JsonProperty("closed_issues")] public long? ClosedIssues { get; set; }
 
-        [JsonProperty("pull_requests_merged")]
-        public long? PullRequestsMerged { get; set; }
+        [JsonProperty("pull_requests_merged")] public long? PullRequestsMerged { get; set; }
 
         [JsonProperty("pull_request_contributors")]
         public long? PullRequestContributors { get; set; }
 
-        [JsonProperty("commit_count_4_weeks")]
-        public long? CommitCount4Weeks { get; set; }
+        [JsonProperty("commit_count_4_weeks")] public long? CommitCount4Weeks { get; set; }
     }
 
     public class MarketData : MarketDataOhlcv
     {
-        [JsonProperty("roi")]
-        public Roi Roi { get; set; }
+        [JsonProperty("roi")] public Roi Roi { get; set; }
 
-        [JsonProperty("current_price")]
-        public Dictionary<string, double?> CurrentPrice { get; set; }
+        [JsonProperty("current_price")] public Dictionary<string, double?> CurrentPrice { get; set; }
 
-        [JsonProperty("market_cap")]
-        public Dictionary<string, double?> MarketCap { get; set; }
+        [JsonProperty("market_cap")] public Dictionary<string, double?> MarketCap { get; set; }
 
-        [JsonProperty("total_volume")]
-        public Dictionary<string, double?> TotalVolume { get; set; }
+        [JsonProperty("total_volume")] public Dictionary<string, double?> TotalVolume { get; set; }
 
-        [JsonProperty("high_24h")]
-        public Dictionary<string, double?> High24H { get; set; }
+        [JsonProperty("high_24h")] public Dictionary<string, double?> High24H { get; set; }
 
-        [JsonProperty("low_24h")]
-        public Dictionary<string, double?> Low24H { get; set; }
+        [JsonProperty("low_24h")] public Dictionary<string, double?> Low24H { get; set; }
 
         [JsonProperty("price_change_percentage_7d")]
         public string PriceChangePercentage7D { get; set; }
@@ -133,22 +119,17 @@ namespace CoinGecko.Entities.Response.Coins
 
     public class Roi
     {
-        [JsonProperty("times")]
-        public double Times { get; set; }
+        [JsonProperty("times")] public double? Times { get; set; }
 
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
+        [JsonProperty("currency")] public string Currency { get; set; }
 
-        [JsonProperty("percentage")]
-        public double Percentage { get; set; }
+        [JsonProperty("percentage")] public double? Percentage { get; set; }
     }
 
     public class PublicInterestStats
     {
-        [JsonProperty("alexa_rank")]
-        public long? AlexaRank { get; set; }
+        [JsonProperty("alexa_rank")] public long? AlexaRank { get; set; }
 
-        [JsonProperty("bing_matches")]
-        public long? BingMatches { get; set; }
+        [JsonProperty("bing_matches")] public long? BingMatches { get; set; }
     }
 }

@@ -1,8 +1,6 @@
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using CoinGecko.Clients;
-using CoinGecko.Entities.Response.Coins;
 using CoinGecko.Interfaces;
 using CoinGecko.Parameters;
 using Xunit;
@@ -11,41 +9,41 @@ namespace CoinGecko.Test
 {
     public class CoinsClientTests
     {
-        private readonly ICoinGeckoClient _client;
         public CoinsClientTests()
         {
             _client = CoinGeckoClient.Instance;
         }
-        
+
+        private readonly ICoinGeckoClient _client;
+
         [Fact]
         public async Task All_Coins_Data()
         {
             var coinList = await _client.CoinsClient.GetCoinList();
-            var result = await _client.CoinsClient.GetAllCoinsData("",coinList.Count,null,"",null);
-            Assert.NotNull(result);
-        }
-        
-        [Fact]
-        public async Task Market_Chart()
-        {
-            var result = await _client.CoinsClient.GetMarketChartsByCoinId("bitcoin", new []{"usd"}, "1");
-            Assert.Equal(result.Prices.Length,result.MarketCaps.Length);
-        }
-
-        [Fact]
-        public async Task CoinsLists_Must_Not_Null_And_First_Element_Must_BTC()
-        {
-            var result = await _client.CoinsClient.GetCoinList();
+            var result = await _client.CoinsClient.GetAllCoinsData("", coinList.Count, null, "", null);
             Assert.NotNull(result);
         }
 
         [Fact]
-        public async Task Coin_By_Id_Must_Return_BTC()
+        public async Task Bitcoin_Sparkline7d_Equal_To_Null()
+        {
+            var result =
+                await _client.CoinsClient.GetAllCoinDataWithId("bitcoin", "false", false, true, false, false, true);
+            Assert.NotNull(result.MarketData.Sparkline7D);
+        }
+
+        [Fact]
+        public async Task BTC_Block_Time_in_Minutes_Not_Null()
         {
             var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
-            Assert.Equal("btc",result.Symbol);
-            result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin","false",true,false,false,false,true);
-            Assert.Equal("btc",result.Symbol);
+            Assert.NotNull(result.BlockTimeInMinutes);
+        }
+
+        [Fact]
+        public async Task BTC_Coin_by_Id_Ticker_Must_Contains_trade_URL()
+        {
+            var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
+            Assert.NotNull(result.Tickers.First().TradeUrl);
         }
 
         [Fact]
@@ -56,75 +54,33 @@ namespace CoinGecko.Test
             Assert.NotNull(result.MarketData.AthDate);
             Assert.NotNull(result.MarketData.AthChangePercentage);
         }
-        
-        [Fact]
-        public async Task BTC_Coin_by_Id_Ticker_Must_Contains_trade_URL()
-        {
-            var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
-            Assert.NotNull(result.Tickers.First().TradeUrl);
-        }
-        
-        [Fact]
-        public async Task Hydro_Genesis_Date_Equal_To_Null()
-        {
-            var result = await _client.CoinsClient.GetAllCoinDataWithId("hydro");
-            Assert.NotNull(result.MarketData.Ath);
-        }
-        [Fact]
-        public async Task Bitcoin_Sparkline7d_Equal_To_Null()
-        {
-            var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin","false",false,true,false,false,true);
-            Assert.NotNull(result.MarketData.Sparkline7D);
-        }
 
         [Fact]
-        public async Task Coin_Stellar_Tickers()
+        public async Task Coin_By_Id_Must_Return_BTC()
         {
-            var result = await _client.CoinsClient.GetTickerByCoinId("stellar");
-            Assert.Equal("Stellar",result.Name);
+            var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
+            Assert.Equal("btc", result.Symbol);
+            result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin", "false", true, false, false, false,
+                true);
+            Assert.Equal("btc", result.Symbol);
         }
-        
-        [Fact]
-        public async Task Coin_Stellar_Tickers_For_Binance_And_Bitfinex()
-        {
-            
-            var result = await _client.CoinsClient.GetTickerByCoinId("stellar",new []{"binance","bitfinex"},null);
-            Assert.Equal("Stellar",result.Name);
-            var exchangeList = result.Tickers.LastOrDefault().Market.Name +" "+ result.Tickers[0].Market.Name;
-            Assert.Contains("Binance", exchangeList);
-            Assert.Contains("Bitfinex", exchangeList);
-        }
-        
-        [Fact]
-        public async Task Coin_Tether_History()
-        {
-            var result = await _client.CoinsClient.GetHistoryByCoinId("tether","01-12-2018","false");
-            Assert.Equal("Tether",result.Name);
-        }
-        
+
         [Fact]
         public async Task Coin_History_Name_Must_Equal_To_List_Name()
         {
             var coinList = await _client.CoinsClient.GetCoinList();
-            for(var i = 0;i<20;++i)
+            for (var i = 0; i < 20; ++i)
             {
-                var result = await _client.CoinsClient.GetHistoryByCoinId(coinList[i].Id,"01-12-2018","false");
-                Assert.Equal(coinList[i].Name,result.Name);
+                var result = await _client.CoinsClient.GetHistoryByCoinId(coinList[i].Id, "01-12-2018", "false");
+                Assert.Equal(coinList[i].Name, result.Name);
             }
-        }
-
-        [Fact]
-        public async Task Coin_Stellar_Market_Chart_Price_Lenght_Must_Equal_to_Marketcaps_Lenght()
-        {
-            var result = await _client.CoinsClient.GetMarketChartsByCoinId("stellar", new[] {"usd"}, "2");
-            Assert.Equal(result.Prices.Length,result.MarketCaps.Length);
         }
 
         [Fact]
         public async Task Coin_Markets_VsCurrency_For_USD()
         {
             var result = await _client.CoinsClient.GetCoinMarkets("usd");
-            Assert.Equal(100,result.Count);
+            Assert.Equal(100, result.Count);
         }
 
         [Fact]
@@ -137,29 +93,84 @@ namespace CoinGecko.Test
             Assert.NotNull(roiEth);
             Assert.Null(roiBtc);
         }
-        
+
         [Fact]
         public async Task Coin_Markets_VsCurrency_For_USD_Ripple_Sparkline_Not_Null()
         {
-            var result = await _client.CoinsClient.GetCoinMarkets("usd",new []{"ripple"},OrderField.MarketCapDesc,1,1,true,"1h");
+            var result = await _client.CoinsClient.GetCoinMarkets("usd", new[] {"ripple"}, OrderField.MarketCapDesc, 1,
+                1, true, "1h");
             Assert.Single(result);
-            Assert.Equal("ripple",result[0].Id);
+            Assert.Equal("ripple", result[0].Id);
             Assert.NotNull(result[0].SparklineIn7D.Price);
         }
-        
+
         [Fact]
         public async Task Coin_Markets_VsCurrency_For_USD_Ripple_Sparkline_Null()
         {
-            var result = await _client.CoinsClient.GetCoinMarkets("usd",new []{"ripple"},OrderField.MarketCapDesc,1,1,false,"1h");
+            var result = await _client.CoinsClient.GetCoinMarkets("usd", new[] {"ripple"}, OrderField.MarketCapDesc, 1,
+                1, false, "1h");
             Assert.Single(result);
-            Assert.Equal("ripple",result[0].Id);
+            Assert.Equal("ripple", result[0].Id);
             Assert.Null(result[0].SparklineIn7D);
+        }
+
+        [Fact]
+        public async Task Coin_Stellar_Market_Chart_Price_Lenght_Must_Equal_to_Marketcaps_Lenght()
+        {
+            var result = await _client.CoinsClient.GetMarketChartsByCoinId("stellar", new[] {"usd"}, "2");
+            Assert.Equal(result.Prices.Length, result.MarketCaps.Length);
+        }
+
+        [Fact]
+        public async Task Coin_Stellar_Tickers()
+        {
+            var result = await _client.CoinsClient.GetTickerByCoinId("stellar");
+            Assert.Equal("Stellar", result.Name);
+        }
+
+        [Fact]
+        public async Task Coin_Stellar_Tickers_For_Binance_And_Bitfinex()
+        {
+            var result = await _client.CoinsClient.GetTickerByCoinId("stellar", new[] {"binance", "bitfinex"}, null);
+            Assert.Equal("Stellar", result.Name);
+            var exchangeList = result.Tickers.LastOrDefault().Market.Name + " " + result.Tickers[0].Market.Name;
+            Assert.Contains("Binance", exchangeList);
+            Assert.Contains("Bitfinex", exchangeList);
+        }
+
+        [Fact]
+        public async Task Coin_Tether_History()
+        {
+            var result = await _client.CoinsClient.GetHistoryByCoinId("tether", "01-12-2018", "false");
+            Assert.Equal("Tether", result.Name);
+        }
+
+        [Fact]
+        public async Task CoinsLists_Must_Not_Null_And_First_Element_Must_BTC()
+        {
+            var result = await _client.CoinsClient.GetCoinList();
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public async Task Hydro_Genesis_Date_Equal_To_Null()
+        {
+            var result = await _client.CoinsClient.GetAllCoinDataWithId("hydro");
+            Assert.NotNull(result.MarketData.Ath);
+        }
+
+        [Fact]
+        public async Task Market_Chart()
+        {
+            var result = await _client.CoinsClient.GetMarketChartsByCoinId("bitcoin", new[] {"usd"}, "1");
+            Assert.Equal(result.Prices.Length, result.MarketCaps.Length);
         }
 
         [Fact]
         public async Task Price_Change_Percentage_By_Days_Must_Not_Null()
         {
-            var result = await _client.CoinsClient.GetCoinMarkets("usd", new []{"bitcoin"}, null, null, null, false, "1h,24h,7d,14d,30d,200d,1y");
+            var result = await _client.CoinsClient.GetCoinMarkets("usd", new[] {"bitcoin"}, null, null, null, false,
+                "1h,24h,7d,14d,30d,200d,1y");
             Assert.NotNull(result.First().PriceChangePercentage1HInCurrency);
             Assert.NotNull(result.First().PriceChangePercentage24HInCurrency);
             Assert.NotNull(result.First().PriceChangePercentage7DInCurrency);
@@ -168,11 +179,12 @@ namespace CoinGecko.Test
             Assert.NotNull(result.First().PriceChangePercentage200DInCurrency);
             Assert.NotNull(result.First().PriceChangePercentage1YInCurrency);
         }
-        
+
         [Fact]
         public async Task Price_Change_Percentage_By_Days_Must_Null()
         {
-            var result = await _client.CoinsClient.GetCoinMarkets("usd", new []{"bitcoin"}, null, null, null, false,null);
+            var result =
+                await _client.CoinsClient.GetCoinMarkets("usd", new[] {"bitcoin"}, null, null, null, false, null);
             Assert.Null(result.First().PriceChangePercentage1HInCurrency);
             Assert.Null(result.First().PriceChangePercentage24HInCurrency);
             Assert.Null(result.First().PriceChangePercentage7DInCurrency);

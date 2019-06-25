@@ -14,5 +14,6 @@ namespace CoinGecko.Parameters
         public static readonly string PriceDesc = "price_desc";
         public static readonly string H24ChangeAsc = "h24_change_asc";
         public static readonly string H24ChangeDesc = "h24_change_desc";
+        public static readonly string TrustScoreDesc = "trust_score_desc";
     }
 }

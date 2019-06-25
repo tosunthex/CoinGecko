@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <IncludeSymbols>True</IncludeSymbols>
-        <PackageVersion>1.0.1</PackageVersion>
+        <PackageVersion>1.2.5</PackageVersion>
         <title>Coin Gecko Async Api</title>
         <Authors>Levent Saatci</Authors>
         <Description>.Net and .Net Standart coin gecko async client for newest Min-API</Description>

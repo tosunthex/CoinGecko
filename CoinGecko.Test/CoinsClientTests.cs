@@ -193,5 +193,12 @@ namespace CoinGecko.Test
             Assert.Null(result.First().PriceChangePercentage200DInCurrency);
             Assert.Null(result.First().PriceChangePercentage1YInCurrency);
         }
+
+        [Fact]
+        public async Task TrustScoreNotNull()
+        {
+            var result = await _client.CoinsClient.GetTickerByCoinId("bitcoin");
+            Assert.NotNull(result.Tickers[0].TrustScore);
+        }
     }
 }

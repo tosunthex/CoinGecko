@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using CoinGecko.Clients;
@@ -157,6 +158,14 @@ namespace CoinGecko.Test
         {
             var result = await _client.CoinsClient.GetAllCoinDataWithId("hydro");
             Assert.NotNull(result.MarketData.Ath);
+        }
+
+        [Fact]
+        public async Task Last_Traded_At_and_Last_Fecth_at_Day_Must_Equal_Now()
+        {
+            var result = await _client.CoinsClient.GetTickerByCoinId("bitcoin");
+            Assert.Equal(0, (result.Tickers[0].LastFetchAt - DateTimeOffset.Now).Days);
+            Assert.Equal(0, (result.Tickers[0].LastTradedAt - DateTimeOffset.Now).Days);
         }
 
         [Fact]

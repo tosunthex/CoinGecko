@@ -24,6 +24,10 @@ namespace CoinGecko.Entities.Response.Shared
 
         [JsonProperty("timestamp")] public DateTimeOffset Timestamp { get; set; }
 
+        [JsonProperty("last_traded_at")] public DateTimeOffset LastTradedAt { get; set; }
+
+        [JsonProperty("last_fetch_at")] public DateTimeOffset LastFetchAt { get; set; }
+
         [JsonProperty("is_anomaly")] public bool IsAnomaly { get; set; }
 
         [JsonProperty("is_stale")] public bool IsStale { get; set; }

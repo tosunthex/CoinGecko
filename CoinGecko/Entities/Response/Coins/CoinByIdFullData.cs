@@ -134,6 +134,6 @@ namespace CoinGecko.Entities.Response.Coins
         public Dictionary<string, DateTimeOffset> AthDate { get; set; }
 
         [JsonProperty("last_updated")]
-        public DateTimeOffset LastUpdated { get; set; }
+        public DateTimeOffset? LastUpdated { get; set; }
     }
 }

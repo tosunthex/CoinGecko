@@ -33,7 +33,22 @@ namespace CoinGecko.Clients
                     {"include_last_updated_at",includeLastUpdatedAt}
                 })).ConfigureAwait(false);
         }
-        
+
+        public async Task<TokenPrice> GetTokenPrice(string id, string[] contractAddress, string[] vsCurrencies, bool includeMarketCap,
+            bool include24HVol, bool include24HChange, bool includeLastUpdatedAt)
+        {
+            return await GetAsync<TokenPrice>(QueryStringService.AppendQueryString(SimpleApiEndPoints.TokenPrice(id),
+                new Dictionary<string, object>
+                {
+                    {"contract_addresses",string.Join(",",contractAddress)},
+                    {"vs_currencies",string.Join(",",vsCurrencies)},
+                    {"include_market_cap",includeMarketCap},
+                    {"include_24hr_vol",include24HVol},
+                    {"include_24hr_change",include24HChange},
+                    {"include_last_updated_at",includeLastUpdatedAt}
+                })).ConfigureAwait(false);
+        }
+
         public async Task<SupportedCurrencies> GetSupportedVsCurrencies()
         {
             return await GetAsync<SupportedCurrencies>(

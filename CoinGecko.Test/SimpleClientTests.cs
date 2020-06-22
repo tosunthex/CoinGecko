@@ -39,5 +39,13 @@ namespace CoinGecko.Test
             Assert.Contains("btc", result);
             Assert.Contains("eth", result);
         }
+
+        [Fact]
+        public async Task Token_Price_for_Vs_Currencies_BTC_ETH()
+        {
+            var result = await _client.SimpleClient.GetTokenPrice("ethereum", new []{ "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48,0xb6ed7644c69416d67b522e20bc294a9a9b405b31" },new []{ "btc,eth" }
+            ,true,true,true,true);
+            Assert.NotNull(result);
+        }
     }
 }

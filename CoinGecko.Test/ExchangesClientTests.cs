@@ -16,10 +16,11 @@ namespace CoinGecko.Test
         }
 
         [Fact]
-        public async Task Exchanges_Count_Greater_Than_Hundred()
+        public async Task Exchanges_Count_Not_Equal_to_Zero()
         {
             var result = await _client.ExchangesClient.GetExchanges();
-            Assert.True(result.Count > 100);
+            Assert.IsType<int>(result.Count);
+            Assert.NotEqual( result.Count,0);
         }
 
         [Fact]

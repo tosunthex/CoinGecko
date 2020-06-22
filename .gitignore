@@ -5,3 +5,5 @@
 /CoinGecko/bin/Debug
 /.vs
 /CoinGecko/obj
+/CoinGecko.Test/obj
+/CoinGecko.Test/bin

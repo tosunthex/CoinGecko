@@ -34,6 +34,11 @@ namespace CoinGecko.Clients
                 })).ConfigureAwait(false);
         }
 
+        public async Task<TokenPrice> GetTokenPrice(string id, string[] contractAddress, string[] vsCurrencies)
+        {
+            return await GetTokenPrice(id, contractAddress, vsCurrencies, false, false, false, false).ConfigureAwait(false);
+        }
+
         public async Task<TokenPrice> GetTokenPrice(string id, string[] contractAddress, string[] vsCurrencies, bool includeMarketCap,
             bool include24HVol, bool include24HChange, bool includeLastUpdatedAt)
         {

@@ -20,7 +20,7 @@ namespace CoinGecko.Test
         {
             var result = await _client.ExchangesClient.GetExchanges();
             Assert.IsType<int>(result.Count);
-            Assert.NotEqual( result.Count,0);
+            Assert.NotEqual( 0,result.Count);
         }
 
         [Fact]

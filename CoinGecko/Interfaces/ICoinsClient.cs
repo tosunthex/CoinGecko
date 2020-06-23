@@ -113,6 +113,7 @@ namespace CoinGecko.Interfaces
         /// <param name="vsCurrency">The target currency of market data (usd, eur, jpy, etc.)</param>
         /// <param name="days">Data up to number of days ago (eg. 1,14,30,max)</param>
         /// <returns></returns>
-        Task<MarketChartById> GetMarketChartsByCoinId(string id, string[] vsCurrency, string days);
+        Task<MarketChartById> GetMarketChartsByCoinId(string id, string vsCurrency, string days);
+        Task<MarketChartById> GetMarketChartRangeByCoinId(string id, string vsCurrency, string from,string to);
     }
 }

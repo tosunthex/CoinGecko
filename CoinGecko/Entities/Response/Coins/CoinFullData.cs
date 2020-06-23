@@ -48,11 +48,13 @@ namespace CoinGecko.Entities.Response.Coins
         [JsonProperty("pull_request_contributors")]
         public long? PullRequestContributors { get; set; }
 
-        [JsonProperty("code_additions_deletions_4_weeks")]
-        public Dictionary<string,long> CodeAdditionsDeletions4Weeks { get; set; }
+        [JsonProperty("code_additions_deletions_4_weeks", NullValueHandling = NullValueHandling.Ignore)]
+        public Dictionary<string,long?> CodeAdditionsDeletions4Weeks { get; set; }
     
         [JsonProperty("commit_count_4_weeks")] public long? CommitCount4Weeks { get; set; }
-        [JsonProperty("last_4_weeks_commit_activity_series")] public long[] last_4_weeks_commit_activity_series { get;set; }
+        
+        [JsonProperty("last_4_weeks_commit_activity_series", NullValueHandling = NullValueHandling.Ignore)] 
+        public long[] Last4WeeksCommitActivitySeries { get;set; }
     }
 
     public class MarketData : MarketDataOhlcv

@@ -4,10 +4,10 @@ namespace CoinGecko.ApiEndPoints
 {
     public static class CoinsApiEndPoints
     {
+        private static string CoinsWithIdUrl(string id) => Coins + "/" + id;
         public static readonly string Coins = "coins";
         public static readonly string CoinList = Coins + "/list";
         public static readonly string CoinMarkets = Coins + "/markets";
-        public static string CoinsWithIdUrl(string id) => Coins + "/" + id;
         public static string AllDataByCoinId(string id) => CoinsWithIdUrl(id);
         public static string TickerByCoinId(string id) => CoinsWithIdUrl(id) + "/tickers";
         public static string HistoryByCoinId(string id) => CoinsWithIdUrl(id) + "/history";

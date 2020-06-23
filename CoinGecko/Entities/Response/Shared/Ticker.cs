@@ -35,5 +35,6 @@ namespace CoinGecko.Entities.Response.Shared
         [JsonProperty("trade_url")] public string TradeUrl { get; set; }
 
         [JsonProperty("coin_id")] public string CoinId { get; set; }
+        [JsonProperty("target_coin_id")] public string TargetCoinId { get; set; }
     }
 }

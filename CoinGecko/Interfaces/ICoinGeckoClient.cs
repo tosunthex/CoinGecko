@@ -9,6 +9,6 @@ namespace CoinGecko.Interfaces
         IGlobalClient GlobalClient { get; }
         ISimpleClient SimpleClient { get; }
         IPingClient PingClient { get; }
-        
+        IContractClient ContractClient { get; }
     }
 }

@@ -48,7 +48,11 @@ namespace CoinGecko.Entities.Response.Coins
         [JsonProperty("pull_request_contributors")]
         public long? PullRequestContributors { get; set; }
 
+        [JsonProperty("code_additions_deletions_4_weeks")]
+        public Dictionary<string,long> CodeAdditionsDeletions4Weeks { get; set; }
+    
         [JsonProperty("commit_count_4_weeks")] public long? CommitCount4Weeks { get; set; }
+        [JsonProperty("last_4_weeks_commit_activity_series")] public long[] last_4_weeks_commit_activity_series { get;set; }
     }
 
     public class MarketData : MarketDataOhlcv
@@ -124,12 +128,5 @@ namespace CoinGecko.Entities.Response.Coins
         [JsonProperty("currency")] public string Currency { get; set; }
 
         [JsonProperty("percentage")] public double? Percentage { get; set; }
-    }
-
-    public class PublicInterestStats
-    {
-        [JsonProperty("alexa_rank")] public long? AlexaRank { get; set; }
-
-        [JsonProperty("bing_matches")] public long? BingMatches { get; set; }
     }
 }

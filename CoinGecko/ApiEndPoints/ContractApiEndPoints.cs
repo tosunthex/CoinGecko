@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CoinGecko.ApiEndPoints
+﻿namespace CoinGecko.ApiEndPoints
 {
     public static class ContractApiEndPoints
     {
-        private static string CoinsWithIdUrl(string id) => "coins/" + id;
-        public static string ContractDetailByIdContractAddress(string id, string contractAddress) =>
-            CoinsWithIdUrl(id) + "/contract/"+contractAddress;
+        public static string ContractDetailAddress(string id, string contractAddress) =>
+            BaseApiEndPointUrl.AddCoinsIdUrl(id) + "/contract/" + contractAddress;
 
-        
+        public static string MarketChartByContractAddress(string id, string contractAddress) =>
+            BaseApiEndPointUrl.AddCoinsIdUrl(id) + "/contract/" + contractAddress + "/market_chart/";
+        public static string MarketChartRangeByContractAddress(string id, string contractAddress) =>
+            BaseApiEndPointUrl.AddCoinsIdUrl(id) + "/contract/" + contractAddress + "/market_chart/range";
     }
 }

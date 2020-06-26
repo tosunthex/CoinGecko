@@ -14,11 +14,11 @@ namespace CoinGecko.Entities.Response.Shared
 
         [JsonProperty("last")] public double Last { get; set; }
 
-        [JsonProperty("converted_last")] public Dictionary<string, string> ConvertedLast { get; set; }
+        [JsonProperty("converted_last")] public Dictionary<string, double> ConvertedLast { get; set; }
 
         [JsonProperty("volume")] public double Volume { get; set; }
 
-        [JsonProperty("converted_volume")] public Dictionary<string, string> ConvertedVolume { get; set; }
+        [JsonProperty("converted_volume")] public Dictionary<string, double> ConvertedVolume { get; set; }
 
         [JsonProperty("trust_score")] public string TrustScore { get; set; }
 
@@ -35,6 +35,6 @@ namespace CoinGecko.Entities.Response.Shared
         [JsonProperty("trade_url")] public string TradeUrl { get; set; }
 
         [JsonProperty("coin_id")] public string CoinId { get; set; }
-        [JsonProperty("target_coin_id")] public string TargetCoinId { get; set; }
+        [JsonProperty("target_coin_id", NullValueHandling = NullValueHandling.Ignore)] public string TargetCoinId { get; set; }
     }
 }

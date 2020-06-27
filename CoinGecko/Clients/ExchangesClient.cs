@@ -16,8 +16,17 @@ namespace CoinGecko.Clients
         
         public async Task<IReadOnlyList<Exchanges>> GetExchanges()
         {
+            return await GetExchanges(100, "");
+        }
+        public async Task<IReadOnlyList<Exchanges>> GetExchanges(int perPage,string page)
+        {
             return await GetAsync<IReadOnlyList<Exchanges>>(
-                QueryStringService.AppendQueryString(ExchangesApiEndPoints.Exchanges)).ConfigureAwait(false);
+                QueryStringService.AppendQueryString(ExchangesApiEndPoints.Exchanges,new Dictionary<string, object>
+                {
+                    {"per_page",perPage},
+                    {"page",page}
+                }
+            )).ConfigureAwait(false);
         }
 
         public async Task<IReadOnlyList<ExchangesList>> GetExchangesList()
@@ -34,21 +43,42 @@ namespace CoinGecko.Clients
 
         public async Task<TickerByExchangeId> GetTickerByExchangeId(string id)
         {
-            return await GetTickerByExchangeId(id, new []{""}, null).ConfigureAwait(false);
+            return await GetTickerByExchangeId(id, new []{""}, null,"","").ConfigureAwait(false);
         }
 
         public async Task<TickerByExchangeId> GetTickerByExchangeId(string id,string page)
         {
-            return await GetTickerByExchangeId(id, new []{""}, page).ConfigureAwait(false);
+            return await GetTickerByExchangeId(id, new []{""}, page,"","").ConfigureAwait(false);
         }
 
-        public async Task<TickerByExchangeId> GetTickerByExchangeId(string id,string[] coinIds,string page)
+        public async Task<TickerByExchangeId> GetTickerByExchangeId(string id,string[] coinIds,string page,string includeExchangeLogo,string order)
         {
             return await GetAsync<TickerByExchangeId>(QueryStringService.AppendQueryString(
                 ExchangesApiEndPoints.TickerById(id), new Dictionary<string, object>
                 {
                     {"page",page},
-                    {"coin_ids",string.Join(",",coinIds)}
+                    {"coin_ids",string.Join(",",coinIds)},
+                    {"include_exchange_logo",includeExchangeLogo},
+                    {"order",order}
+                })).ConfigureAwait(false);
+        }
+
+        public async Task<TickerByExchangeId> GetStatusUpdateByExchangeId(string id)
+        {
+            return await GetStatusUpdateByExchangeId(id);
+        }
+
+        public async Task<TickerByExchangeId> GetStatusUpdateByExchangeId(string id, int perPage, string page)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<IReadOnlyList<VolumeChart>> GetVolumeChartsByExchangeId(string id, int days)
+        {
+            return await GetAsync<IReadOnlyList<VolumeChart>>(QueryStringService.AppendQueryString(
+                ExchangesApiEndPoints.VolumeChartById(id), new Dictionary<string, object>
+                {
+                    {"days", days}
                 })).ConfigureAwait(false);
         }
     }

@@ -58,7 +58,30 @@ namespace CoinGecko.Interfaces
         /// <param name="id">exchange id</param>
         /// <param name="coinIds">filter tickers by coin_ids</param>
         /// <param name="page">Page through results</param>
+        /// <param name="includeExchangeLogo"></param>
+        /// <param name="order"></param>
         /// <returns></returns>
-        Task<TickerByExchangeId> GetTickerByExchangeId(string id, string[] coinIds, string page);
+        Task<TickerByExchangeId> GetTickerByExchangeId(string id, string[] coinIds, string page, string includeExchangeLogo, string order);
+
+
+        /// <summary>
+        /// Get status updates for a given exchange
+        /// </summary>
+        /// <param name="id">pass the exchange id (can be obtained from /exchanges/list) eg. binance</param>
+        /// <returns></returns>
+        Task<TickerByExchangeId> GetStatusUpdateByExchangeId(string id);
+
+        /// <summary>
+        /// Get status updates for a given exchange
+        /// </summary>
+        /// <param name="id">pass the exchange id (can be obtained from /exchanges/list) eg. binance</param>
+        /// <param name="perPage">Total results per page</param>
+        /// <param name="page">Page through results</param>
+        /// <returns></returns>
+        Task<TickerByExchangeId> GetStatusUpdateByExchangeId(string id, int perPage, string page);
+
+        Task<IReadOnlyList<VolumeChart>> GetVolumeChartsByExchangeId(string id, int days);
+
+
     }
 }

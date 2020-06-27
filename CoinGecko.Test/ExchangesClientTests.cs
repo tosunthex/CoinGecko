@@ -50,7 +50,7 @@ namespace CoinGecko.Test
         [Fact]
         public async Task Exchanges_Bitfinex_Tickers_For_Bitcoin_And_Ripple()
         {
-            var result = await _client.ExchangesClient.GetTickerByExchangeId("bitfinex",new []{"bitcoin","ripple"},null);
+            var result = await _client.ExchangesClient.GetTickerByExchangeId("bitfinex",new []{"bitcoin","ripple"},null,"","");
             Assert.Equal("Bitfinex",result.Name);
             var xrpTicker= result.Tickers.Where(x => x.Base == "XRP").FirstOrDefault();
             var btcTicker= result.Tickers.Where(x => x.Base == "BTC").FirstOrDefault();

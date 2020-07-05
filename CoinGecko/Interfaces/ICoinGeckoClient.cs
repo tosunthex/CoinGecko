@@ -1,3 +1,4 @@
+
 namespace CoinGecko.Interfaces
 {
     public interface ICoinGeckoClient
@@ -10,5 +11,9 @@ namespace CoinGecko.Interfaces
         ISimpleClient SimpleClient { get; }
         IPingClient PingClient { get; }
         IContractClient ContractClient { get; }
+        IFinancePlatformsClient FinancePlatformsClient { get; }
+        IIndexesClient IndexesClient { get; }
+        IDerivativesClient DerivativesClient { get; }
+        IStatusUpdatesClient StatusUpdatesClient { get; }
     }
 }

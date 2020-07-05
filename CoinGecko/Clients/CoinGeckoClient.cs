@@ -30,6 +30,11 @@ namespace CoinGecko.Clients
         public IExchangeRatesClient ExchangeRatesClient => new ExchangeRatesClient(_httpClient);
         public IGlobalClient GlobalClient => new GlobalClient(_httpClient);
         public IContractClient ContractClient => new ContractClient(_httpClient);
+        public IFinancePlatformsClient FinancePlatformsClient => new FinancePlatformsClient(_httpClient);
+        public IIndexesClient IndexesClient => new IndexesClient(_httpClient);
+        public IDerivativesClient DerivativesClient => new DerivativesClient(_httpClient);
+        public IStatusUpdatesClient StatusUpdatesClient => new StatusUpdateClient(_httpClient);
+
 
         public void Dispose()
         {

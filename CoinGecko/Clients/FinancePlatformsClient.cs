@@ -16,7 +16,7 @@ namespace CoinGecko.Clients
 
         public async Task<IReadOnlyList<FinancePlatforms>> GetFinancePlatforms()
         {
-            return await GetFinancePlatforms(50, "100");
+            return await GetFinancePlatforms(50, "100").ConfigureAwait(false);
         }
 
         public async Task<IReadOnlyList<FinancePlatforms>> GetFinancePlatforms(int perPage, string page)
@@ -32,7 +32,7 @@ namespace CoinGecko.Clients
 
         public async Task<IReadOnlyList<FinanceProducts>> GetFinanceProducts()
         {
-            return await GetFinanceProducts(50, "100", "", "");
+            return await GetFinanceProducts(50, "100", "", "").ConfigureAwait(false);
         }
 
         public async Task<IReadOnlyList<FinanceProducts>> GetFinanceProducts(int perPage, string page, string startAt, string endAt)

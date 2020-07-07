@@ -16,7 +16,7 @@ namespace CoinGecko.Clients
         
         public async Task<IReadOnlyList<Exchanges>> GetExchanges()
         {
-            return await GetExchanges(100, "");
+            return await GetExchanges(100, "").ConfigureAwait(false);
         }
         public async Task<IReadOnlyList<Exchanges>> GetExchanges(int perPage,string page)
         {

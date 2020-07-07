@@ -16,7 +16,7 @@ namespace CoinGecko.Clients
 
         public async Task<IReadOnlyList<IndexData>> GetIndexes()
         {
-            return await GetIndexes(null, "");
+            return await GetIndexes(null, "").ConfigureAwait(false);
         }
 
         public async Task<IReadOnlyList<IndexData>> GetIndexes(int? perPage, string page)

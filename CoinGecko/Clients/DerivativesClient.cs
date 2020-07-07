@@ -16,7 +16,7 @@ namespace CoinGecko.Clients
 
         public async Task<IReadOnlyList<Derivatives>> GetDerivatives()
         {
-            return await GetDerivatives("");
+            return await GetDerivatives("").ConfigureAwait(false);
         }
 
         public async Task<IReadOnlyList<Derivatives>> GetDerivatives(string includeTicker)
@@ -30,7 +30,7 @@ namespace CoinGecko.Clients
 
         public async Task<IReadOnlyList<DerivativesExchanges>> GetDerivativesExchanges()
         {
-            return await GetDerivativesExchanges("", null, null);
+            return await GetDerivativesExchanges("", null, null).ConfigureAwait(false);
         }
 
         public async Task<IReadOnlyList<DerivativesExchanges>> GetDerivativesExchanges(string order, int? perPage, int? page)
@@ -46,7 +46,7 @@ namespace CoinGecko.Clients
 
         public async Task<DerivativesExchanges> GetDerivativesExchangesById(string id)
         {
-            return await GetDerivativesExchangesById(id, "");
+            return await GetDerivativesExchangesById(id, "").ConfigureAwait(false);
         }
 
         public async Task<DerivativesExchanges> GetDerivativesExchangesById(string id, string includeTickers)

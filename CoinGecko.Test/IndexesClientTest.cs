@@ -17,7 +17,7 @@ namespace CoinGecko.Test
         public async Task Indexes_Count_Not_Equal_Zero()
         {
             var result = await _client.IndexesClient.GetIndexes();
-            Assert.NotEqual(0,result.Count);
+            Assert.True(result.Count > 0, "Result GTE 0");
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace CoinGecko.Test
         public async Task Indexes_List_Count_Not_Equal_Zero()
         {
             var result = await _client.IndexesClient.GetIndexList();
-            Assert.NotEqual(0, result.Count);
+            Assert.True( result.Count > 0,"Result GTE 0");
         }
     }
 }

@@ -6,7 +6,7 @@ using CoinGecko.ApiEndPoints;
 
 namespace CoinGecko.Services
 {
-    public class QueryStringService
+    public static class QueryStringService
     {
         public static Uri AppendQueryString(string path, Dictionary<string, object> parameter)
         {

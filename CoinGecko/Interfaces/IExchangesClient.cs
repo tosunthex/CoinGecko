@@ -69,7 +69,7 @@ namespace CoinGecko.Interfaces
         /// </summary>
         /// <param name="id">pass the exchange id (can be obtained from /exchanges/list) eg. binance</param>
         /// <returns></returns>
-        Task<TickerByExchangeId> GetStatusUpdateByExchangeId(string id);
+        //Task<TickerByExchangeId> GetStatusUpdateByExchangeId(string id);
 
         /// <summary>
         /// Get status updates for a given exchange
@@ -78,7 +78,7 @@ namespace CoinGecko.Interfaces
         /// <param name="perPage">Total results per page</param>
         /// <param name="page">Page through results</param>
         /// <returns></returns>
-        Task<TickerByExchangeId> GetStatusUpdateByExchangeId(string id, int perPage, string page);
+        //Task<TickerByExchangeId> GetStatusUpdateByExchangeId(string id, int perPage, string page);
 
         Task<IReadOnlyList<VolumeChart>> GetVolumeChartsByExchangeId(string id, int days);
 

@@ -1,6 +1,6 @@
 ﻿namespace CoinGecko.ApiEndPoints
 {
-    public class DerivativesApiEndPoints
+    public static class DerivativesApiEndPoints
     {
         public static readonly string DerivativesUrl = "derivatives";
         public static readonly string DerivativesExchanges = DerivativesUrl + "/exchanges";

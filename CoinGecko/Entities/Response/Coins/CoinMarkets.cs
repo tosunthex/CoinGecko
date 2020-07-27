@@ -33,10 +33,10 @@ namespace CoinGecko.Entities.Response.Coins
         public double? Low24H { get; set; }
 
         [JsonProperty("ath")]
-        public double Ath { get; set; }
+        public double? Ath { get; set; }
 
         [JsonProperty("ath_change_percentage")]
-        public double AthChangePercentage { get; set; }
+        public double? AthChangePercentage { get; set; }
 
         [JsonProperty("ath_date")]
         public DateTimeOffset AthDate { get; set; }

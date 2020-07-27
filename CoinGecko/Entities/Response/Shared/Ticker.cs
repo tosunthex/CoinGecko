@@ -12,11 +12,11 @@ namespace CoinGecko.Entities.Response.Shared
 
         [JsonProperty("market")] public Market Market { get; set; }
 
-        [JsonProperty("last")] public double Last { get; set; }
+        [JsonProperty("last")] public double? Last { get; set; }
 
         [JsonProperty("converted_last")] public Dictionary<string, double> ConvertedLast { get; set; }
 
-        [JsonProperty("volume")] public double Volume { get; set; }
+        [JsonProperty("volume")] public double? Volume { get; set; }
 
         [JsonProperty("converted_volume")] public Dictionary<string, double> ConvertedVolume { get; set; }
 

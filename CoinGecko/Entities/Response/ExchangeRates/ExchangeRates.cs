@@ -18,7 +18,7 @@ namespace CoinGecko.Entities.Response.ExchangeRates
         public string Unit { get; set; }
 
         [JsonProperty("value")]
-        public double Value { get; set; }
+        public double? Value { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

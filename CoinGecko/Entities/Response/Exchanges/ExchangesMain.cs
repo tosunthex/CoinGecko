@@ -11,6 +11,6 @@ namespace CoinGecko.Entities.Response.Exchanges
         public bool? HasTradingIncentive { get; set; }
 
         [JsonProperty("trade_volume_24h_btc")]
-        public double TradeVolume24HBtc { get; set; }
+        public double? TradeVolume24HBtc { get; set; }
     }
 }

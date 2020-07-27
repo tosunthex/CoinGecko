@@ -23,15 +23,15 @@ namespace CoinGecko.Entities.Response.Finance
         public object LengthDuration { get; set; }
 
         [JsonProperty("start_at")]
-        public long StartAt { get; set; }
+        public long? StartAt { get; set; }
 
         [JsonProperty("end_at")]
-        public long EndAt { get; set; }
+        public long? EndAt { get; set; }
 
         [JsonProperty("value_at")]
-        public long ValueAt { get; set; }
+        public long? ValueAt { get; set; }
 
         [JsonProperty("redeem_at")]
-        public long RedeemAt { get; set; }
+        public long? RedeemAt { get; set; }
     }
 }

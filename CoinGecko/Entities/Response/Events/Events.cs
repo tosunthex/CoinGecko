@@ -8,9 +8,9 @@ namespace CoinGecko.Entities.Response.Events
         public EventData[] Data { get; set; }
 
         [JsonProperty("count")]
-        public long Count { get; set; }
+        public long? Count { get; set; }
 
         [JsonProperty("page")]
-        public long Page { get; set; }
+        public long? Page { get; set; }
     }
 }

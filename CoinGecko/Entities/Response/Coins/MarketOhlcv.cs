@@ -6,7 +6,7 @@ namespace CoinGecko.Entities.Response.Coins
     public class MarketDataOhlcv
     {
         [JsonProperty("market_cap_rank")]
-        public long MarketCapRank { get; set; }
+        public long? MarketCapRank { get; set; }
 
         [JsonProperty("price_change_24h")]
         public double? PriceChange24H { get; set; }
@@ -24,7 +24,7 @@ namespace CoinGecko.Entities.Response.Coins
         public string CirculatingSupply { get; set; }
 
         [JsonProperty("total_supply")]
-        public long? TotalSupply { get; set; }
+        public double? TotalSupply { get; set; }
         
     }
 }

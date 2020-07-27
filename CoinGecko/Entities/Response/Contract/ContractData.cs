@@ -23,7 +23,7 @@ namespace CoinGecko.Entities.Response.Contract
         public string AssetPlatformId { get; set; }
 
         [JsonProperty("block_time_in_minutes")]
-        public long BlockTimeInMinutes { get; set; }
+        public long? BlockTimeInMinutes { get; set; }
 
         [JsonProperty("hashing_algorithm")]
         public object HashingAlgorithm { get; set; }
@@ -144,10 +144,10 @@ namespace CoinGecko.Entities.Response.Contract
         public string QuotePublicSaleCurrency { get; set; }
 
         [JsonProperty("base_public_sale_amount")]
-        public long BasePublicSaleAmount { get; set; }
+        public long? BasePublicSaleAmount { get; set; }
 
         [JsonProperty("quote_public_sale_amount")]
-        public long QuotePublicSaleAmount { get; set; }
+        public long? QuotePublicSaleAmount { get; set; }
 
         [JsonProperty("accepting_currencies")]
         public string AcceptingCurrencies { get; set; }

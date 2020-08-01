@@ -28,7 +28,7 @@ namespace CoinGecko.Entities.Response.Shared
 
         [JsonProperty("last_fetch_at")] public DateTimeOffset LastFetchAt { get; set; }
 
-        [JsonProperty("is_anomaly")] public bool IsAnomaly { get; set; }
+        [JsonProperty("is_anomaly")] public bool? IsAnomaly { get; set; }
 
         [JsonProperty("is_stale")] public bool IsStale { get; set; }
 

@@ -209,5 +209,13 @@ namespace CoinGecko.Test
             var result = await _client.CoinsClient.GetTickerByCoinId("bitcoin");
             Assert.NotNull(result.Tickers[0].TrustScore);
         }
+
+        [Fact]
+        public async Task Loopring_IsAnomaly_Null_Must_Not_Give_Error()
+        {
+            var result  = await _client.CoinsClient.GetAllCoinDataWithId("loopring");
+            var ticker = result.Tickers[10];
+            Assert.NotNull(ticker.IsAnomaly);
+        }
     }
 }

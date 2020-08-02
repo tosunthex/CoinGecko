@@ -1,22 +1,29 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoinGecko.Clients;
+using CoinGecko.Entities.Response.Coins;
 using CoinGecko.Interfaces;
 using CoinGecko.Parameters;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace CoinGecko.Test
 {
     public class CoinsClientTests
     {
-        public CoinsClientTests()
+        private readonly ITestOutputHelper _testOutputHelper;
+
+        public CoinsClientTests(ITestOutputHelper testOutputHelper)
         {
+            _testOutputHelper = testOutputHelper;
             _client = CoinGeckoClient.Instance;
         }
 
         private readonly ICoinGeckoClient _client;
 
+/*
         [Fact]
         public async Task All_Coins_Data()
         {
@@ -24,7 +31,7 @@ namespace CoinGecko.Test
             var result = await _client.CoinsClient.GetAllCoinsData("", coinList.Count, null, "", null);
             Assert.NotNull(result);
         }
-
+*/
         [Fact]
         public async Task Bitcoin_Sparkline7d_Equal_To_Null()
         {
@@ -211,11 +218,26 @@ namespace CoinGecko.Test
         }
 
         [Fact]
-        public async Task Loopring_IsAnomaly_Null_Must_Not_Give_Error()
+        public async Task Qorvo_LastUpdated_Must_Not_Give_Error()
         {
-            var result  = await _client.CoinsClient.GetAllCoinDataWithId("loopring");
-            var ticker = result.Tickers[10];
-            Assert.NotNull(ticker.IsAnomaly);
+            var result  = await _client.CoinsClient.GetAllCoinDataWithId("qorvo-inc");
+            Assert.NotNull(result.MarketData.LastUpdated);
+        }
+
+        [Fact]
+        public async Task Is_Anomaly_Field_Null_Check()
+        {
+            
+            var coinList = new List<string>{"blockplus","bmtoken", "brick", "catalent-inc", "central-market","chipcoin"};
+            
+            foreach (var coinId in coinList)
+            {
+                var result = await _client.CoinsClient.GetAllCoinDataWithId(coinId);
+                foreach (var ticker in result.Tickers)
+                {
+                    Assert.NotNull(ticker.IsAnomaly);
+                }
+            }
         }
     }
 }

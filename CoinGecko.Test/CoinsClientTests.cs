@@ -13,11 +13,8 @@ namespace CoinGecko.Test
 {
     public class CoinsClientTests
     {
-        private readonly ITestOutputHelper _testOutputHelper;
-
         public CoinsClientTests(ITestOutputHelper testOutputHelper)
         {
-            _testOutputHelper = testOutputHelper;
             _client = CoinGeckoClient.Instance;
         }
 

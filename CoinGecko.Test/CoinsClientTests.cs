@@ -215,24 +215,24 @@ namespace CoinGecko.Test
         }
 
         [Fact]
-        public async Task Qorvo_LastUpdated_Must_Not_Give_Error()
+        public async Task Qorvo_LastUpdated_Type_Must_Be_DateTimeOffset()
         {
             var result  = await _client.CoinsClient.GetAllCoinDataWithId("qorvo-inc");
-            Assert.NotNull(result.MarketData.LastUpdated);
+            Assert.IsType<DateTimeOffset>(result.MarketData.LastUpdated);
         }
-
+        
         [Fact]
         public async Task Is_Anomaly_Field_Null_Check()
         {
             
-            var coinList = new List<string>{"blockplus","bmtoken", "brick", "catalent-inc", "central-market","chipcoin"};
+            var coinList = new List<string>{"blockplus","bmtoken", "brick", "catalent-inc", "central-market"};
             
             foreach (var coinId in coinList)
             {
                 var result = await _client.CoinsClient.GetAllCoinDataWithId(coinId);
                 foreach (var ticker in result.Tickers)
                 {
-                    Assert.NotNull(ticker.IsAnomaly);
+                    Assert.IsType<bool>(ticker.IsAnomaly);
                 }
             }
         }

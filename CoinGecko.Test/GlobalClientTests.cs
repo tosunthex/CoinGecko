@@ -22,10 +22,16 @@ namespace CoinGecko.Test
         }
 
         [Fact]
-        public async Task Global_DeFi_Data_Must_Not_Null()
+        public async Task Global_DeFi_Data_Type_Must_Equal()
         {
             var result = await _client.GlobalClient.GetGlobalDeFi();
-            Assert.NotNull(result.Data);
+            Assert.IsType<decimal>(result.Data.DeFiMarketCap);
+            Assert.IsType<decimal>(result.Data.EthMarketCap);
+            Assert.IsType<decimal>(result.Data.DefiToEthRatio);
+            Assert.IsType<decimal>(result.Data.TradingVolume24H);
+            Assert.IsType<decimal>(result.Data.DeFiDominance);
+            Assert.IsType<string>(result.Data.TopCoinName);
+            Assert.IsType<decimal>(result.Data.TopCoinDeFiDominance);
         }
     }
 }

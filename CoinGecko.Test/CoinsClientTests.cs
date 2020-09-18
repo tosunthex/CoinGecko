@@ -7,19 +7,25 @@ using CoinGecko.Entities.Response.Coins;
 using CoinGecko.Interfaces;
 using CoinGecko.Parameters;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace CoinGecko.Test
 {
     public class CoinsClientTests
     {
-        public CoinsClientTests(ITestOutputHelper testOutputHelper)
+        private readonly Task<Entities.Response.Coins.CoinFullDataById> _allCoinDataBitCoin;
+        public CoinsClientTests()
         {
             _client = CoinGeckoClient.Instance;
+            _allCoinDataBitCoin = GetAllCoinDataForBtc();
         }
 
+        
         private readonly ICoinGeckoClient _client;
 
+        private async Task<CoinFullDataById> GetAllCoinDataForBtc()
+        {
+            return await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
+        }
 /*
         [Fact]
         public async Task All_Coins_Data()
@@ -40,21 +46,21 @@ namespace CoinGecko.Test
         [Fact]
         public async Task BTC_Block_Time_in_Minutes_Not_Null()
         {
-            var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
+            var result = await _allCoinDataBitCoin;
             Assert.IsType<long>(result.BlockTimeInMinutes);
         }
 
         [Fact]
         public async Task BTC_Coin_by_Id_Ticker_Must_Contains_trade_URL()
         {
-            var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
+            var result = await _allCoinDataBitCoin;
             Assert.IsType<string>(result.Tickers.First().TradeUrl);
         }
 
         [Fact]
         public async Task Coin_by_Id_Must_Contains_ATH_Details()
         {
-            var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
+            var result = await _allCoinDataBitCoin; ;
             Assert.NotNull(result.MarketData.Ath);
             Assert.NotNull(result.MarketData.AthDate);
             Assert.NotNull(result.MarketData.AthChangePercentage);
@@ -63,7 +69,7 @@ namespace CoinGecko.Test
         [Fact]
         public async Task Coin_By_Id_Must_Return_BTC()
         {
-            var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
+            var result = await _allCoinDataBitCoin; 
             Assert.Equal("btc", result.Symbol);
             result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin", "false", true, false, false, false,
                 true);
@@ -138,7 +144,7 @@ namespace CoinGecko.Test
         {
             var result = await _client.CoinsClient.GetTickerByCoinId("stellar", new[] {"binance", "bitfinex"}, null);
             Assert.Equal("Stellar", result.Name);
-            var exchangeList = result.Tickers.LastOrDefault().Market.Name + " " + result.Tickers[0].Market.Name;
+            var exchangeList = result.Tickers.LastOrDefault()?.Market.Name + " " + result.Tickers[0].Market.Name;
             Assert.Contains("Binance", exchangeList);
             Assert.Contains("Bitfinex", exchangeList);
         }
@@ -225,7 +231,7 @@ namespace CoinGecko.Test
         public async Task Is_Anomaly_Field_Null_Check()
         {
             
-            var coinList = new List<string>{"blockplus","bmtoken", "brick", "catalent-inc", "central-market"};
+            var coinList = new List<string>{"blockplus","bmtoken"};
             
             foreach (var coinId in coinList)
             {

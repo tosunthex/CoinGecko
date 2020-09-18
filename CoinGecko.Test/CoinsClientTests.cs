@@ -13,10 +13,12 @@ namespace CoinGecko.Test
     public class CoinsClientTests
     {
         private readonly Task<Entities.Response.Coins.CoinFullDataById> _allCoinDataBitCoin;
+        private readonly Task<Entities.Response.Coins.CoinFullDataById> _allCoinDataBitCoinWithParameter;
         public CoinsClientTests()
         {
             _client = CoinGeckoClient.Instance;
             _allCoinDataBitCoin = GetAllCoinDataForBtc();
+            _allCoinDataBitCoinWithParameter = GetAllCoinDataWithParameterForBtc();
         }
 
         
@@ -25,6 +27,10 @@ namespace CoinGecko.Test
         private async Task<CoinFullDataById> GetAllCoinDataForBtc()
         {
             return await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
+        }
+        private async Task<CoinFullDataById> GetAllCoinDataWithParameterForBtc()
+        {
+            return await _client.CoinsClient.GetAllCoinDataWithId("bitcoin", "false", false, true, false, false, true);
         }
 /*
         [Fact]
@@ -38,29 +44,28 @@ namespace CoinGecko.Test
         [Fact]
         public async Task Bitcoin_Sparkline7d_Equal_To_Null()
         {
-            var result =
-                await _client.CoinsClient.GetAllCoinDataWithId("bitcoin", "false", false, true, false, false, true);
+            var result = await _allCoinDataBitCoinWithParameter.ConfigureAwait(false);
             Assert.IsType<double[]>(result.MarketData.Sparkline7D.Price);
         }
 
         [Fact]
         public async Task BTC_Block_Time_in_Minutes_Not_Null()
         {
-            var result = await _allCoinDataBitCoin;
+            var result = await _allCoinDataBitCoin.ConfigureAwait(false);
             Assert.IsType<long>(result.BlockTimeInMinutes);
         }
 
         [Fact]
         public async Task BTC_Coin_by_Id_Ticker_Must_Contains_trade_URL()
         {
-            var result = await _allCoinDataBitCoin;
+            var result = await _allCoinDataBitCoin.ConfigureAwait(false);
             Assert.IsType<string>(result.Tickers.First().TradeUrl);
         }
 
         [Fact]
         public async Task Coin_by_Id_Must_Contains_ATH_Details()
         {
-            var result = await _allCoinDataBitCoin; ;
+            var result = await _allCoinDataBitCoin.ConfigureAwait(false);
             Assert.NotNull(result.MarketData.Ath);
             Assert.NotNull(result.MarketData.AthDate);
             Assert.NotNull(result.MarketData.AthChangePercentage);
@@ -71,8 +76,7 @@ namespace CoinGecko.Test
         {
             var result = await _allCoinDataBitCoin; 
             Assert.Equal("btc", result.Symbol);
-            result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin", "false", true, false, false, false,
-                true);
+            result = await _allCoinDataBitCoinWithParameter.ConfigureAwait(false); 
             Assert.Equal("btc", result.Symbol);
         }
 
@@ -105,7 +109,7 @@ namespace CoinGecko.Test
             Assert.Null(roiBtc);
         }
 
-        [Fact]
+        /*[Fact]
         public async Task Coin_Markets_VsCurrency_For_USD_Ripple_Sparkline_Not_Null()
         {
             var result = await _client.CoinsClient.GetCoinMarkets("usd", new[] {"ripple"}, OrderField.MarketCapDesc, 1,
@@ -113,7 +117,7 @@ namespace CoinGecko.Test
             Assert.Single(result);
             Assert.Equal("ripple", result[0].Id);
             Assert.NotNull(result[0].SparklineIn7D.Price);
-        }
+        }*/
 
         [Fact]
         public async Task Coin_Markets_VsCurrency_For_USD_Ripple_Sparkline_Null()

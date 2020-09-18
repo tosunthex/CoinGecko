@@ -74,7 +74,7 @@ namespace CoinGecko.Test
         [Fact]
         public async Task Coin_By_Id_Must_Return_BTC()
         {
-            var result = await _allCoinDataBitCoin; 
+            var result = await _allCoinDataBitCoin.ConfigureAwait(false);
             Assert.Equal("btc", result.Symbol);
             result = await _allCoinDataBitCoinWithParameter.ConfigureAwait(false); 
             Assert.Equal("btc", result.Symbol);

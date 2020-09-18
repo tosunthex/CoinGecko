@@ -1,9 +1,9 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/home/levent/.dotnet/store/|arch|/|tfm|",
-      "/home/levent/.nuget/packages",
-      "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+      "C:\\Users\\bgmis\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\bgmis\\.nuget\\packages",
+      "C:\\Microsoft\\Xamarin\\NuGet"
     ]
   }
 }

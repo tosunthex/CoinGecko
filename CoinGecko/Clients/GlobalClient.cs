@@ -17,5 +17,10 @@ namespace CoinGecko.Clients
         {
             return await GetAsync<Global>(QueryStringService.AppendQueryString(GlobalApiEndPoints.Global)).ConfigureAwait(false);
         }
+
+        public async Task<Global> GetGlobalDeFi()
+        {
+            return await GetAsync<Global>(QueryStringService.AppendQueryString(GlobalApiEndPoints.DecentralizedFinanceDeFi)).ConfigureAwait(false);
+        }
     }
 }

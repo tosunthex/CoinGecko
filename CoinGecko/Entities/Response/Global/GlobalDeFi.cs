@@ -5,33 +5,33 @@ using System.Text;
 
 namespace CoinGecko.Entities.Response.Global
 {
-    public class DeFi
+    public class GlobalDeFi
     {
         [JsonProperty("data")]
-        public DeFiData Data { get; set; }
+        public GlobalDeFiData Data { get; set; }
     }
 
-    public class DeFiData
+    public class GlobalDeFiData
     {
         [JsonProperty("defi_market_cap")]
-        public double? DeFiMarketCap { get; set; }
+        public decimal? DeFiMarketCap { get; set; }
 
         [JsonProperty("eth_market_cap")]
-        public double? EthMarketCap { get; set; }
+        public decimal? EthMarketCap { get; set; }
 
         [JsonProperty("defi_to_eth_ratio")]
-        public double? DefiToEthRatio { get; set; }
+        public decimal? DefiToEthRatio { get; set; }
 
         [JsonProperty("trading_volume_24h")]
-        public double? TradingVolume24H { get; set; }
+        public decimal? TradingVolume24H { get; set; }
 
         [JsonProperty("defi_dominance")]
-        public double? DeFiDominance { get; set; }
+        public decimal? DeFiDominance { get; set; }
 
         [JsonProperty("top_coin_name")]
         public string TopCoinName { get; set; }
 
         [JsonProperty("top_coin_defi_dominance")]
-        public double? TopCoinDeFiDominance { get; set; }
+        public decimal? TopCoinDeFiDominance { get; set; }
     }
 }

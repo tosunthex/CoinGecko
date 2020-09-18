@@ -20,5 +20,12 @@ namespace CoinGecko.Test
             var result = await _client.GlobalClient.GetGlobal();
             Assert.NotNull(result.Data);
         }
+
+        [Fact]
+        public async Task Global_DeFi_Data_Must_Not_Null()
+        {
+            var result = await _client.GlobalClient.GetGlobalDeFi();
+            Assert.NotNull(result.Data);
+        }
     }
 }

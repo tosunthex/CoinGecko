@@ -10,5 +10,6 @@ namespace CoinGecko.Interfaces
         /// </summary>
         /// <returns></returns>
         Task<Global> GetGlobal();
+        Task<Global> GetGlobalDeFi();
     }
 }

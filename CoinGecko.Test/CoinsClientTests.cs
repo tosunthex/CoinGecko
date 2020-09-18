@@ -34,21 +34,21 @@ namespace CoinGecko.Test
         {
             var result =
                 await _client.CoinsClient.GetAllCoinDataWithId("bitcoin", "false", false, true, false, false, true);
-            Assert.NotNull(result.MarketData.Sparkline7D);
+            Assert.IsType<double[]>(result.MarketData.Sparkline7D.Price);
         }
 
         [Fact]
         public async Task BTC_Block_Time_in_Minutes_Not_Null()
         {
             var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
-            Assert.NotNull(result.BlockTimeInMinutes);
+            Assert.IsType<long>(result.BlockTimeInMinutes);
         }
 
         [Fact]
         public async Task BTC_Coin_by_Id_Ticker_Must_Contains_trade_URL()
         {
             var result = await _client.CoinsClient.GetAllCoinDataWithId("bitcoin");
-            Assert.NotNull(result.Tickers.First().TradeUrl);
+            Assert.IsType<string>(result.Tickers.First().TradeUrl);
         }
 
         [Fact]

@@ -10,6 +10,11 @@ namespace CoinGecko.Interfaces
         /// </summary>
         /// <returns></returns>
         Task<Global> GetGlobal();
+
+        /// <summary>
+        /// Get cryptocurrency global decentralized finance(defi) data
+        /// </summary>
+        /// <returns></returns>
         Task<Global> GetGlobalDeFi();
     }
 }

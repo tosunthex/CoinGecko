@@ -81,6 +81,13 @@ namespace CoinGecko.Entities.Response.Coins
 
         [JsonProperty("ath_date")] public Dictionary<string, DateTimeOffset> AthDate { get; set; }
 
+        [JsonProperty("atl")] public Dictionary<string, double> Atl { get; set; }
+
+        [JsonProperty("atl_change_percentage")]
+        public Dictionary<string, double> AtlChangePercentage { get; set; }
+
+        [JsonProperty("atl_date")] public Dictionary<string, DateTimeOffset> AtlDate { get; set; }
+
         [JsonProperty("sparkline_7d", NullValueHandling = NullValueHandling.Ignore)]
         public SparklineIn7D Sparkline7D { get; set; }
 

@@ -72,6 +72,15 @@ namespace CoinGecko.Test
         }
 
         [Fact]
+        public async Task Coin_by_Id_Must_Contains_ATL_Details()
+        {
+            var result = await _allCoinDataBitCoin.ConfigureAwait(false);
+            Assert.NotNull(result.MarketData.Atl);
+            Assert.NotNull(result.MarketData.AtlDate);
+            Assert.NotNull(result.MarketData.AtlChangePercentage);
+        }
+
+        [Fact]
         public async Task Coin_By_Id_Must_Return_BTC()
         {
             var result = await _allCoinDataBitCoin.ConfigureAwait(false);

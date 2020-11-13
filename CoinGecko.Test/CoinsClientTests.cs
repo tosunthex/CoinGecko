@@ -244,7 +244,7 @@ namespace CoinGecko.Test
         public async Task Is_Anomaly_Field_Null_Check()
         {
             
-            var coinList = new List<string>{"blockplus","bmtoken"};
+            var coinList = new List<string>{"bmtoken"};
             
             foreach (var coinId in coinList)
             {

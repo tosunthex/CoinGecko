@@ -1,0 +1,9 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=26e83e0e_002Da13f_002D48a7_002D9ca7_002D3efd074282c5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Coin_by_Id_Must_Contains_ATL_Details" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::EA09EF69-D739-4CEE-805B-B3C2BBE9B196::.NETCoreApp,Version=v2.1::CoinGecko.Test.CoinsClientTests.Coin_by_Id_Must_Contains_ATL_Details&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=af4650ac_002D273c_002D4d5f_002D8d6b_002D81b62104a0ee/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from &amp;lt;CoinGecko.Test&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Project Location="C:\Users\leven\Source\Repos\CoinGecko\CoinGecko.Test" Presentation="&amp;lt;CoinGecko.Test&amp;gt;" /&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

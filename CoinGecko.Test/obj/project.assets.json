@@ -1591,7 +1591,7 @@
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
         }
       },
-      "CoinGeckoAsyncApi/1.3.1": {
+      "CoinGeckoAsyncApi/1.3.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -5623,7 +5623,7 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "CoinGeckoAsyncApi/1.3.1": {
+    "CoinGeckoAsyncApi/1.3.2": {
       "type": "project",
       "path": "../CoinGecko/CoinGecko.csproj",
       "msbuildProject": "../CoinGecko/CoinGecko.csproj"
@@ -5631,7 +5631,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "CoinGeckoAsyncApi >= 1.3.1",
+      "CoinGeckoAsyncApi >= 1.3.2",
       "Microsoft.NET.Test.Sdk >= 16.1.1",
       "Microsoft.NETCore.App >= 2.1.0",
       "xunit >= 2.4.0",
@@ -5639,25 +5639,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bgmis\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\leven\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bgmis\\Source\\Repos\\CoinGecko\\CoinGecko.Test\\CoinGecko.Test.csproj",
+      "projectUniqueName": "C:\\Users\\leven\\Source\\Repos\\CoinGecko\\CoinGecko.Test\\CoinGecko.Test.csproj",
       "projectName": "CoinGecko.Test",
-      "projectPath": "C:\\Users\\bgmis\\Source\\Repos\\CoinGecko\\CoinGecko.Test\\CoinGecko.Test.csproj",
-      "packagesPath": "C:\\Users\\bgmis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bgmis\\Source\\Repos\\CoinGecko\\CoinGecko.Test\\obj\\",
+      "projectPath": "C:\\Users\\leven\\Source\\Repos\\CoinGecko\\CoinGecko.Test\\CoinGecko.Test.csproj",
+      "packagesPath": "C:\\Users\\leven\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\leven\\Source\\Repos\\CoinGecko\\CoinGecko.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\bgmis\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\leven\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -5669,8 +5668,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\bgmis\\Source\\Repos\\CoinGecko\\CoinGecko\\CoinGecko.csproj": {
-              "projectPath": "C:\\Users\\bgmis\\Source\\Repos\\CoinGecko\\CoinGecko\\CoinGecko.csproj"
+            "C:\\Users\\leven\\Source\\Repos\\CoinGecko\\CoinGecko\\CoinGecko.csproj": {
+              "projectPath": "C:\\Users\\leven\\Source\\Repos\\CoinGecko\\CoinGecko\\CoinGecko.csproj"
             }
           }
         }
@@ -5713,7 +5712,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

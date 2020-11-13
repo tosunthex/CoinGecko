@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v2.1": {
       "CoinGecko.Test/1.0.0": {
         "dependencies": {
-          "CoinGeckoAsyncApi": "1.3.1",
+          "CoinGeckoAsyncApi": "1.3.2",
           "Microsoft.NET.Test.Sdk": "16.1.1",
           "xunit": "2.4.0",
           "xunit.runner.visualstudio": "2.4.0"
@@ -939,7 +939,7 @@
           "Microsoft.NET.Test.Sdk": "16.1.1"
         }
       },
-      "CoinGeckoAsyncApi/1.3.1": {
+      "CoinGeckoAsyncApi/1.3.2": {
         "dependencies": {
           "Newtonsoft.Json": "12.0.1"
         },
@@ -1466,7 +1466,7 @@
       "path": "xunit.runner.visualstudio/2.4.0",
       "hashPath": "xunit.runner.visualstudio.2.4.0.nupkg.sha512"
     },
-    "CoinGeckoAsyncApi/1.3.1": {
+    "CoinGeckoAsyncApi/1.3.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

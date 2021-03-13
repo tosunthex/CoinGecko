@@ -18,25 +18,25 @@ namespace CoinGecko.Entities.Response.Coins
         public Uri Image { get; set; }
 
         [JsonProperty("current_price")]
-        public double? CurrentPrice { get; set; }
+        public decimal? CurrentPrice { get; set; }
 
         [JsonProperty("market_cap")]
-        public double? MarketCap { get; set; }
+        public decimal? MarketCap { get; set; }
 
         [JsonProperty("total_volume")]
-        public double? TotalVolume { get; set; }
+        public decimal? TotalVolume { get; set; }
 
         [JsonProperty("high_24h")]
-        public double? High24H { get; set; }
+        public decimal? High24H { get; set; }
 
         [JsonProperty("low_24h")]
-        public double? Low24H { get; set; }
+        public decimal? Low24H { get; set; }
 
         [JsonProperty("ath")]
-        public double? Ath { get; set; }
+        public decimal? Ath { get; set; }
 
         [JsonProperty("ath_change_percentage")]
-        public double? AthChangePercentage { get; set; }
+        public decimal? AthChangePercentage { get; set; }
 
         [JsonProperty("ath_date")]
         public DateTimeOffset AthDate { get; set; }
@@ -51,24 +51,24 @@ namespace CoinGecko.Entities.Response.Coins
         public SparklineIn7D SparklineIn7D { get; set; }
         
         [JsonProperty("price_change_percentage_14d_in_currency",NullValueHandling = NullValueHandling.Ignore)]
-        public double? PriceChangePercentage14DInCurrency { get; set; }
+        public decimal? PriceChangePercentage14DInCurrency { get; set; }
 
         [JsonProperty("price_change_percentage_1h_in_currency",NullValueHandling = NullValueHandling.Ignore)]
-        public double? PriceChangePercentage1HInCurrency { get; set; }
+        public decimal? PriceChangePercentage1HInCurrency { get; set; }
 
         [JsonProperty("price_change_percentage_1y_in_currency",NullValueHandling = NullValueHandling.Ignore)]
-        public double? PriceChangePercentage1YInCurrency { get; set; }
+        public decimal? PriceChangePercentage1YInCurrency { get; set; }
 
         [JsonProperty("price_change_percentage_200d_in_currency",NullValueHandling = NullValueHandling.Ignore)]
-        public double? PriceChangePercentage200DInCurrency { get; set; }
+        public decimal? PriceChangePercentage200DInCurrency { get; set; }
 
         [JsonProperty("price_change_percentage_24h_in_currency",NullValueHandling = NullValueHandling.Ignore)]
-        public double? PriceChangePercentage24HInCurrency { get; set; }
+        public decimal? PriceChangePercentage24HInCurrency { get; set; }
 
         [JsonProperty("price_change_percentage_30d_in_currency",NullValueHandling = NullValueHandling.Ignore)]
-        public double? PriceChangePercentage30DInCurrency { get; set; }
+        public decimal? PriceChangePercentage30DInCurrency { get; set; }
 
         [JsonProperty("price_change_percentage_7d_in_currency",NullValueHandling = NullValueHandling.Ignore)]
-        public double? PriceChangePercentage7DInCurrency { get; set; }
+        public decimal? PriceChangePercentage7DInCurrency { get; set; }
     }
 }

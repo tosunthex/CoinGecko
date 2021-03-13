@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CoinGecko.Entities.Response.Simple
 {
-    public class TokenPrice:Dictionary<string,Dictionary<string,double?>>
+    public class TokenPrice:Dictionary<string,Dictionary<string,decimal?>>
     {
 
     }

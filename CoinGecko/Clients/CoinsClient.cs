@@ -37,14 +37,29 @@ namespace CoinGecko.Clients
         {
             return await GetAsync<IReadOnlyList<CoinList>>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinList)).ConfigureAwait(false);
         }
+        public async Task<IReadOnlyList<CoinList>> GetCoinList(bool includePlatform)
+        {
+            return await GetAsync<IReadOnlyList<CoinList>>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinList,
+                new Dictionary<string, object>
+                {
+                    {
+                        "include_platform",includePlatform.ToString()
+                    }
+                })).ConfigureAwait(false);
+        }
 
         public async Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency)
         {
-            return await GetCoinMarkets(vsCurrency, new string[] { }, null, null, null, false, null).ConfigureAwait(false);
+            return await GetCoinMarkets(vsCurrency, new string[] { }, null, null, null, false, null,null).ConfigureAwait(false);
         }
 
         public async Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency, string[] ids, string order, int? perPage,
             int? page, bool sparkline, string priceChangePercentage)
+        {
+            return await GetCoinMarkets(vsCurrency, ids, order, perPage, page, sparkline, priceChangePercentage,null).ConfigureAwait(false);
+        }
+        public async Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency, string[] ids, string order, int? perPage,
+            int? page, bool sparkline, string priceChangePercentage,string category)
         {
             return await GetAsync<List<CoinMarkets>>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinMarkets,
                 new Dictionary<string, object>
@@ -54,7 +69,8 @@ namespace CoinGecko.Clients
                     {"per_page", perPage},
                     {"page", page},
                     {"sparkline", sparkline},
-                    {"price_change_percentage", priceChangePercentage}
+                    {"price_change_percentage", priceChangePercentage},
+                    {"category",category}
                 })).ConfigureAwait(false);
         }
 

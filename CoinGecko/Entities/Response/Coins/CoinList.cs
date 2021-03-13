@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace CoinGecko.Entities.Response.Coins
@@ -12,5 +13,8 @@ namespace CoinGecko.Entities.Response.Coins
 
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        [JsonProperty("platforms")]
+        public Dictionary<string,string> Platforms { get; set; }
     }
 }

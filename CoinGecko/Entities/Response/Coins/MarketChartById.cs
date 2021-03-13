@@ -5,12 +5,12 @@ namespace CoinGecko.Entities.Response.Coins
     public class MarketChartById
     {
         [JsonProperty("prices")]
-        public double[][] Prices { get; set; }
+        public decimal[][] Prices { get; set; }
 
         [JsonProperty("market_caps")]
-        public double[][] MarketCaps { get; set; }
+        public decimal[][] MarketCaps { get; set; }
 
         [JsonProperty("total_volumes")]
-        public double[][] TotalVolumes { get; set; }
+        public decimal[][] TotalVolumes { get; set; }
     }
 }

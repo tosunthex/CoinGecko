@@ -9,22 +9,22 @@ namespace CoinGecko.Entities.Response.Coins
         public long? MarketCapRank { get; set; }
 
         [JsonProperty("price_change_24h")]
-        public double? PriceChange24H { get; set; }
+        public decimal? PriceChange24H { get; set; }
 
         [JsonProperty("price_change_percentage_24h")]
-        public double? PriceChangePercentage24H { get; set; }
+        public decimal? PriceChangePercentage24H { get; set; }
 
         [JsonProperty("market_cap_change_24h")]
-        public double? MarketCapChange24H { get; set; }
+        public decimal? MarketCapChange24H { get; set; }
 
         [JsonProperty("market_cap_change_percentage_24h")]
-        public double? MarketCapChangePercentage24H { get; set; }
+        public decimal? MarketCapChangePercentage24H { get; set; }
 
         [JsonProperty("circulating_supply")]
         public string CirculatingSupply { get; set; }
 
         [JsonProperty("total_supply")]
-        public double? TotalSupply { get; set; }
+        public decimal? TotalSupply { get; set; }
         
     }
 }

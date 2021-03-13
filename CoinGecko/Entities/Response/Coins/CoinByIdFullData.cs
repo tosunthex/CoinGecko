@@ -74,17 +74,17 @@ namespace CoinGecko.Entities.Response.Coins
 
     public class CoinByIdMarketData : MarketData
     {
-        [JsonProperty("ath")] public Dictionary<string, double> Ath { get; set; }
+        [JsonProperty("ath")] public Dictionary<string, decimal> Ath { get; set; }
 
         [JsonProperty("ath_change_percentage")]
-        public Dictionary<string, double> AthChangePercentage { get; set; }
+        public Dictionary<string, decimal> AthChangePercentage { get; set; }
 
         [JsonProperty("ath_date")] public Dictionary<string, DateTimeOffset> AthDate { get; set; }
 
-        [JsonProperty("atl")] public Dictionary<string, double> Atl { get; set; }
+        [JsonProperty("atl")] public Dictionary<string, decimal> Atl { get; set; }
 
         [JsonProperty("atl_change_percentage")]
-        public Dictionary<string, double> AtlChangePercentage { get; set; }
+        public Dictionary<string, decimal> AtlChangePercentage { get; set; }
 
         [JsonProperty("atl_date")] public Dictionary<string, DateTimeOffset> AtlDate { get; set; }
 

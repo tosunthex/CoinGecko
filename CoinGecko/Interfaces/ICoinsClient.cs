@@ -32,10 +32,20 @@ namespace CoinGecko.Interfaces
         Task<IReadOnlyList<CoinList>> GetCoinList();
 
         /// <summary>
+        /// List all supported coins id, name and symbol
+        /// </summary>
+        /// <param name="includePlatform"></param>
+        /// <returns></returns>
+        Task<IReadOnlyList<CoinList>> GetCoinList(bool includePlatform);
+
+
+        /// <summary>
         /// List all supported coins price, market cap, volume, and market related data (no pagination required)
         /// </summary>
         /// <param name="vsCurrency">The target currency of market data</param>
         /// <returns></returns>
+        ///
+
         Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency);
 
         /// <summary>
@@ -43,6 +53,7 @@ namespace CoinGecko.Interfaces
         /// </summary>
         /// <param name="vsCurrency">The target currency of market data</param>
         /// <param name="ids">List of coin id to filter if you want specific results in comma-separated</param>
+        /// <param name="category">filter by coin category, only decentralized_finance_defi is supported at the moment</param>
         /// <param name="order">Results ordered by</param>
         /// <param name="perPage">Total results per page</param>
         /// <param name="page">Page through results</param>
@@ -50,7 +61,7 @@ namespace CoinGecko.Interfaces
         /// <param name="priceChangePercentage">Include price change percentage in 1h, 24h, 7d, 14d, 30d, 200d, 1y (eg. '1h,24h,7d' comma-separated, invalid values will be discarded)</param>
         /// <returns></returns>
         Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency, string[] ids, string order, int? perPage, int? page,
-            bool sparkline, string priceChangePercentage);
+            bool sparkline, string priceChangePercentage,string category);
 
         /// <summary>
         /// Get current data (name, price, market, … including exchange tickers) for a coin.

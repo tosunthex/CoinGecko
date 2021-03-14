@@ -45,7 +45,7 @@ namespace CoinGecko.Test
         public async Task Bitcoin_Sparkline7d_Equal_To_Null()
         {
             var result = await _allCoinDataBitCoinWithParameter.ConfigureAwait(false);
-            Assert.IsType<double[]>(result.MarketData.Sparkline7D.Price);
+            Assert.IsType<decimal[]>(result.MarketData.Sparkline7D.Price);
         }
 
         [Fact]
@@ -132,7 +132,7 @@ namespace CoinGecko.Test
         public async Task Coin_Markets_VsCurrency_For_USD_Ripple_Sparkline_Null()
         {
             var result = await _client.CoinsClient.GetCoinMarkets("usd", new[] {"ripple"}, OrderField.MarketCapDesc, 1,
-                1, false, "1h");
+                1, false, "1h",null);
             Assert.Single(result);
             Assert.Equal("ripple", result[0].Id);
             Assert.Null(result[0].SparklineIn7D);
@@ -202,7 +202,7 @@ namespace CoinGecko.Test
         public async Task Price_Change_Percentage_By_Days_Must_Not_Null()
         {
             var result = await _client.CoinsClient.GetCoinMarkets("usd", new[] {"bitcoin"}, null, null, null, false,
-                "1h,24h,7d,14d,30d,200d,1y");
+                "1h,24h,7d,14d,30d,200d,1y","");
             Assert.NotNull(result.First().PriceChangePercentage1HInCurrency);
             Assert.NotNull(result.First().PriceChangePercentage24HInCurrency);
             Assert.NotNull(result.First().PriceChangePercentage7DInCurrency);
@@ -216,7 +216,7 @@ namespace CoinGecko.Test
         public async Task Price_Change_Percentage_By_Days_Must_Null()
         {
             var result =
-                await _client.CoinsClient.GetCoinMarkets("usd", new[] {"bitcoin"}, null, null, null, false, null);
+                await _client.CoinsClient.GetCoinMarkets("usd", new[] {"bitcoin"}, null, null, null, false, null,"");
             Assert.Null(result.First().PriceChangePercentage1HInCurrency);
             Assert.Null(result.First().PriceChangePercentage24HInCurrency);
             Assert.Null(result.First().PriceChangePercentage7DInCurrency);
@@ -233,12 +233,12 @@ namespace CoinGecko.Test
             Assert.NotNull(result.Tickers[0].TrustScore);
         }
 
-        [Fact]
+        /*[Fact]
         public async Task Qorvo_LastUpdated_Type_Must_Be_DateTimeOffset()
         {
             var result  = await _client.CoinsClient.GetAllCoinDataWithId("qorvo-inc");
             Assert.IsType<DateTimeOffset>(result.MarketData.LastUpdated);
-        }
+        }*/
         
         [Fact]
         public async Task Is_Anomaly_Field_Null_Check()

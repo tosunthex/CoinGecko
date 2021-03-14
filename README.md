@@ -12,7 +12,7 @@ If you think something is broken, something is missing or have any questions, pl
 ## Donations
 Donations are greatly appreciated and a motivation to keep improving.
 
-**BTC**:  1GoXW2b5dwnXD5Di8o8LcU1AKoWzR5kU1V
+**BTC**:  1Czb4Z4Xj2rmvpN8YuNMc6dr7XNFuYQF5J
 
 ## Installation
 

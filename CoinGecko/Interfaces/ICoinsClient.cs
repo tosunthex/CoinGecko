@@ -107,16 +107,19 @@ namespace CoinGecko.Interfaces
         /// <param name="exchangeIds">filter results by exchange_ids</param>
         /// <returns></returns>
         Task<TickerById> GetTickerByCoinId(string id, string[] exchangeIds, int? page);
+
         /// <summary>
         /// Get coin tickers (paginated to 100 items)
         /// </summary>
         /// <param name="id">coin id</param>
-        /// <param name="page">Page through results</param>
         /// <param name="exchangeIds">filter results by exchange_ids</param>
+        /// <param name="page">Page through results</param>
         /// <param name="includeExchangeLogo"></param>
         /// <param name="order"></param>
+        /// <param name="depth"></param>
         /// <returns></returns>
-        Task<TickerById> GetTickerByCoinId(string id, string[] exchangeIds, int? page,string includeExchangeLogo,string order);
+        Task<TickerById> GetTickerByCoinId(string id, string[] exchangeIds, int? page, string includeExchangeLogo,
+            string order, string depth);
 
         /// <summary>
         /// Get historical data (name, price, market, stats) at a given date for a coin

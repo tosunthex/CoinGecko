@@ -12,13 +12,17 @@ namespace CoinGecko.Entities.Response.Shared
 
         [JsonProperty("market")] public Market Market { get; set; }
 
-        [JsonProperty("last")] public double? Last { get; set; }
+        [JsonProperty("last")] public decimal? Last { get; set; }
 
-        [JsonProperty("converted_last")] public Dictionary<string, double> ConvertedLast { get; set; }
+        [JsonProperty("cost_to_move_up_usd")] public decimal CostToMoveUpUsd { get; set; }
 
-        [JsonProperty("volume")] public double? Volume { get; set; }
+        [JsonProperty("cost_to_move_down_usd")] public decimal CostToMoveDownUsd { get; set; }
 
-        [JsonProperty("converted_volume")] public Dictionary<string, double> ConvertedVolume { get; set; }
+        [JsonProperty("converted_last")] public Dictionary<string, decimal> ConvertedLast { get; set; }
+
+        [JsonProperty("volume")] public decimal? Volume { get; set; }
+
+        [JsonProperty("converted_volume")] public Dictionary<string, decimal> ConvertedVolume { get; set; }
 
         [JsonProperty("trust_score")] public string TrustScore { get; set; }
 

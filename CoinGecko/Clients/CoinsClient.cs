@@ -106,10 +106,10 @@ namespace CoinGecko.Clients
         
         public async Task<TickerById> GetTickerByCoinId(string id,string[] exchangeIds, int? page)
         {
-            return await GetTickerByCoinId(id, exchangeIds, page,"",OrderField.TrustScoreDesc).ConfigureAwait(false);
+            return await GetTickerByCoinId(id, exchangeIds, page,"",OrderField.TrustScoreDesc,false).ConfigureAwait(false);
         }
 
-        public async Task<TickerById> GetTickerByCoinId(string id, string[] exchangeIds, int? page, string includeExchangeLogo, string order)
+        public async Task<TickerById> GetTickerByCoinId(string id, string[] exchangeIds, int? page, string includeExchangeLogo, string order,bool depth)
         {
             return await GetAsync<TickerById>(QueryStringService.AppendQueryString(
                 CoinsApiEndPoints.TickerByCoinId(id), new Dictionary<string, object>
@@ -117,7 +117,8 @@ namespace CoinGecko.Clients
                     {"page", page},
                     {"exchange_ids",string.Join(",",exchangeIds)},
                     {"include_exchange_logo",includeExchangeLogo},
-                    {"order",order}
+                    {"order",order},
+                    {"depth",depth.ToString()}
                 })).ConfigureAwait(false);
         }
         public async Task<CoinFullData> GetHistoryByCoinId(string id, string date, string localization)

@@ -133,11 +133,17 @@ namespace CoinGecko.Clients
 
         public async Task<MarketChartById> GetMarketChartsByCoinId(string id, string vsCurrency, string days)
         {
+            return await GetMarketChartsByCoinId(id, vsCurrency, days, "");
+        }
+        public async Task<MarketChartById> GetMarketChartsByCoinId(string id, string vsCurrency, string days,string interval)
+        {
             return await GetAsync<MarketChartById>(QueryStringService.AppendQueryString(
-                CoinsApiEndPoints.MarketChartByCoinId(id), new Dictionary<string, object>
+                CoinsApiEndPoints.MarketChartByCoinId(id),
+                new Dictionary<string, object>
                 {
                     {"vs_currency", string.Join(",",vsCurrency)},
-                    {"days", days}
+                    {"days", days},
+                    {"intervals",interval}
                 })).ConfigureAwait(false);
         }
 

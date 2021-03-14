@@ -119,7 +119,7 @@ namespace CoinGecko.Interfaces
         /// <param name="depth"></param>
         /// <returns></returns>
         Task<TickerById> GetTickerByCoinId(string id, string[] exchangeIds, int? page, string includeExchangeLogo,
-            string order, string depth);
+            string order, bool depth);
 
         /// <summary>
         /// Get historical data (name, price, market, stats) at a given date for a coin
@@ -138,6 +138,24 @@ namespace CoinGecko.Interfaces
         /// <param name="days">Data up to number of days ago (eg. 1,14,30,max)</param>
         /// <returns></returns>
         Task<MarketChartById> GetMarketChartsByCoinId(string id, string vsCurrency, string days);
+
+        /// <summary>
+        /// Get historical market data include price, market cap, and 24h volume (granularity auto)
+        /// </summary>
+        /// <param name="id">coin id</param>
+        /// <param name="vsCurrency">The target currency of market data (usd, eur, jpy, etc.)</param>
+        /// <param name="days">Data up to number of days ago (eg. 1,14,30,max)</param>
+        /// <returns></returns>
+        Task<MarketChartById> GetMarketChartsByCoinId(string id, string vsCurrency, string days,string interval);
+
+        /// <summary>
+        /// Get historical market data include price, market cap, and 24h volume within a range of timestamp
+        /// </summary>
+        /// <param name="id">pass the coin id </param>
+        /// <param name="vsCurrency">The target currency of market data</param>
+        /// <param name="from">From date in UNIX Timestamp</param>
+        /// <param name="to">To date in UNIX Timestamp</param>
+        /// <returns></returns>
         Task<MarketChartById> GetMarketChartRangeByCoinId(string id, string vsCurrency, string from,string to);
     }
 }

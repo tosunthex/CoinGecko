@@ -139,9 +139,9 @@ namespace CoinGecko.Test
         }
 
         [Fact]
-        public async Task Coin_Stellar_Market_Chart_Price_Lenght_Must_Equal_to_Marketcaps_Lenght()
+        public async Task Bitcoin_Market_Chart_Price_Lenght_Must_Equal_to_Marketcaps_Lenght()
         {
-            var result = await _client.CoinsClient.GetMarketChartsByCoinId("stellar", "usd", "2");
+            var result = await _client.CoinsClient.GetMarketChartsByCoinId("bitcoin", "usd", "max");
             Assert.Equal(result.Prices.Length, result.MarketCaps.Length);
         }
 

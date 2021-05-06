@@ -47,7 +47,7 @@ namespace CoinGecko.Entities.Response.Contract
         public string CountryOrigin { get; set; }
 
         [JsonProperty("genesis_date")]
-        public DateTimeOffset GenesisDate { get; set; }
+        public DateTimeOffset? GenesisDate { get; set; }
 
         [JsonProperty("contract_address")]
         public string ContractAddress { get; set; }
@@ -91,7 +91,7 @@ namespace CoinGecko.Entities.Response.Contract
         public object[] StatusUpdates { get; set; }
 
         [JsonProperty("last_updated")]
-        public DateTimeOffset LastUpdated { get; set; }
+        public DateTimeOffset? LastUpdated { get; set; }
 
         [JsonProperty("tickers")]
         public Ticker[] Tickers { get; set; }
@@ -99,10 +99,10 @@ namespace CoinGecko.Entities.Response.Contract
     public partial class IcoData
     {
         [JsonProperty("ico_start_date")]
-        public DateTimeOffset IcoStartDate { get; set; }
+        public DateTimeOffset? IcoStartDate { get; set; }
 
         [JsonProperty("ico_end_date")]
-        public DateTimeOffset IcoEndDate { get; set; }
+        public DateTimeOffset? IcoEndDate { get; set; }
 
         [JsonProperty("short_desc")]
         public string ShortDesc { get; set; }

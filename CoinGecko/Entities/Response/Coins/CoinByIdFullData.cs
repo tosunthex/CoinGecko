@@ -19,7 +19,7 @@ namespace CoinGecko.Entities.Response.Coins
         [JsonProperty("country_origin")] public string CountryOrigin { get; set; }
 
         [JsonProperty("genesis_date", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset GenesisDate { get; set; }
+        public DateTimeOffset? GenesisDate { get; set; }
 
         [JsonProperty("market_cap_rank")] public long? MarketCapRank { get; set; }
 
@@ -79,18 +79,18 @@ namespace CoinGecko.Entities.Response.Coins
         [JsonProperty("ath_change_percentage")]
         public Dictionary<string, decimal> AthChangePercentage { get; set; }
 
-        [JsonProperty("ath_date")] public Dictionary<string, DateTimeOffset> AthDate { get; set; }
+        [JsonProperty("ath_date")] public Dictionary<string, DateTimeOffset?> AthDate { get; set; }
 
         [JsonProperty("atl")] public Dictionary<string, decimal> Atl { get; set; }
 
         [JsonProperty("atl_change_percentage")]
         public Dictionary<string, decimal> AtlChangePercentage { get; set; }
 
-        [JsonProperty("atl_date")] public Dictionary<string, DateTimeOffset> AtlDate { get; set; }
+        [JsonProperty("atl_date")] public Dictionary<string, DateTimeOffset?> AtlDate { get; set; }
 
         [JsonProperty("sparkline_7d", NullValueHandling = NullValueHandling.Ignore)]
         public SparklineIn7D Sparkline7D { get; set; }
 
-        [JsonProperty("last_updated", NullValueHandling = NullValueHandling.Ignore)] public DateTimeOffset LastUpdated { get; set; }
+        [JsonProperty("last_updated", NullValueHandling = NullValueHandling.Ignore)] public DateTimeOffset? LastUpdated { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace CoinGecko.Entities.Response.StatusUpdates
         public string Category { get; set; }
 
         [JsonProperty("created_at")]
-        public DateTimeOffset CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get; set; }
 
         [JsonProperty("user")]
         public string User { get; set; }

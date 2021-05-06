@@ -26,11 +26,11 @@ namespace CoinGecko.Entities.Response.Shared
 
         [JsonProperty("trust_score")] public string TrustScore { get; set; }
 
-        [JsonProperty("timestamp")] public DateTimeOffset Timestamp { get; set; }
+        [JsonProperty("timestamp")] public DateTimeOffset? Timestamp { get; set; }
 
-        [JsonProperty("last_traded_at")] public DateTimeOffset LastTradedAt { get; set; }
+        [JsonProperty("last_traded_at")] public DateTimeOffset? LastTradedAt { get; set; }
 
-        [JsonProperty("last_fetch_at")] public DateTimeOffset LastFetchAt { get; set; }
+        [JsonProperty("last_fetch_at")] public DateTimeOffset? LastFetchAt { get; set; }
 
         [JsonProperty("is_anomaly", NullValueHandling = NullValueHandling.Ignore)] public bool IsAnomaly { get; set; }
 

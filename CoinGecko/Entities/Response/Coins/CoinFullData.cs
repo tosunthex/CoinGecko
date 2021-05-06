@@ -25,7 +25,7 @@ namespace CoinGecko.Entities.Response.Coins
         public PublicInterestStats PublicInterestStats { get; set; }
 
         [JsonProperty("last_updated", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset LastUpdated { get; set; }
+        public DateTimeOffset? LastUpdated { get; set; }
 
         [JsonProperty("localization", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, string> Localization { get; set; }

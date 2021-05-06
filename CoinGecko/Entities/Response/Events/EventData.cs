@@ -18,10 +18,10 @@ namespace CoinGecko.Entities.Response.Events
         public string Organizer { get; set; }
 
         [JsonProperty("start_date")]
-        public DateTimeOffset StartDate { get; set; }
+        public DateTimeOffset? StartDate { get; set; }
 
         [JsonProperty("end_date")]
-        public DateTimeOffset EndDate { get; set; }
+        public DateTimeOffset? EndDate { get; set; }
 
         [JsonProperty("website")]
         public Uri Website { get; set; }

@@ -39,13 +39,13 @@ namespace CoinGecko.Entities.Response.Coins
         public decimal? AthChangePercentage { get; set; }
 
         [JsonProperty("ath_date")]
-        public DateTimeOffset AthDate { get; set; }
+        public DateTimeOffset? AthDate { get; set; }
 
         [JsonProperty("roi")]
         public Roi Roi { get; set; }
 
         [JsonProperty("last_updated")]
-        public DateTimeOffset LastUpdated { get; set; }
+        public DateTimeOffset? LastUpdated { get; set; }
         
         [JsonProperty("sparkline_in_7d",NullValueHandling = NullValueHandling.Ignore)]
         public SparklineIn7D SparklineIn7D { get; set; }

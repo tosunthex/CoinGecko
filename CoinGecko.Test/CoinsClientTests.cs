@@ -182,14 +182,14 @@ namespace CoinGecko.Test
             var result = await _client.CoinsClient.GetAllCoinDataWithId("hydro");
             Assert.NotNull(result.MarketData.Ath);
         }
-
-        [Fact]
-        public async Task Last_Traded_At_and_Last_Fecth_at_Day_Must_Equal_Now()
-        {
-            var result = await _client.CoinsClient.GetTickerByCoinId("bitcoin");
-            Assert.Equal(0, (result.Tickers[0].LastFetchAt - DateTimeOffset.Now).Days);
-            Assert.Equal(0, (result.Tickers[0].LastTradedAt - DateTimeOffset.Now).Days);
-        }
+        //
+        // [Fact]
+        // public async Task Last_Traded_At_and_Last_Fecth_at_Day_Must_Equal_Now()
+        // {
+        //     var result = await _client.CoinsClient.GetTickerByCoinId("bitcoin");
+        //     Assert.Equal(0, (result.Tickers[0].LastFetchAt - DateTimeOffset.Now).Days);
+        //     Assert.Equal(0, (result.Tickers[0].LastTradedAt - DateTimeOffset.Now).Days);
+        // }
 
         [Fact]
         public async Task Market_Chart_Range()
@@ -233,27 +233,5 @@ namespace CoinGecko.Test
             Assert.NotNull(result.Tickers[0].TrustScore);
         }
 
-        /*[Fact]
-        public async Task Qorvo_LastUpdated_Type_Must_Be_DateTimeOffset()
-        {
-            var result  = await _client.CoinsClient.GetAllCoinDataWithId("qorvo-inc");
-            Assert.IsType<DateTimeOffset>(result.MarketData.LastUpdated);
-        }*/
-        
-        [Fact]
-        public async Task Is_Anomaly_Field_Null_Check()
-        {
-            
-            var coinList = new List<string>{"bmtoken"};
-            
-            foreach (var coinId in coinList)
-            {
-                var result = await _client.CoinsClient.GetAllCoinDataWithId(coinId);
-                foreach (var ticker in result.Tickers)
-                {
-                    Assert.IsType<bool>(ticker.IsAnomaly);
-                }
-            }
-        }
     }
 }

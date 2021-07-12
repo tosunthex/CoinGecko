@@ -143,7 +143,7 @@ namespace CoinGecko.Clients
                 {
                     {"vs_currency", string.Join(",",vsCurrency)},
                     {"days", days},
-                    {"intervals",interval}
+                    {"interval",interval}
                 })).ConfigureAwait(false);
         }
 

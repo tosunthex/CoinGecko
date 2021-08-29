@@ -79,6 +79,9 @@ namespace CoinGecko.Entities.Response.Coins
         [JsonProperty("ath_change_percentage")]
         public Dictionary<string, decimal> AthChangePercentage { get; set; }
 
+        [JsonProperty("total_value_locked")]
+        public Dictionary<string, decimal> TotalValueLocked { get; set; }
+
         [JsonProperty("ath_date")] public Dictionary<string, DateTimeOffset?> AthDate { get; set; }
 
         [JsonProperty("atl")] public Dictionary<string, decimal> Atl { get; set; }

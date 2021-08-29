@@ -133,7 +133,7 @@ namespace CoinGecko.Clients
 
         public async Task<MarketChartById> GetMarketChartsByCoinId(string id, string vsCurrency, string days)
         {
-            return await GetMarketChartsByCoinId(id, vsCurrency, days, "");
+            return await GetMarketChartsByCoinId(id, vsCurrency, days, "").ConfigureAwait(false);
         }
         public async Task<MarketChartById> GetMarketChartsByCoinId(string id, string vsCurrency, string days,string interval)
         {

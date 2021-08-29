@@ -63,16 +63,6 @@ namespace CoinGecko.Clients
                 })).ConfigureAwait(false);
         }
 
-        // public async Task<TickerByExchangeId> GetStatusUpdateByExchangeId(string id)
-        // {
-        //     return await GetStatusUpdateByExchangeId(id).ConfigureAwait(false);
-        // }
-        //
-        // public async Task<TickerByExchangeId> GetStatusUpdateByExchangeId(string id, int perPage, string page)
-        // {
-        //     throw new System.NotImplementedException();
-        // }
-
         public async Task<IReadOnlyList<VolumeChart>> GetVolumeChartsByExchangeId(string id, int days)
         {
             return await GetAsync<IReadOnlyList<VolumeChart>>(QueryStringService.AppendQueryString(

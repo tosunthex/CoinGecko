@@ -32,15 +32,7 @@ namespace CoinGecko.Test
         {
             return await _client.CoinsClient.GetAllCoinDataWithId("bitcoin", "false", false, true, false, false, true);
         }
-/*
-        [Fact]
-        public async Task All_Coins_Data()
-        {
-            var coinList = await _client.CoinsClient.GetCoinList();
-            var result = await _client.CoinsClient.GetAllCoinsData("", coinList.Count, null, "", null);
-            Assert.NotNull(result);
-        }
-*/
+
         [Fact]
         public async Task Bitcoin_Sparkline7d_Equal_To_Null()
         {

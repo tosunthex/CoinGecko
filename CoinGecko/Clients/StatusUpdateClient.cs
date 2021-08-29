@@ -16,7 +16,7 @@ namespace CoinGecko.Clients
 
         public async Task<StatusUpdate> GetStatusUpdate()
         {
-            return await GetStatusUpdate("", "", null, null);
+            return await GetStatusUpdate("", "", null, null).ConfigureAwait(false);
         }
 
         public async Task<StatusUpdate> GetStatusUpdate(string category, string projectType, int? perPage, int? page)

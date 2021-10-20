@@ -138,13 +138,6 @@ namespace CoinGecko.Test
         }
 
         [Fact]
-        public async Task Coin_Stellar_Tickers()
-        {
-            var result = await _client.CoinsClient.GetTickerByCoinId("stellar");
-            Assert.Equal("Stellar", result.Name);
-        }
-
-        [Fact]
         public async Task Coin_Stellar_Tickers_For_Binance_And_Bitfinex()
         {
             var result = await _client.CoinsClient.GetTickerByCoinId("stellar", new[] {"binance"}, null);

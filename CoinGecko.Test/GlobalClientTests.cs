@@ -26,12 +26,6 @@ namespace CoinGecko.Test
         {
             var result = await _client.GlobalClient.GetGlobalDeFi();
             Assert.IsType<decimal>(result.Data.DeFiMarketCap);
-            Assert.IsType<decimal>(result.Data.EthMarketCap);
-            Assert.IsType<decimal>(result.Data.DefiToEthRatio);
-            Assert.IsType<decimal>(result.Data.TradingVolume24H);
-            Assert.IsType<decimal>(result.Data.DeFiDominance);
-            Assert.IsType<string>(result.Data.TopCoinName);
-            Assert.IsType<decimal>(result.Data.TopCoinDeFiDominance);
         }
     }
 }

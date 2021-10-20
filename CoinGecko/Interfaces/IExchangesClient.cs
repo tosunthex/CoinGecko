@@ -13,6 +13,14 @@ namespace CoinGecko.Interfaces
         Task<IReadOnlyList<Exchanges>> GetExchanges();
 
         /// <summary>
+        /// List all exchanges
+        /// </summary>
+        /// <param name="perPage">Total results per page</param>
+        /// <param name="page">page through results</param>
+        /// <returns></returns>
+        Task<IReadOnlyList<Exchanges>> GetExchanges(int perPage,string page);
+
+        /// <summary>
         /// List all supported markets id and name(no pagination required)
         /// </summary>
         /// <returns></returns>

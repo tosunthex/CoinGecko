@@ -147,11 +147,9 @@ namespace CoinGecko.Test
         [Fact]
         public async Task Coin_Stellar_Tickers_For_Binance_And_Bitfinex()
         {
-            var result = await _client.CoinsClient.GetTickerByCoinId("stellar", new[] {"binance", "bitfinex"}, null);
+            var result = await _client.CoinsClient.GetTickerByCoinId("stellar", new[] {"binance"}, null);
             Assert.Equal("Stellar", result.Name);
-            var exchangeList = result.Tickers.LastOrDefault()?.Market.Name + " " + result.Tickers[0].Market.Name;
-            Assert.Contains("Binance", exchangeList);
-            Assert.Contains("Bitfinex", exchangeList);
+            Assert.Equal("Binance", result.Tickers[0].Market.Name);
         }
 
         [Fact]

@@ -93,28 +93,28 @@ namespace CoinGecko.Entities.Response.Coins
         public Dictionary<string, decimal> PriceChange24HInCurrency { get; set; }
 
         [JsonProperty("price_change_percentage_1h_in_currency")]
-        public Dictionary<string, decimal> PriceChangePercentage1HInCurrency { get; set; }
+        public Dictionary<string, double> PriceChangePercentage1HInCurrency { get; set; }
 
         [JsonProperty("price_change_percentage_24h_in_currency")]
-        public Dictionary<string, decimal> PriceChangePercentage24HInCurrency { get; set; }
+        public Dictionary<string, double> PriceChangePercentage24HInCurrency { get; set; }
 
         [JsonProperty("price_change_percentage_7d_in_currency")]
-        public Dictionary<string, decimal> PriceChangePercentage7DInCurrency { get; set; }
+        public Dictionary<string, double> PriceChangePercentage7DInCurrency { get; set; }
 
         [JsonProperty("price_change_percentage_14d_in_currency")]
-        public Dictionary<string, decimal> PriceChangePercentage14DInCurrency { get; set; }
+        public Dictionary<string, double> PriceChangePercentage14DInCurrency { get; set; }
 
         [JsonProperty("price_change_percentage_30d_in_currency")]
-        public Dictionary<string, decimal> PriceChangePercentage30DInCurrency { get; set; }
+        public Dictionary<string, double> PriceChangePercentage30DInCurrency { get; set; }
 
         [JsonProperty("price_change_percentage_60d_in_currency")]
-        public Dictionary<string, decimal> PriceChangePercentage60DInCurrency { get; set; }
+        public Dictionary<string, double> PriceChangePercentage60DInCurrency { get; set; }
 
         [JsonProperty("price_change_percentage_200d_in_currency")]
-        public Dictionary<string, decimal> PriceChangePercentage200DInCurrency { get; set; }
+        public Dictionary<string, double> PriceChangePercentage200DInCurrency { get; set; }
 
         [JsonProperty("price_change_percentage_1y_in_currency")]
-        public Dictionary<string, decimal> PriceChangePercentage1YInCurrency { get; set; }
+        public Dictionary<string, double> PriceChangePercentage1YInCurrency { get; set; }
 
         [JsonProperty("market_cap_change_24h_in_currency")]
         public Dictionary<string, decimal> MarketCapChange24HInCurrency { get; set; }

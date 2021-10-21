@@ -17,7 +17,7 @@ namespace CoinGecko.Clients
 
         public async Task<T> GetAsync<T>(Uri resourceUri)
         {
-            _httpClient.DefaultRequestHeaders.Add("User-Agent", "your bot 0.1");
+            //_httpClient.DefaultRequestHeaders.Add("User-Agent", "your bot 0.1");
             var response = await _httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Get, resourceUri))
                 .ConfigureAwait(false);
             

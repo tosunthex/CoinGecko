@@ -16,7 +16,7 @@ before_build:
 build_script:
   - cmd: dotnet build -c Release
   #- cmd: dotnet publish --framework netstandard2.0 -c Release
-test_script:
-  - cmd: cd CoinGecko.Test
-  - cmd: dotnet test
+#test_script:
+#  - cmd: cd CoinGecko.Test
+#  - cmd: dotnet test
 deploy: off

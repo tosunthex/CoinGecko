@@ -12,7 +12,7 @@ namespace CoinGecko.Entities.Response.Coins
         public decimal? PriceChange24H { get; set; }
 
         [JsonProperty("price_change_percentage_24h")]
-        public decimal? PriceChangePercentage24H { get; set; }
+        public double? PriceChangePercentage24H { get; set; }
 
         [JsonProperty("market_cap_change_24h")]
         public decimal? MarketCapChange24H { get; set; }

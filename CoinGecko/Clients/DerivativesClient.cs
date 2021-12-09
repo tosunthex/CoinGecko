@@ -5,12 +5,13 @@ using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.Derivatives;
 using CoinGecko.Interfaces;
 using CoinGecko.Services;
+using Newtonsoft.Json;
 
 namespace CoinGecko.Clients
 {
     public class DerivativesClient:BaseApiClient,IDerivativesClient
     {
-        public DerivativesClient(HttpClient httpClient) : base(httpClient)
+        public DerivativesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
         {
         }
 

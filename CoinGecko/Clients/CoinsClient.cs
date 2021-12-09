@@ -6,12 +6,13 @@ using CoinGecko.Entities.Response.Coins;
 using CoinGecko.Interfaces;
 using CoinGecko.Parameters;
 using CoinGecko.Services;
+using Newtonsoft.Json;
 
 namespace CoinGecko.Clients
 {
     public class CoinsClient:BaseApiClient,ICoinsClient
     {
-        public CoinsClient(HttpClient httpClient) : base(httpClient)
+        public CoinsClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
         {
         }
 

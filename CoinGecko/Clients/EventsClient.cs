@@ -5,12 +5,13 @@ using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.Events;
 using CoinGecko.Interfaces;
 using CoinGecko.Services;
+using Newtonsoft.Json;
 
 namespace CoinGecko.Clients
 {
     public class EventsClient:BaseApiClient,IEventsClient
     {
-        public EventsClient(HttpClient httpClient) : base(httpClient)
+        public EventsClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
         {
         }
         public async Task<Events> GetEvents()

@@ -13,16 +13,24 @@ namespace CoinGecko.Clients
         private bool _isDisposed;
         private readonly JsonSerializerSettings _serializerSettings;
         
-        public CoinGeckoClient(HttpClientHandler httpClientHandler, JsonSerializerSettings serializerSettings = null)
+        public CoinGeckoClient(HttpClientHandler httpClientHandler)  :this(httpClientHandler, null)
+        {
+        }
+
+        public CoinGeckoClient() : this((JsonSerializerSettings)null)
+        {
+        }
+
+        public CoinGeckoClient(JsonSerializerSettings serializerSettings) : this(new HttpClientHandler(), serializerSettings)
+        {
+        }
+
+        public CoinGeckoClient(HttpClientHandler httpClientHandler, JsonSerializerSettings serializerSettings)
         {
             _httpClient = new HttpClient(httpClientHandler,true);
             _serializerSettings = serializerSettings;
         }
-
-        public CoinGeckoClient(JsonSerializerSettings serializerSettings = null) : this(new HttpClientHandler(), serializerSettings)
-        {
-        }
-
+        
         public static CoinGeckoClient Instance => Lazy.Value;
         
         public ISimpleClient SimpleClient => new SimpleClient(_httpClient, _serializerSettings);

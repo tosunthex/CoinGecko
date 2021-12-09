@@ -9,10 +9,12 @@ namespace CoinGecko.Clients
     public class BaseApiClient:IAsyncApiRepository
     {
         private readonly HttpClient _httpClient;
+        private readonly JsonSerializerSettings _serializerSettings;
 
-        public BaseApiClient(HttpClient httpClient)
+        public BaseApiClient(HttpClient httpClient, JsonSerializerSettings serializerSettings)
         {
             _httpClient = httpClient;
+            _serializerSettings = serializerSettings;
         }
 
         public async Task<T> GetAsync<T>(Uri resourceUri)
@@ -26,7 +28,7 @@ namespace CoinGecko.Clients
             var responseContent = await response.Content.ReadAsStringAsync();
             try
             {
-                return JsonConvert.DeserializeObject<T>(responseContent);
+                return JsonConvert.DeserializeObject<T>(responseContent, _serializerSettings);
             }
             catch (Exception e)
             {

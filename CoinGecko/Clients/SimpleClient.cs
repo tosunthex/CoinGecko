@@ -5,13 +5,14 @@ using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.Simple;
 using CoinGecko.Interfaces;
 using CoinGecko.Services;
+using Newtonsoft.Json;
 
 namespace CoinGecko.Clients
 {
     public class SimpleClient:BaseApiClient,ISimpleClient
     {
         
-        public SimpleClient(HttpClient httpClient) : base(httpClient)
+        public SimpleClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
         {
         }
         

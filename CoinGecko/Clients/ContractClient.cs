@@ -7,12 +7,13 @@ using CoinGecko.Entities.Response.Coins;
 using CoinGecko.Entities.Response.Contract;
 using CoinGecko.Interfaces;
 using CoinGecko.Services;
+using Newtonsoft.Json;
 
 namespace CoinGecko.Clients
 {
     public class ContractClient : BaseApiClient, IContractClient
     {
-        public ContractClient(HttpClient httpClient) : base(httpClient)
+        public ContractClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
         {
         }
         public async Task<ContractData> GetContractData(string id, string contractAddress)

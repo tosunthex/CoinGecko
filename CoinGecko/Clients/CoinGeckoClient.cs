@@ -1,6 +1,7 @@
 using System;
 using System.Net.Http;
 using CoinGecko.Interfaces;
+using Newtonsoft.Json;
 
 namespace CoinGecko.Clients
 {
@@ -10,30 +11,32 @@ namespace CoinGecko.Clients
 
         private readonly HttpClient _httpClient;
         private bool _isDisposed;
-
-        public CoinGeckoClient(HttpClientHandler httpClientHandler)
+        private readonly JsonSerializerSettings _serializerSettings;
+        
+        public CoinGeckoClient(HttpClientHandler httpClientHandler, JsonSerializerSettings serializerSettings = null)
         {
             _httpClient = new HttpClient(httpClientHandler,true);
+            _serializerSettings = serializerSettings;
         }
 
-        public CoinGeckoClient() : this(new HttpClientHandler())
+        public CoinGeckoClient(JsonSerializerSettings serializerSettings = null) : this(new HttpClientHandler(), serializerSettings)
         {
         }
 
         public static CoinGeckoClient Instance => Lazy.Value;
         
-        public ISimpleClient SimpleClient => new SimpleClient(_httpClient);
-        public IPingClient PingClient => new PingClient(_httpClient);
-        public ICoinsClient CoinsClient => new CoinsClient(_httpClient);
-        public IExchangesClient ExchangesClient => new ExchangesClient(_httpClient);
-        public IEventsClient EventsClient => new EventsClient(_httpClient);
-        public IExchangeRatesClient ExchangeRatesClient => new ExchangeRatesClient(_httpClient);
-        public IGlobalClient GlobalClient => new GlobalClient(_httpClient);
-        public IContractClient ContractClient => new ContractClient(_httpClient);
-        public IFinancePlatformsClient FinancePlatformsClient => new FinancePlatformsClient(_httpClient);
-        public IIndexesClient IndexesClient => new IndexesClient(_httpClient);
-        public IDerivativesClient DerivativesClient => new DerivativesClient(_httpClient);
-        public IStatusUpdatesClient StatusUpdatesClient => new StatusUpdateClient(_httpClient);
+        public ISimpleClient SimpleClient => new SimpleClient(_httpClient, _serializerSettings);
+        public IPingClient PingClient => new PingClient(_httpClient, _serializerSettings);
+        public ICoinsClient CoinsClient => new CoinsClient(_httpClient, _serializerSettings);
+        public IExchangesClient ExchangesClient => new ExchangesClient(_httpClient, _serializerSettings);
+        public IEventsClient EventsClient => new EventsClient(_httpClient, _serializerSettings);
+        public IExchangeRatesClient ExchangeRatesClient => new ExchangeRatesClient(_httpClient, _serializerSettings);
+        public IGlobalClient GlobalClient => new GlobalClient(_httpClient, _serializerSettings);
+        public IContractClient ContractClient => new ContractClient(_httpClient, _serializerSettings);
+        public IFinancePlatformsClient FinancePlatformsClient => new FinancePlatformsClient(_httpClient, _serializerSettings);
+        public IIndexesClient IndexesClient => new IndexesClient(_httpClient, _serializerSettings);
+        public IDerivativesClient DerivativesClient => new DerivativesClient(_httpClient, _serializerSettings);
+        public IStatusUpdatesClient StatusUpdatesClient => new StatusUpdateClient(_httpClient, _serializerSettings);
 
 
         public void Dispose()

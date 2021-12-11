@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace CoinGecko.Entities.Response.Derivatives
@@ -37,5 +38,8 @@ namespace CoinGecko.Entities.Response.Derivatives
 
         [JsonProperty("url")]
         public string Url { get; set; }
+        
+        [JsonProperty("tickers")]
+        public IReadOnlyList<DerivativesTicker> Tickers { get; set; }
     }
 }

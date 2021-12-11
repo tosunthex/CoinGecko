@@ -36,6 +36,14 @@ namespace CoinGecko.Test
             var result = await _client.DerivativesClient.GetDerivativesExchangesById("bitmex");
             Assert.Equal("BitMEX",result.Name);
         }
+        
+        [Fact]
+        public async Task Derivatives_Exchanges_By_ID_Must_Have_Tickers()
+        {
+            var result = await _client.DerivativesClient.GetDerivativesExchangesById("bitmex", "all");
+            Assert.True(result.Tickers.Count > 0);
+            Assert.Contains(result.Tickers, t => t.ExpiredAt > 0);
+        }
 
         [Fact]
         public async Task Derivatives_List_Not_Equal_Zero()

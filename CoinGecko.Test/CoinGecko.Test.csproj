@@ -18,5 +18,9 @@
     <ItemGroup>
         <ProjectReference Include="..\CoinGecko\CoinGecko.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="obj\Debug\netcoreapp2.1" />
+    </ItemGroup>
 
 </Project>

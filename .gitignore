@@ -8,3 +8,8 @@
 /CoinGecko.Test/obj
 /CoinGecko.Test/bin
 /CoinGecko/bin/Release
+
+.idea/
+.vscode/
+*.user
+

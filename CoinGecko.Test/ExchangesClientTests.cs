@@ -64,5 +64,16 @@ namespace CoinGecko.Test
             var result = await _client.ExchangesClient.GetExchangesList();
             Assert.NotNull(result);
         }
+        
+        [Fact]
+        public async Task Exchanges_Uniswap_NonEmpty_Properties()
+        {
+            var result = await _client.ExchangesClient.GetExchangesByExchangeId("uniswap");
+            Assert.NotNull(result);
+            Assert.False(result.Centralized);
+            Assert.Equal("https://www.reddit.com/r/UniSwap/", result.RedditUrl);
+            Assert.Equal("Uniswap", result.TwitterHandle);
+            Assert.NotEmpty(result.PublicNotice);
+        }
     }
 }

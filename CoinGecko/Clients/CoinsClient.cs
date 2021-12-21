@@ -67,6 +67,7 @@ namespace CoinGecko.Clients
                 {
                     {"vs_currency", vsCurrency},
                     {"ids", string.Join(",", ids)},
+                    {"order",order},
                     {"per_page", perPage},
                     {"page", page},
                     {"sparkline", sparkline},

@@ -5,19 +5,19 @@ using Newtonsoft.Json;
 
 namespace CoinGecko.Clients
 {
-    public partial class CoinGeckoClient: IDisposable,ICoinGeckoClient
+    public partial class CoinGeckoClient : IDisposable, ICoinGeckoClient
     {
         private static readonly Lazy<CoinGeckoClient> Lazy = new Lazy<CoinGeckoClient>(() => new CoinGeckoClient());
 
         private readonly HttpClient _httpClient;
         private bool _isDisposed;
         private readonly JsonSerializerSettings _serializerSettings;
-        
-        public CoinGeckoClient(HttpClientHandler httpClientHandler)  :this(httpClientHandler, null)
+
+        public CoinGeckoClient() : this((JsonSerializerSettings)null)
         {
         }
 
-        public CoinGeckoClient() : this((JsonSerializerSettings)null)
+        public CoinGeckoClient(HttpClientHandler httpClientHandler) : this(httpClientHandler, null)
         {
         }
 
@@ -26,13 +26,22 @@ namespace CoinGecko.Clients
         }
 
         public CoinGeckoClient(HttpClientHandler httpClientHandler, JsonSerializerSettings serializerSettings)
+            : this(new HttpClient(httpClientHandler, true), serializerSettings)
         {
-            _httpClient = new HttpClient(httpClientHandler,true);
+        }
+
+        public CoinGeckoClient(HttpClient httpClient) : this(httpClient, null)
+        {
+        }
+
+        public CoinGeckoClient(HttpClient httpClient, JsonSerializerSettings serializerSettings)
+        {
+            _httpClient = httpClient;
             _serializerSettings = serializerSettings;
         }
-        
+
         public static CoinGeckoClient Instance => Lazy.Value;
-        
+
         public ISimpleClient SimpleClient => new SimpleClient(_httpClient, _serializerSettings);
         public IPingClient PingClient => new PingClient(_httpClient, _serializerSettings);
         public ICoinsClient CoinsClient => new CoinsClient(_httpClient, _serializerSettings);

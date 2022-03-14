@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CoinGecko.Converters;
 using CoinGecko.Entities.Response.Shared;
 using Newtonsoft.Json;
 
@@ -19,6 +20,7 @@ namespace CoinGecko.Entities.Response.Coins
         [JsonProperty("country_origin")] public string CountryOrigin { get; set; }
 
         [JsonProperty("genesis_date", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonConverter(typeof(CustomDateTimeConverter), "yyyy-MM-dd")]
         public DateTimeOffset? GenesisDate { get; set; }
 
         [JsonProperty("market_cap_rank")] public long? MarketCapRank { get; set; }

@@ -169,7 +169,7 @@ namespace CoinGecko.Parameters
         public static string Btc => "BTC";
 
         /// <summary>
-        ///     Etherium
+        ///     Ethereum
         /// </summary>
         public static string Eth => "ETH";
 

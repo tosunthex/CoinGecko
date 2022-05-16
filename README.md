@@ -18,6 +18,8 @@ pm> Install-Package CoinGeckoAsyncApi
 ## Quick start
 ```cs
 ...
+using Newtonsoft.Json;
+using CoinGecko.Clients;
 
 HttpClient httpClient = new HttpClient();
 JsonSerializerSettings serializerSettings = new JsonSerializerSettings();

@@ -31,8 +31,8 @@ SimpleClient simpleClient = new SimpleClient(httpClient, serializerSettings);
 if ((await pingClient.GetPingAsync()).GeckoSays != string.Empty)
 {
     // Getting current price of tether in usd
-    string[] ids = "tether";
-    string[] vsCurrencies = "usd";
+    string ids = "tether";
+    string vsCurrencies = "usd";
     Console.WriteLine((await simpleClient.GetSimplePrice(new []{ids},new []{vsCurrencies}))["tether"]["usd"]);
 }
 

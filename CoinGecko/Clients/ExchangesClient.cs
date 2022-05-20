@@ -11,7 +11,7 @@ namespace CoinGecko.Clients
 {
     public class ExchangesClient:BaseApiClient,IExchangesClient
     {
-        public ExchangesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
+        public ExchangesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null) : base(httpClient, serializerSettings, apiKey)
         {
         }
         

@@ -11,7 +11,7 @@ namespace CoinGecko.Clients
 {
     public class StatusUpdateClient:BaseApiClient,IStatusUpdatesClient
     {
-        public StatusUpdateClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
+        public StatusUpdateClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null) : base(httpClient, serializerSettings, apiKey)
         {
         }
 

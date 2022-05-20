@@ -10,7 +10,7 @@ namespace CoinGecko.Clients
 {
     public class GlobalClient:BaseApiClient,IGlobalClient
     {
-        public GlobalClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
+        public GlobalClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null) : base(httpClient, serializerSettings, apiKey)
         {
         }
         

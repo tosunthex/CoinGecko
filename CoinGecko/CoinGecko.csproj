@@ -21,7 +21,7 @@
         <PackageReleaseNotes>
             Coin Gecko Api wrapper written in .net standard 2.0 for more information please check the official documentation from https://www.coingecko.com/api/docs/v3
         </PackageReleaseNotes>
-        <Version>1.5.6</Version>
+        <Version>1.6.0</Version>
     </PropertyGroup>
 
     <ItemGroup>

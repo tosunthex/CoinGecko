@@ -13,7 +13,7 @@ namespace CoinGecko.Clients
 {
     public class ContractClient : BaseApiClient, IContractClient
     {
-        public ContractClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
+        public ContractClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null) : base(httpClient, serializerSettings, apiKey)
         {
         }
         public async Task<ContractData> GetContractData(string id, string contractAddress)

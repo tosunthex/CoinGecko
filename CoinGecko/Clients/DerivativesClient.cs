@@ -11,7 +11,7 @@ namespace CoinGecko.Clients
 {
     public class DerivativesClient:BaseApiClient,IDerivativesClient
     {
-        public DerivativesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
+        public DerivativesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null) : base(httpClient, serializerSettings, apiKey)
         {
         }
 

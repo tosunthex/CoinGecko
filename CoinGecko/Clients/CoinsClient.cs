@@ -12,7 +12,7 @@ namespace CoinGecko.Clients
 {
     public class CoinsClient:BaseApiClient,ICoinsClient
     {
-        public CoinsClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
+        public CoinsClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null) : base(httpClient, serializerSettings, apiKey)
         {
         }
 

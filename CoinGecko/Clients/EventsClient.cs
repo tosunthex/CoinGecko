@@ -11,7 +11,7 @@ namespace CoinGecko.Clients
 {
     public class EventsClient:BaseApiClient,IEventsClient
     {
-        public EventsClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
+        public EventsClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null) : base(httpClient, serializerSettings, apiKey)
         {
         }
         public async Task<Events> GetEvents()

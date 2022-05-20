@@ -11,7 +11,7 @@ namespace CoinGecko.Clients
 {
     public class IndexesClient:BaseApiClient,IIndexesClient
     {
-        public IndexesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
+        public IndexesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null) : base(httpClient, serializerSettings, apiKey)
         {
         }
 

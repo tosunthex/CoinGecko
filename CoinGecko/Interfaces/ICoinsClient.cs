@@ -157,5 +157,14 @@ namespace CoinGecko.Interfaces
         /// <param name="to">To date in UNIX Timestamp</param>
         /// <returns></returns>
         Task<MarketChartById> GetMarketChartRangeByCoinId(string id, string vsCurrency, string from,string to);
+
+        /// <summary>
+        /// Get coin's OHLC
+        /// </summary>
+        /// <param name="id">pass the coin id (can be obtained from /coins/list) eg. bitcoin</param>
+        /// <param name="vsCurrency">The target currency of market data (usd, eur, jpy, etc.)</param>
+        /// <param name="days">Data up to number of days ago (1/7/14/30/90/180/365/max)</param>
+        /// <returns></returns>
+        Task<IReadOnlyList<IReadOnlyList<object>>> GetCoinOhlc(string id, string vsCurrency, int days);
     }
 }

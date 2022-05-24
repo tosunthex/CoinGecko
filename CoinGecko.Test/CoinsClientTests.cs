@@ -216,5 +216,15 @@ namespace CoinGecko.Test
             Assert.NotNull(result.Tickers[0].TrustScore);
         }
 
+        [Fact]
+        public async Task CoinOhlc_Elements_Not_Null()
+        {
+            var result = await _client.CoinsClient.GetCoinOhlc("bitcoin", "usd", 1);
+            Assert.NotNull(result[0][0]);
+            Assert.NotNull(result[0][1]);
+            Assert.NotNull(result[0][2]);
+            Assert.NotNull(result[0][3]);
+            Assert.NotNull(result[0][4]);
+        }
     }
 }

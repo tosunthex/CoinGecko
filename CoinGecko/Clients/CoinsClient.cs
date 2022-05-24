@@ -159,6 +159,16 @@ namespace CoinGecko.Clients
                     {"to",to}
                 })).ConfigureAwait(false);
         }
+
+        public async Task<IReadOnlyList<IReadOnlyList<object>>> GetCoinOhlc(string id, string vsCurrency, int days)
+        {
+            return await GetAsync<IReadOnlyList<IReadOnlyList<object>>>(QueryStringService.AppendQueryString(
+                CoinsApiEndPoints.CoinOhlc(id), new Dictionary<string, object>
+                {
+                    {"vs_currency", vsCurrency},
+                    {"days", days}
+                }));
+        }
     }
     
 }

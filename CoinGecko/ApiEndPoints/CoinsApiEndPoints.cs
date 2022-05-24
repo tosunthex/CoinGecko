@@ -13,5 +13,6 @@ namespace CoinGecko.ApiEndPoints
         public static string MarketChartByCoinId(string id) => BaseApiEndPointUrl.AddCoinsIdUrl(id) + "/market_chart";
         public static string MarketChartRangeByCoinId(string id) => BaseApiEndPointUrl.AddCoinsIdUrl(id) + "/market_chart/range";
         public static string StatusUpdates(string id) => BaseApiEndPointUrl.AddCoinsIdUrl(id) + "/status_updates";
+        public static string CoinOhlc(string id) => BaseApiEndPointUrl.AddCoinsIdUrl(id) + "/ohlc";
     }
 }

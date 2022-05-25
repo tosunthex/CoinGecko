@@ -108,7 +108,7 @@ Examples can be found in the Test project.
 
 |           Trending Endpoints                                | Status | Testing | 
 | :-----------------------------:                             | :----: | :-----: | 
-| /search/trending                                            |  [-]   |   [-]   |
+| /search/trending                                            |  [+]   |   [+]   |
 
 |           Global Endpoints                                  | Status | Testing | 
 | :-----------------------------:                             | :----: | :-----: | 

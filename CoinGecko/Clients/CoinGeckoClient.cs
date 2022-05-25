@@ -54,6 +54,7 @@ namespace CoinGecko.Clients
         public IIndexesClient IndexesClient => new IndexesClient(_httpClient, _serializerSettings);
         public IDerivativesClient DerivativesClient => new DerivativesClient(_httpClient, _serializerSettings);
         public IStatusUpdatesClient StatusUpdatesClient => new StatusUpdateClient(_httpClient, _serializerSettings);
+        public ISearchClient SearchClient => new SearchClient(_httpClient, _serializerSettings);
 
 
         public void Dispose()

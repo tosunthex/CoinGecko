@@ -7,7 +7,7 @@ namespace CoinGecko.Interfaces
     public interface ISearchClient
     {
         /// <summary>
-        /// Get trending search coins (Top-7) on CoinGecko in the last 24 hours
+        /// Top-7 trending coins on CoinGecko as searched by users in the last 24 hours (Ordered by most popular first)
         /// </summary>
         /// <returns></returns>
         Task<TrendingList> GetSearchTrending();

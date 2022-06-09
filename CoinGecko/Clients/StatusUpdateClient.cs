@@ -1,17 +1,20 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using CoinGecko.ApiEndPoints;
+﻿using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.StatusUpdates;
 using CoinGecko.Interfaces;
-using CoinGecko.Services;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace CoinGecko.Clients
 {
-    public class StatusUpdateClient:BaseApiClient,IStatusUpdatesClient
+    public class StatusUpdateClient : BaseApiClient, IStatusUpdatesClient
     {
         public StatusUpdateClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
+        {
+        }
+
+        public StatusUpdateClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey) : base(httpClient, serializerSettings, apiKey)
         {
         }
 
@@ -22,7 +25,7 @@ namespace CoinGecko.Clients
 
         public async Task<StatusUpdate> GetStatusUpdate(string category, string projectType, int? perPage, int? page)
         {
-            return await GetAsync<StatusUpdate>(QueryStringService.AppendQueryString(
+            return await GetAsync<StatusUpdate>(AppendQueryString(
                 StatusUpdateApiEndPoints.StatusUpdateUrl, new Dictionary<string, object>
                 {
                     {"category",category},

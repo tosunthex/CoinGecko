@@ -1,17 +1,20 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using CoinGecko.ApiEndPoints;
+﻿using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.Indexes;
 using CoinGecko.Interfaces;
-using CoinGecko.Services;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace CoinGecko.Clients
 {
-    public class IndexesClient:BaseApiClient,IIndexesClient
+    public class IndexesClient : BaseApiClient, IIndexesClient
     {
         public IndexesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
+        {
+        }
+
+        public IndexesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey) : base(httpClient, serializerSettings, apiKey)
         {
         }
 
@@ -22,7 +25,7 @@ namespace CoinGecko.Clients
 
         public async Task<IReadOnlyList<IndexData>> GetIndexes(int? perPage, string page)
         {
-            return await GetAsync<IReadOnlyList<IndexData>>(QueryStringService.AppendQueryString(
+            return await GetAsync<IReadOnlyList<IndexData>>(AppendQueryString(
                 IndexesApiEndPointUrl.IndexesUrl, new Dictionary<string, object>
                 {
                     {"per_page",perPage},
@@ -32,13 +35,13 @@ namespace CoinGecko.Clients
 
         public async Task<IndexData> GetIndexById(string id)
         {
-            return await GetAsync<IndexData>(QueryStringService.AppendQueryString(
+            return await GetAsync<IndexData>(AppendQueryString(
                 IndexesApiEndPointUrl.IndexesWithId(id))).ConfigureAwait(false);
         }
 
         public async Task<IReadOnlyList<IndexList>> GetIndexList()
         {
-            return await GetAsync<IReadOnlyList<IndexList>>(QueryStringService.AppendQueryString(
+            return await GetAsync<IReadOnlyList<IndexList>>(AppendQueryString(
                 IndexesApiEndPointUrl.IndexesList)).ConfigureAwait(false);
         }
     }

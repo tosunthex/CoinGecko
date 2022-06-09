@@ -1,17 +1,20 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using CoinGecko.ApiEndPoints;
+﻿using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.Finance;
 using CoinGecko.Interfaces;
-using CoinGecko.Services;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace CoinGecko.Clients
 {
-    public class FinancePlatformsClient:BaseApiClient,IFinancePlatformsClient
+    public class FinancePlatformsClient : BaseApiClient, IFinancePlatformsClient
     {
         public FinancePlatformsClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
+        {
+        }
+
+        public FinancePlatformsClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey) : base(httpClient, serializerSettings, apiKey)
         {
         }
 
@@ -22,8 +25,8 @@ namespace CoinGecko.Clients
 
         public async Task<IReadOnlyList<FinancePlatforms>> GetFinancePlatforms(int perPage, string page)
         {
-            return await GetAsync<IReadOnlyList<FinancePlatforms>>(QueryStringService.AppendQueryString(
-                FinancePlatformsApiEndPoints.FinancePlatform,new Dictionary<string, object>
+            return await GetAsync<IReadOnlyList<FinancePlatforms>>(AppendQueryString(
+                FinancePlatformsApiEndPoints.FinancePlatform, new Dictionary<string, object>
                 {
                     {"per_page",perPage},
                     {"page",page}
@@ -38,8 +41,8 @@ namespace CoinGecko.Clients
 
         public async Task<IReadOnlyList<FinanceProducts>> GetFinanceProducts(int perPage, string page, string startAt, string endAt)
         {
-            return await GetAsync<IReadOnlyList<FinanceProducts>>(QueryStringService.AppendQueryString(
-                    FinancePlatformsApiEndPoints.FinanceProducts,new Dictionary<string, object>
+            return await GetAsync<IReadOnlyList<FinanceProducts>>(AppendQueryString(
+                    FinancePlatformsApiEndPoints.FinanceProducts, new Dictionary<string, object>
                     {
                         {"per_page",perPage},
                         {"page",page},

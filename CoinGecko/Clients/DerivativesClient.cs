@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.Derivatives;
 using CoinGecko.Interfaces;
-using CoinGecko.Services;
+
 using Newtonsoft.Json;
 
 namespace CoinGecko.Clients
@@ -22,7 +22,7 @@ namespace CoinGecko.Clients
 
         public async Task<IReadOnlyList<Derivatives>> GetDerivatives(string includeTicker)
         {
-            return await GetAsync<IReadOnlyList<Derivatives>>(QueryStringService.AppendQueryString(
+            return await GetAsync<IReadOnlyList<Derivatives>>(AppendQueryString(
                 DerivativesApiEndPoints.DerivativesUrl, new Dictionary<string, object>
                 {
                     {"include_ticker",includeTicker}
@@ -36,7 +36,7 @@ namespace CoinGecko.Clients
 
         public async Task<IReadOnlyList<DerivativesExchanges>> GetDerivativesExchanges(string order, int? perPage, int? page)
         {
-            return await GetAsync<IReadOnlyList<DerivativesExchanges>>(QueryStringService.AppendQueryString(
+            return await GetAsync<IReadOnlyList<DerivativesExchanges>>(AppendQueryString(
                 DerivativesApiEndPoints.DerivativesExchanges,new Dictionary<string, object>
                 {
                     {"order",order},
@@ -52,7 +52,7 @@ namespace CoinGecko.Clients
 
         public async Task<DerivativesExchanges> GetDerivativesExchangesById(string id, string includeTickers)
         {
-            return await GetAsync<DerivativesExchanges>(QueryStringService.AppendQueryString(
+            return await GetAsync<DerivativesExchanges>(AppendQueryString(
                 DerivativesApiEndPoints.DerivativesExchangeById(id), new Dictionary<string, object>
                 {
                     {"include_tickers", includeTickers}
@@ -62,7 +62,7 @@ namespace CoinGecko.Clients
         public async Task<IReadOnlyList<DerivativesExchangesList>> GetDerivativesExchangesList()
         {
             return await GetAsync<IReadOnlyList<DerivativesExchangesList>>(
-                    QueryStringService.AppendQueryString(DerivativesApiEndPoints.DerivativesExchangesList))
+                    AppendQueryString(DerivativesApiEndPoints.DerivativesExchangesList))
                 .ConfigureAwait(false);
         }
     }

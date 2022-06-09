@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.Global;
 using CoinGecko.Interfaces;
-using CoinGecko.Services;
+
 using Newtonsoft.Json;
 
 namespace CoinGecko.Clients
@@ -16,12 +16,12 @@ namespace CoinGecko.Clients
         
         public async Task<Global> GetGlobal()
         {
-            return await GetAsync<Global>(QueryStringService.AppendQueryString(GlobalApiEndPoints.Global)).ConfigureAwait(false);
+            return await GetAsync<Global>(AppendQueryString(GlobalApiEndPoints.Global)).ConfigureAwait(false);
         }
 
         public async Task<GlobalDeFi> GetGlobalDeFi()
         {
-            return await GetAsync<GlobalDeFi>(QueryStringService.AppendQueryString(GlobalApiEndPoints.DecentralizedFinanceDeFi)).ConfigureAwait(false);
+            return await GetAsync<GlobalDeFi>(AppendQueryString(GlobalApiEndPoints.DecentralizedFinanceDeFi)).ConfigureAwait(false);
         }
     }
 }

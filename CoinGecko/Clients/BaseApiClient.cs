@@ -1,13 +1,17 @@
+using CoinGecko.ApiEndPoints;
+using CoinGecko.Interfaces;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
-using CoinGecko.Interfaces;
-using Newtonsoft.Json;
 
 namespace CoinGecko.Clients
 {
-    public class BaseApiClient:IAsyncApiRepository
+    public class BaseApiClient : IAsyncApiRepository
     {
         private readonly HttpClient _httpClient;
         private readonly JsonSerializerSettings _serializerSettings;
@@ -22,14 +26,15 @@ namespace CoinGecko.Clients
 
         public async Task<T> GetAsync<T>(Uri resourceUri)
         {
-            if (!string.IsNullOrEmpty(_apiKey)) {
+            if (!string.IsNullOrEmpty(_apiKey))
+            {
                 resourceUri = AddParameter(resourceUri, "x_cg_pro_api_key", _apiKey);
             }
 
             //_httpClient.DefaultRequestHeaders.Add("User-Agent", "your bot 0.1");
             var response = await _httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Get, resourceUri))
                 .ConfigureAwait(false);
-            
+
             response.EnsureSuccessStatusCode();
 
             var responseContent = await response.Content.ReadAsStringAsync();
@@ -42,7 +47,6 @@ namespace CoinGecko.Clients
                 throw new HttpRequestException(e.Message);
             }
         }
-
 
         /// <summary>
         /// Adds the specified parameter to the Query String.
@@ -59,6 +63,31 @@ namespace CoinGecko.Clients
             uriBuilder.Query = query.ToString();
 
             return uriBuilder.Uri;
+        }
+
+        public Uri AppendQueryString(string path, Dictionary<string, object> parameter) => CreateUrl(path, parameter);
+
+        public Uri AppendQueryString(string path) => CreateUrl(path, new Dictionary<string, object>());
+
+        private Uri CreateUrl(string path, Dictionary<string, object> parameter)
+        {
+            var urlParameters = new List<string>();
+            foreach (var par in parameter)
+            {
+                urlParameters.Add(par.Value == null || string.IsNullOrWhiteSpace(par.Value.ToString())
+                    ? null
+                    : $"{par.Key}={par.Value.ToString().ToLower()}");
+            }
+
+            var encodedParams = urlParameters
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Select(WebUtility.HtmlEncode)
+                .Select((x, i) => i > 0 ? $"&{x}" : $"?{x}")
+                .ToArray();
+            var url = encodedParams.Length > 0 ? $"{path}{string.Join(string.Empty, encodedParams)}" : path;
+          
+            //using pro API url if apiKey is set
+            return new Uri(string.IsNullOrEmpty(_apiKey) ? BaseApiEndPointUrl.ApiEndPoint : BaseApiEndPointUrl.ProApiEndPoint, url);
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using CoinGecko.Entities.Response;
 using CoinGecko.Interfaces;
-using CoinGecko.Services;
+
 using Newtonsoft.Json;
 
 namespace CoinGecko.Clients
@@ -15,7 +15,7 @@ namespace CoinGecko.Clients
         
         public async Task<Ping> GetPingAsync()
         {
-            return await GetAsync<Ping>(QueryStringService.AppendQueryString("ping")).ConfigureAwait(false);
+            return await GetAsync<Ping>(AppendQueryString("ping")).ConfigureAwait(false);
         }        
     }
 }

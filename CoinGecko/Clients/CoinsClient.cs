@@ -162,7 +162,7 @@ namespace CoinGecko.Clients
 
         public async Task<IReadOnlyList<IReadOnlyList<object>>> GetCoinOhlc(string id, string vsCurrency, int days)
         {
-            return await GetAsync<IReadOnlyList<IReadOnlyList<object>>>(QueryStringService.AppendQueryString(
+            return await GetAsync<IReadOnlyList<IReadOnlyList<object>>>(AppendQueryString(
                 CoinsApiEndPoints.CoinOhlc(id), new Dictionary<string, object>
                 {
                     {"vs_currency", vsCurrency},

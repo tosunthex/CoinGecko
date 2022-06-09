@@ -1,24 +1,22 @@
-﻿using CoinGecko.Entities.Response.Search;
-using System.Collections.Generic;
-using CoinGecko.ApiEndPoints;
-using System.Threading.Tasks;
+﻿using CoinGecko.ApiEndPoints;
+using CoinGecko.Entities.Response.Search;
 using CoinGecko.Interfaces;
-using CoinGecko.Services;
-using System.Net.Http;
 using Newtonsoft.Json;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace CoinGecko.Clients
 {
     public class SearchClient : BaseApiClient, ISearchClient
     {
-        public SearchClient(HttpClient httpClient, JsonSerializerSettings jsonSerializerSetting) : base(httpClient, jsonSerializerSetting)
+        public SearchClient(HttpClient httpClient, JsonSerializerSettings jsonSerializerSetting, string apiKey = null) : base(httpClient, jsonSerializerSetting, apiKey = null)
         {
         }
 
         public async Task<TrendingList> GetSearchTrending()
         {
             return await GetAsync<TrendingList>(
-                QueryStringService.AppendQueryString(SearchApiEndpoints.SearchTrending))
+                 AppendQueryString(SearchApiEndpoints.SearchTrending))
                 .ConfigureAwait(false);
         }
     }

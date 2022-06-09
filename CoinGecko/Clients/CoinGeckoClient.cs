@@ -12,32 +12,35 @@ namespace CoinGecko.Clients
         private readonly HttpClient _httpClient;
         private bool _isDisposed;
         private readonly JsonSerializerSettings _serializerSettings;
+        private readonly string _apiKey;
 
-        public CoinGeckoClient() : this((JsonSerializerSettings)null)
+        public CoinGeckoClient(string apiKey = null) : this((JsonSerializerSettings)null, apiKey)
         {
         }
 
-        public CoinGeckoClient(HttpClientHandler httpClientHandler) : this(httpClientHandler, null)
+        public CoinGeckoClient(HttpClientHandler httpClientHandler, string apiKey = null) : this(httpClientHandler, null, apiKey)
+        {
+            _apiKey = apiKey;
+        }
+
+        public CoinGeckoClient(JsonSerializerSettings serializerSettings, string apiKey = null) : this(new HttpClientHandler(), serializerSettings, apiKey)
         {
         }
 
-        public CoinGeckoClient(JsonSerializerSettings serializerSettings) : this(new HttpClientHandler(), serializerSettings)
+        public CoinGeckoClient(HttpClientHandler httpClientHandler, JsonSerializerSettings serializerSettings, string apiKey = null)
+            : this(new HttpClient(httpClientHandler, true), serializerSettings, apiKey)
         {
         }
 
-        public CoinGeckoClient(HttpClientHandler httpClientHandler, JsonSerializerSettings serializerSettings)
-            : this(new HttpClient(httpClientHandler, true), serializerSettings)
+        public CoinGeckoClient(HttpClient httpClient, string apiKey = null) : this(httpClient, null, apiKey)
         {
         }
 
-        public CoinGeckoClient(HttpClient httpClient) : this(httpClient, null)
-        {
-        }
-
-        public CoinGeckoClient(HttpClient httpClient, JsonSerializerSettings serializerSettings)
+        public CoinGeckoClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null)
         {
             _httpClient = httpClient;
             _serializerSettings = serializerSettings;
+            _apiKey = apiKey;
         }
 
         public static CoinGeckoClient Instance => Lazy.Value;

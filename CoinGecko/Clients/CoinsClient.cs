@@ -5,14 +5,14 @@ using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.Coins;
 using CoinGecko.Interfaces;
 using CoinGecko.Parameters;
-using CoinGecko.Services;
+
 using Newtonsoft.Json;
 
 namespace CoinGecko.Clients
 {
     public class CoinsClient:BaseApiClient,ICoinsClient
     {
-        public CoinsClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
+        public CoinsClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null) : base(httpClient, serializerSettings, apiKey)
         {
         }
 
@@ -23,7 +23,7 @@ namespace CoinGecko.Clients
 
         public async Task<IReadOnlyList<CoinFullData>> GetAllCoinsData(string order,int? perPage,int? page,string localization,bool? sparkline)
         {
-            return await GetAsync<IReadOnlyList<CoinFullData>>(QueryStringService.AppendQueryString(
+            return await GetAsync<IReadOnlyList<CoinFullData>>(AppendQueryString(
                 CoinsApiEndPoints.Coins, new Dictionary<string, object>
                 {
                     {"order", order},
@@ -36,11 +36,11 @@ namespace CoinGecko.Clients
 
         public async Task<IReadOnlyList<CoinList>> GetCoinList()
         {
-            return await GetAsync<IReadOnlyList<CoinList>>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinList)).ConfigureAwait(false);
+            return await GetAsync<IReadOnlyList<CoinList>>(AppendQueryString(CoinsApiEndPoints.CoinList)).ConfigureAwait(false);
         }
         public async Task<IReadOnlyList<CoinList>> GetCoinList(bool includePlatform)
         {
-            return await GetAsync<IReadOnlyList<CoinList>>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinList,
+            return await GetAsync<IReadOnlyList<CoinList>>(AppendQueryString(CoinsApiEndPoints.CoinList,
                 new Dictionary<string, object>
                 {
                     {
@@ -62,7 +62,7 @@ namespace CoinGecko.Clients
         public async Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency, string[] ids, string order, int? perPage,
             int? page, bool sparkline, string priceChangePercentage,string category)
         {
-            return await GetAsync<List<CoinMarkets>>(QueryStringService.AppendQueryString(CoinsApiEndPoints.CoinMarkets,
+            return await GetAsync<List<CoinMarkets>>(AppendQueryString(CoinsApiEndPoints.CoinMarkets,
                 new Dictionary<string, object>
                 {
                     {"vs_currency", vsCurrency},
@@ -84,7 +84,7 @@ namespace CoinGecko.Clients
         public async Task<CoinFullDataById> GetAllCoinDataWithId(string id, string localization, bool tickers,
             bool marketData, bool communityData, bool developerData, bool sparkline)
         {
-            return await GetAsync<CoinFullDataById>(QueryStringService.AppendQueryString(
+            return await GetAsync<CoinFullDataById>(AppendQueryString(
                 CoinsApiEndPoints.AllDataByCoinId(id), new Dictionary<string, object>
                 {
                     {"localization", localization},
@@ -113,7 +113,7 @@ namespace CoinGecko.Clients
 
         public async Task<TickerById> GetTickerByCoinId(string id, string[] exchangeIds, int? page, string includeExchangeLogo, string order,bool depth)
         {
-            return await GetAsync<TickerById>(QueryStringService.AppendQueryString(
+            return await GetAsync<TickerById>(AppendQueryString(
                 CoinsApiEndPoints.TickerByCoinId(id), new Dictionary<string, object>
                 {
                     {"page", page},
@@ -125,7 +125,7 @@ namespace CoinGecko.Clients
         }
         public async Task<CoinFullData> GetHistoryByCoinId(string id, string date, string localization)
         {
-            return await GetAsync<CoinFullData>(QueryStringService.AppendQueryString(
+            return await GetAsync<CoinFullData>(AppendQueryString(
                 CoinsApiEndPoints.HistoryByCoinId(id), new Dictionary<string, object>
                 {
                     {"date",date},
@@ -139,7 +139,7 @@ namespace CoinGecko.Clients
         }
         public async Task<MarketChartById> GetMarketChartsByCoinId(string id, string vsCurrency, string days,string interval)
         {
-            return await GetAsync<MarketChartById>(QueryStringService.AppendQueryString(
+            return await GetAsync<MarketChartById>(AppendQueryString(
                 CoinsApiEndPoints.MarketChartByCoinId(id),
                 new Dictionary<string, object>
                 {
@@ -151,7 +151,7 @@ namespace CoinGecko.Clients
 
         public async Task<MarketChartById> GetMarketChartRangeByCoinId(string id, string vsCurrency, string @from, string to)
         {
-            return await GetAsync<MarketChartById>(QueryStringService.AppendQueryString(
+            return await GetAsync<MarketChartById>(AppendQueryString(
                 CoinsApiEndPoints.MarketChartRangeByCoinId(id), new Dictionary<string, object>
                 {
                     {"vs_currency", string.Join(",", vsCurrency)},

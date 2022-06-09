@@ -9,7 +9,11 @@ namespace CoinGecko.Clients
 {
     public class SearchClient : BaseApiClient, ISearchClient
     {
-        public SearchClient(HttpClient httpClient, JsonSerializerSettings jsonSerializerSetting, string apiKey = null) : base(httpClient, jsonSerializerSetting, apiKey = null)
+        public SearchClient(HttpClient httpClient, JsonSerializerSettings jsonSerializerSetting) : base(httpClient, jsonSerializerSetting)
+        {
+        }
+
+        public SearchClient(HttpClient httpClient, JsonSerializerSettings jsonSerializerSetting, string apiKey) : base(httpClient, jsonSerializerSetting, apiKey)
         {
         }
 

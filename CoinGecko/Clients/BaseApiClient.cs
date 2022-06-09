@@ -3,6 +3,7 @@ using CoinGecko.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -22,6 +23,12 @@ namespace CoinGecko.Clients
             _httpClient = httpClient;
             _serializerSettings = serializerSettings;
             _apiKey = apiKey;
+        }
+
+        public BaseApiClient(HttpClient httpClient, JsonSerializerSettings serializerSettings)
+        {
+            _httpClient = httpClient;
+            _serializerSettings = serializerSettings;
         }
 
         public async Task<T> GetAsync<T>(Uri resourceUri)
@@ -76,7 +83,7 @@ namespace CoinGecko.Clients
             {
                 urlParameters.Add(par.Value == null || string.IsNullOrWhiteSpace(par.Value.ToString())
                     ? null
-                    : $"{par.Key}={par.Value.ToString().ToLower()}");
+                    : $"{par.Key}={par.Value.ToString().ToLower(CultureInfo.InvariantCulture)}");
             }
 
             var encodedParams = urlParameters
@@ -85,7 +92,7 @@ namespace CoinGecko.Clients
                 .Select((x, i) => i > 0 ? $"&{x}" : $"?{x}")
                 .ToArray();
             var url = encodedParams.Length > 0 ? $"{path}{string.Join(string.Empty, encodedParams)}" : path;
-          
+
             //using pro API url if apiKey is set
             return new Uri(string.IsNullOrEmpty(_apiKey) ? BaseApiEndPointUrl.ApiEndPoint : BaseApiEndPointUrl.ProApiEndPoint, url);
         }

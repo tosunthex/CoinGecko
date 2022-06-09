@@ -1,17 +1,20 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using CoinGecko.ApiEndPoints;
+﻿using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.Indexes;
 using CoinGecko.Interfaces;
-
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace CoinGecko.Clients
 {
-    public class IndexesClient:BaseApiClient,IIndexesClient
+    public class IndexesClient : BaseApiClient, IIndexesClient
     {
-        public IndexesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null) : base(httpClient, serializerSettings, apiKey)
+        public IndexesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
+        {
+        }
+
+        public IndexesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey) : base(httpClient, serializerSettings, apiKey)
         {
         }
 

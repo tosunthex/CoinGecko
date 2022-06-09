@@ -1,27 +1,30 @@
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
 using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.Simple;
 using CoinGecko.Interfaces;
-
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace CoinGecko.Clients
 {
-    public class SimpleClient:BaseApiClient,ISimpleClient
+    public class SimpleClient : BaseApiClient, ISimpleClient
     {
-        
-        public SimpleClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null) : base(httpClient, serializerSettings, apiKey)
+        public SimpleClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
         {
         }
-        
+
+        public SimpleClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey) : base(httpClient, serializerSettings, apiKey)
+        {
+        }
+
         public async Task<Price> GetSimplePrice(string[] ids, string[] vsCurrencies)
         {
-            return await GetSimplePrice(ids, vsCurrencies,false, false, false, false).ConfigureAwait(false);
+            return await GetSimplePrice(ids, vsCurrencies, false, false, false, false).ConfigureAwait(false);
         }
-        public async Task<Price> GetSimplePrice(string[] ids, string[] vsCurrencies,bool includeMarketCap,
-            bool include24HVol,bool include24HChange,bool includeLastUpdatedAt)
+
+        public async Task<Price> GetSimplePrice(string[] ids, string[] vsCurrencies, bool includeMarketCap,
+            bool include24HVol, bool include24HChange, bool includeLastUpdatedAt)
         {
             return await GetAsync<Price>(AppendQueryString(SimpleApiEndPoints.SimplePrice,
                 new Dictionary<string, object>

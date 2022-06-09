@@ -1,18 +1,21 @@
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
 using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.Coins;
 using CoinGecko.Interfaces;
 using CoinGecko.Parameters;
-
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace CoinGecko.Clients
 {
-    public class CoinsClient:BaseApiClient,ICoinsClient
+    public class CoinsClient : BaseApiClient, ICoinsClient
     {
-        public CoinsClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null) : base(httpClient, serializerSettings, apiKey)
+        public CoinsClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
+        {
+        }
+
+        public CoinsClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey) : base(httpClient, serializerSettings, apiKey)
         {
         }
 
@@ -21,7 +24,7 @@ namespace CoinGecko.Clients
             return await GetAllCoinsData(OrderField.GeckoDesc, null, null, "", null).ConfigureAwait(false);
         }
 
-        public async Task<IReadOnlyList<CoinFullData>> GetAllCoinsData(string order,int? perPage,int? page,string localization,bool? sparkline)
+        public async Task<IReadOnlyList<CoinFullData>> GetAllCoinsData(string order, int? perPage, int? page, string localization, bool? sparkline)
         {
             return await GetAsync<IReadOnlyList<CoinFullData>>(AppendQueryString(
                 CoinsApiEndPoints.Coins, new Dictionary<string, object>
@@ -38,6 +41,7 @@ namespace CoinGecko.Clients
         {
             return await GetAsync<IReadOnlyList<CoinList>>(AppendQueryString(CoinsApiEndPoints.CoinList)).ConfigureAwait(false);
         }
+
         public async Task<IReadOnlyList<CoinList>> GetCoinList(bool includePlatform)
         {
             return await GetAsync<IReadOnlyList<CoinList>>(AppendQueryString(CoinsApiEndPoints.CoinList,
@@ -51,16 +55,17 @@ namespace CoinGecko.Clients
 
         public async Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency)
         {
-            return await GetCoinMarkets(vsCurrency, new string[] { }, null, null, null, false, null,null).ConfigureAwait(false);
+            return await GetCoinMarkets(vsCurrency, new string[] { }, null, null, null, false, null, null).ConfigureAwait(false);
         }
 
         public async Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency, string[] ids, string order, int? perPage,
             int? page, bool sparkline, string priceChangePercentage)
         {
-            return await GetCoinMarkets(vsCurrency, ids, order, perPage, page, sparkline, priceChangePercentage,null).ConfigureAwait(false);
+            return await GetCoinMarkets(vsCurrency, ids, order, perPage, page, sparkline, priceChangePercentage, null).ConfigureAwait(false);
         }
+
         public async Task<List<CoinMarkets>> GetCoinMarkets(string vsCurrency, string[] ids, string order, int? perPage,
-            int? page, bool sparkline, string priceChangePercentage,string category)
+            int? page, bool sparkline, string priceChangePercentage, string category)
         {
             return await GetAsync<List<CoinMarkets>>(AppendQueryString(CoinsApiEndPoints.CoinMarkets,
                 new Dictionary<string, object>
@@ -98,20 +103,20 @@ namespace CoinGecko.Clients
 
         public async Task<TickerById> GetTickerByCoinId(string id)
         {
-            return await GetTickerByCoinId(id, new []{""}, null).ConfigureAwait(false);
-        }
-        
-        public async Task<TickerById> GetTickerByCoinId(string id, int? page)
-        {
-            return await GetTickerByCoinId(id, new []{""}, page).ConfigureAwait(false);
-        }
-        
-        public async Task<TickerById> GetTickerByCoinId(string id,string[] exchangeIds, int? page)
-        {
-            return await GetTickerByCoinId(id, exchangeIds, page,"",OrderField.TrustScoreDesc,false).ConfigureAwait(false);
+            return await GetTickerByCoinId(id, new[] { "" }, null).ConfigureAwait(false);
         }
 
-        public async Task<TickerById> GetTickerByCoinId(string id, string[] exchangeIds, int? page, string includeExchangeLogo, string order,bool depth)
+        public async Task<TickerById> GetTickerByCoinId(string id, int? page)
+        {
+            return await GetTickerByCoinId(id, new[] { "" }, page).ConfigureAwait(false);
+        }
+
+        public async Task<TickerById> GetTickerByCoinId(string id, string[] exchangeIds, int? page)
+        {
+            return await GetTickerByCoinId(id, exchangeIds, page, "", OrderField.TrustScoreDesc, false).ConfigureAwait(false);
+        }
+
+        public async Task<TickerById> GetTickerByCoinId(string id, string[] exchangeIds, int? page, string includeExchangeLogo, string order, bool depth)
         {
             return await GetAsync<TickerById>(AppendQueryString(
                 CoinsApiEndPoints.TickerByCoinId(id), new Dictionary<string, object>
@@ -123,6 +128,7 @@ namespace CoinGecko.Clients
                     {"depth",depth.ToString()}
                 })).ConfigureAwait(false);
         }
+
         public async Task<CoinFullData> GetHistoryByCoinId(string id, string date, string localization)
         {
             return await GetAsync<CoinFullData>(AppendQueryString(
@@ -137,7 +143,8 @@ namespace CoinGecko.Clients
         {
             return await GetMarketChartsByCoinId(id, vsCurrency, days, "").ConfigureAwait(false);
         }
-        public async Task<MarketChartById> GetMarketChartsByCoinId(string id, string vsCurrency, string days,string interval)
+
+        public async Task<MarketChartById> GetMarketChartsByCoinId(string id, string vsCurrency, string days, string interval)
         {
             return await GetAsync<MarketChartById>(AppendQueryString(
                 CoinsApiEndPoints.MarketChartByCoinId(id),
@@ -170,5 +177,4 @@ namespace CoinGecko.Clients
                 }));
         }
     }
-    
 }

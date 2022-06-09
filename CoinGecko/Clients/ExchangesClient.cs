@@ -1,28 +1,32 @@
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
 using CoinGecko.ApiEndPoints;
 using CoinGecko.Entities.Response.Exchanges;
 using CoinGecko.Interfaces;
-
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace CoinGecko.Clients
 {
-    public class ExchangesClient:BaseApiClient,IExchangesClient
+    public class ExchangesClient : BaseApiClient, IExchangesClient
     {
-        public ExchangesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null) : base(httpClient, serializerSettings, apiKey)
+        public ExchangesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings) : base(httpClient, serializerSettings)
         {
         }
-        
+
+        public ExchangesClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey) : base(httpClient, serializerSettings, apiKey)
+        {
+        }
+
         public async Task<IReadOnlyList<Exchanges>> GetExchanges()
         {
             return await GetExchanges(100, "").ConfigureAwait(false);
         }
-        public async Task<IReadOnlyList<Exchanges>> GetExchanges(int perPage,string page)
+
+        public async Task<IReadOnlyList<Exchanges>> GetExchanges(int perPage, string page)
         {
             return await GetAsync<IReadOnlyList<Exchanges>>(
-                AppendQueryString(ExchangesApiEndPoints.Exchanges,new Dictionary<string, object>
+                AppendQueryString(ExchangesApiEndPoints.Exchanges, new Dictionary<string, object>
                 {
                     {"per_page",perPage},
                     {"page",page}
@@ -39,20 +43,20 @@ namespace CoinGecko.Clients
         public async Task<ExchangeById> GetExchangesByExchangeId(string id)
         {
             return await GetAsync<ExchangeById>(
-                AppendQueryString(ExchangesApiEndPoints.ExchangeById(id) )).ConfigureAwait(false);
+                AppendQueryString(ExchangesApiEndPoints.ExchangeById(id))).ConfigureAwait(false);
         }
 
         public async Task<TickerByExchangeId> GetTickerByExchangeId(string id)
         {
-            return await GetTickerByExchangeId(id, new []{""}, null,"","").ConfigureAwait(false);
+            return await GetTickerByExchangeId(id, new[] { "" }, null, "", "").ConfigureAwait(false);
         }
 
-        public async Task<TickerByExchangeId> GetTickerByExchangeId(string id,string page)
+        public async Task<TickerByExchangeId> GetTickerByExchangeId(string id, string page)
         {
-            return await GetTickerByExchangeId(id, new []{""}, page,"","").ConfigureAwait(false);
+            return await GetTickerByExchangeId(id, new[] { "" }, page, "", "").ConfigureAwait(false);
         }
 
-        public async Task<TickerByExchangeId> GetTickerByExchangeId(string id,string[] coinIds,string page,string includeExchangeLogo,string order)
+        public async Task<TickerByExchangeId> GetTickerByExchangeId(string id, string[] coinIds, string page, string includeExchangeLogo, string order)
         {
             return await GetAsync<TickerByExchangeId>(AppendQueryString(
                 ExchangesApiEndPoints.TickerById(id), new Dictionary<string, object>

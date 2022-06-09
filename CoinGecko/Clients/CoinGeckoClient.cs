@@ -1,7 +1,7 @@
-using System;
-using System.Net.Http;
 using CoinGecko.Interfaces;
 using Newtonsoft.Json;
+using System;
+using System.Net.Http;
 
 namespace CoinGecko.Clients
 {
@@ -9,43 +9,85 @@ namespace CoinGecko.Clients
     {
         private static readonly Lazy<CoinGeckoClient> Lazy = new Lazy<CoinGeckoClient>(() => new CoinGeckoClient());
 
+        #region Fields
+
         private readonly HttpClient _httpClient;
         private bool _isDisposed;
         private readonly JsonSerializerSettings _serializerSettings;
         private readonly string _apiKey;
 
-        public CoinGeckoClient(string apiKey = null) : this((JsonSerializerSettings)null, apiKey)
+        #endregion Fields
+
+        #region Constructors
+
+        public CoinGeckoClient() : this((JsonSerializerSettings)null)
         {
         }
 
-        public CoinGeckoClient(HttpClientHandler httpClientHandler, string apiKey = null) : this(httpClientHandler, null, apiKey)
+        public CoinGeckoClient(string apiKey) : this((JsonSerializerSettings)null, apiKey)
+        {
+        }
+
+
+        public CoinGeckoClient(HttpClientHandler httpClientHandler) : this(httpClientHandler, serializerSettings: null)
+        {
+        }
+
+        public CoinGeckoClient(HttpClientHandler httpClientHandler, string apiKey) : this(httpClientHandler, null, apiKey)
         {
             _apiKey = apiKey;
         }
 
-        public CoinGeckoClient(JsonSerializerSettings serializerSettings, string apiKey = null) : this(new HttpClientHandler(), serializerSettings, apiKey)
+      
+
+        public CoinGeckoClient(JsonSerializerSettings serializerSettings) : this(new HttpClientHandler(), serializerSettings)
         {
         }
 
-        public CoinGeckoClient(HttpClientHandler httpClientHandler, JsonSerializerSettings serializerSettings, string apiKey = null)
-            : this(new HttpClient(httpClientHandler, true), serializerSettings, apiKey)
+        public CoinGeckoClient(JsonSerializerSettings serializerSettings, string apiKey) : this(new HttpClientHandler(), serializerSettings, apiKey)
         {
         }
 
-        public CoinGeckoClient(HttpClient httpClient, string apiKey = null) : this(httpClient, null, apiKey)
+
+        public CoinGeckoClient(HttpClientHandler httpClientHandler, JsonSerializerSettings serializerSettings) : this(new HttpClient(httpClientHandler, true), serializerSettings)
         {
         }
 
-        public CoinGeckoClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey = null)
+        public CoinGeckoClient(HttpClientHandler httpClientHandler, JsonSerializerSettings serializerSettings, string apiKey)
+          : this(new HttpClient(httpClientHandler, true), serializerSettings, apiKey)
+        {
+        }
+
+
+        public CoinGeckoClient(HttpClient httpClient) : this(httpClient, serializerSettings: null)
+        {
+        }
+
+        public CoinGeckoClient(HttpClient httpClient, string apiKey) : this(httpClient, null, apiKey)
+        {
+        }
+
+
+        public CoinGeckoClient(HttpClient httpClient, JsonSerializerSettings serializerSettings)
+        {
+            _httpClient = httpClient;
+            _serializerSettings = serializerSettings;
+        }
+
+        public CoinGeckoClient(HttpClient httpClient, JsonSerializerSettings serializerSettings, string apiKey)
         {
             _httpClient = httpClient;
             _serializerSettings = serializerSettings;
             _apiKey = apiKey;
         }
 
+        #endregion Constructors
+
+        #region Properties
+
         public static CoinGeckoClient Instance => Lazy.Value;
 
-        public ISimpleClient SimpleClient => new SimpleClient(_httpClient, _serializerSettings,_apiKey);
+        public ISimpleClient SimpleClient => new SimpleClient(_httpClient, _serializerSettings, _apiKey);
         public IPingClient PingClient => new PingClient(_httpClient, _serializerSettings, _apiKey);
         public ICoinsClient CoinsClient => new CoinsClient(_httpClient, _serializerSettings, _apiKey);
         public IExchangesClient ExchangesClient => new ExchangesClient(_httpClient, _serializerSettings, _apiKey);
@@ -59,6 +101,9 @@ namespace CoinGecko.Clients
         public IStatusUpdatesClient StatusUpdatesClient => new StatusUpdateClient(_httpClient, _serializerSettings, _apiKey);
         public ISearchClient SearchClient => new SearchClient(_httpClient, _serializerSettings, _apiKey);
 
+        #endregion Properties
+
+        #region Methods
 
         public void Dispose()
         {
@@ -78,5 +123,7 @@ namespace CoinGecko.Clients
             }
             _isDisposed = true;
         }
+
+        #endregion Methods
     }
 }

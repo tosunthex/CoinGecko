@@ -63,7 +63,7 @@ Examples can be found in the Test project.
 | /coins/{id}/market_chart                                    |  [+]   |   [+]   |
 | /coins/{id}/market_chart/range                              |  [-]   |   [-]   | 
 | /coins/{id}/status_updates                                  |  [-]   |   [-]   | 
-| /coins/{id}/ohlc                                            |  [-]   |   [-]   | 
+| /coins/{id}/ohlc                                            |  [+]   |   [+]   | 
 
 |           Contact Endpoints                                 | Status | Testing | 
 | :-----------------------------:                             | :----: | :-----: | 
@@ -108,7 +108,7 @@ Examples can be found in the Test project.
 
 |           Trending Endpoints                                | Status | Testing | 
 | :-----------------------------:                             | :----: | :-----: | 
-| /search/trending                                            |  [-]   |   [-]   |
+| /search/trending                                            |  [+]   |   [+]   |
 
 |           Global Endpoints                                  | Status | Testing | 
 | :-----------------------------:                             | :----: | :-----: | 

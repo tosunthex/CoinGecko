@@ -15,5 +15,6 @@ namespace CoinGecko.Interfaces
         IIndexesClient IndexesClient { get; }
         IDerivativesClient DerivativesClient { get; }
         IStatusUpdatesClient StatusUpdatesClient { get; }
+        ISearchClient SearchClient { get; }
     }
 }

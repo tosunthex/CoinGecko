@@ -105,7 +105,7 @@ namespace CoinGecko.Clients
             {
                 urlParameters.Add(par.Value == null || string.IsNullOrWhiteSpace(par.Value.ToString())
                     ? null
-                    : $"{par.Key}={par.Value.ToString().ToLower(CultureInfo.InvariantCulture)}");
+                    : $"{par.Key}={par.Value}");
             }
 
             var encodedParams = urlParameters
